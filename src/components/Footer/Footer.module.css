@@ -1,0 +1,48 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+}
+
+.containerLogos, .containerSocialMedia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin: 15px 0;
+}
+
+.ojLogo, .oeLogo {
+  width: 25%;
+  filter: grayscale(1);
+  transition: all .4s;
+}
+
+.ojLogo:hover, .oeLogo:hover {
+  filter: grayscale(0);
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  color: #fff;
+  transition: all .4s;
+}
+
+a:link{
+  text-decoration: none;
+}
+
+a:hover {
+  color: #838383;
+}
+
+a:visited {
+  color: none;
+}
