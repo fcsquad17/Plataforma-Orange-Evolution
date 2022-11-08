@@ -1,0 +1,34 @@
+.divLogo {
+    display: flex;
+    justify-content: center;
+}
+.oeLogo {
+    margin: 20px;
+    width: 60%;
+}
+
+.divEvolua {
+    margin: 20px;
+}
+
+.h1 {
+    color: #00C19C;
+}
+
+.span {
+    color: white;
+    font-size: 20px;
+}
+.strong {
+    color: white;
+    font-size: 20px;
+}
+
+
+
+@media (min-width: 666px) {
+    .oeLogo {
+        width: 399.59px;
+        height: 399.59px;
+    } 
+}
