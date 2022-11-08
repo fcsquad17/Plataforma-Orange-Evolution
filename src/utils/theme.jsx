@@ -12,6 +12,9 @@ export const theme = createTheme({
       custom: {
         main: 'black',
         contrastText: '#00C19C'
-    },
+      },
+      background: {
+        default: '#001024'
+      }
   }
 });
