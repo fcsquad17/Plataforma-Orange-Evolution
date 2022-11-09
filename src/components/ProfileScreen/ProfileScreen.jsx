@@ -1,5 +1,6 @@
 import { useState } from "react";
 import s from "/src/components/ProfileScreen/ProfileScreen.module.css";
+import { motion } from "framer-motion";
 
 export default function ProfileScreen() {
   const [clicked, setClicked] = useState(false);
@@ -13,7 +14,11 @@ export default function ProfileScreen() {
   };
 
   return (
-    <div className={s.container}>
+    <motion.div
+      className={s.container}
+      animate={{ x: clicked ? -1 : 1 }}
+      initial={{ x: 100 }}
+    >
       <div className={s.containerUserData}>
         <h2 className={s.h2}>Meus dados</h2>
         <div className="containerUserData">
@@ -26,11 +31,16 @@ export default function ProfileScreen() {
             <p className={s.userDataItems}>{userData.email}</p>
           </div>
         </div>
-          <button className={s.changeDataButton} onClick={handleClick}>
-            Alterar dados
-          </button>
+        <button className={s.changeDataButton} onClick={handleClick}>
+          Alterar dados
+        </button>
       </div>
-      <div className={s.containerChangeData} style={{display: clicked ? 'flex' : 'none'}}>
+      <motion.div
+        animate={{ x: clicked ? 1 : -100 }}
+        initial={{ x: -100 }}
+        className={s.containerChangeData}
+        style={{ display: clicked ? "flex" : "none" }}
+      >
         <h2 className={s.h2}>Altere seus dados</h2>
         <form className={s.changeDataForm}>
           <p className={s.userDataItems}>Nome:</p>
@@ -42,8 +52,8 @@ export default function ProfileScreen() {
           <p className={s.userDataItems}>Confirmar senha:</p>
           <input type="password" className={s.inputData} required />
         </form>
-          <input type="submit" value="Alterar" className={s.changeDataInput} />
-      </div>
-    </div>
+        <input type="submit" value="Alterar" className={s.changeDataInput} />
+      </motion.div>
+    </motion.div>
   );
 }

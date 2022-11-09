@@ -7,16 +7,18 @@
   width: 100%;
   margin: auto;
   color: #fff;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .containerUserData {
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 15px 0 0;
+  margin: 15px 0;
   border-radius: 5px;
   padding: 15px;
-  background-color: #202C3B;
+  background-color: #202c3b;
 }
 
 .userData {
@@ -29,7 +31,8 @@
   margin: 0;
 }
 
-.changeDataButton, .changeDataInput {
+.changeDataButton,
+.changeDataInput {
   width: 150px;
   font-size: 1.2em;
   margin: 15px auto;
@@ -37,7 +40,7 @@
   border: none;
   padding: 5px;
   color: #fff;
-  background-color: #00C19C;
+  background-color: #00c19c;
 }
 
 .containerChangeData {
@@ -48,7 +51,7 @@
   margin: 0 0 15px;
   border-radius: 5px;
   padding: 15px;
-  background-color: #202C3B;
+  background-color: #202c3b;
 }
 
 .changeData {
@@ -87,7 +90,8 @@
     width: 1000px;
     flex-direction: row;
   }
-  .containerUserData, .containerChangeData {
+  .containerUserData,
+  .containerChangeData {
     justify-content: space-between;
     height: 500px;
     margin: 15px 0;
