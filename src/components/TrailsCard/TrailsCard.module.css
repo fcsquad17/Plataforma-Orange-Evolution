@@ -13,10 +13,18 @@
     .cardStyle {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         margin-left: 150px;
         margin-right: 150px;
         
     }
 
+}
+
+@media (min-width: 1766px) {
+    .cardStyle {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 }
