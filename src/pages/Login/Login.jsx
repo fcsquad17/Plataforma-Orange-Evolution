@@ -6,7 +6,10 @@ import Footer from "/src/components/Footer/Footer";
 export default function Login() {
   return (
     <div>
-      <Header pages={["Inicio", "Trilhas"]} settings={["Entrar"]} />
+      <Header
+        pages={["Inicio", "Trilhas"]}
+        settings={["Entrar", "Criar Conta"]}
+      />
       <LoginScreen />
       <Footer />
     </div>
