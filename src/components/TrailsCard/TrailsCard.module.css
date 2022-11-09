@@ -2,7 +2,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -12,11 +12,8 @@
     
     .cardStyle {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-left: 150px;
-        margin-right: 150px;
-        
+        flex-flow: row wrap;
+        margin-bottom: 15px;
     }
 
 }

@@ -13,7 +13,7 @@ function Onboarding() {
         </div>
         <div className={s.intro}>
           <div className={s.divLogo}>
-              <img src='/src/assets/oeLogo.png' alt='Orange Evolution' className={s.oeLogo}></img>
+              <img src='/src/assets/oeLogo.svg' alt='Orange Evolution' className={s.oeLogo}></img>
           </div>
           <div className={s.divEvolua}>
             <h1 className={s.h1}>Evolua a sua carreira na tecnologia</h1>

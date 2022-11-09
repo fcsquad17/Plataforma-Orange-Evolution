@@ -34,28 +34,29 @@ export default function ActionAreaCard() {
   ]
 
   return (
-    <div className={s.cardStyle}>
-      {cards.map((card) =>(
-        <Card key={card.id} sx={{ maxWidth: 345, backgroundColor: '#202C3B' }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image={card.photo}
-              alt="green iguana"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div"
-              color='white'>
-                {card.trailTitle}
-              </Typography>
-              <Typography variant="body2" color="white">
-                {card.trailDescription}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-    </div>
+      <div className={s.cardStyle}>
+        {cards.map((card) =>(
+          <Card key={card.id} sx={{ maxWidth: 345, backgroundColor: '#202C3B' }}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image={card.photo}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Typography 
+                  gutterBottom variant="h5" component="div"
+                color='white'>
+                  {card.trailTitle}
+                </Typography>
+                <Typography variant="body2" color="white">
+                  {card.trailDescription}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        ))}
+      </div>
   );
 }
