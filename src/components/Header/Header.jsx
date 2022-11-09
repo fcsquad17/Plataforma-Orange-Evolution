@@ -17,7 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import s from "./Header.module.css";
 
 const pages = ["Inicio", "Trilhas"];
-const settings = ["Meu dados", "Meus conteudos", "Sair"];
+const settings = ["Meu dados", "Sair"];
 
 function Header() {
   // Links para os menus
@@ -26,7 +26,7 @@ function Header() {
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [profileName, useProfileName] = React.useState("Walter");
+  const [profileName, useProfileName] = React.useState("");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
