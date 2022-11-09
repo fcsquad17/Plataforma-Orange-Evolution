@@ -11,17 +11,19 @@ function Onboarding() {
         <div>
           <Header /> 
         </div>
-        <div className={s.divLogo}>
-            <img src='/src/assets/oeLogo.png' alt='Orange Evolution' className={s.oeLogo}></img>
+        <div className={s.intro}>
+          <div className={s.divLogo}>
+              <img src='/src/assets/oeLogo.png' alt='Orange Evolution' className={s.oeLogo}></img>
+          </div>
+          <div className={s.divEvolua}>
+            <h1 className={s.h1}>Evolua a sua carreira na tecnologia</h1>
+            <span className={s.span}>Explore conhecimentos que estão transformando 
+                indústrias, negócios e vidas através de</span><strong className={s.strong}> trilhas
+                gratuitas em Desenvolvimento, UX/UI Design e QA!
+            </strong>
+          </div>
         </div>
-        <div className={s.divEvolua}>
-          <h1 className={s.h1}>Evolua a sua carreira na tecnologia</h1>
-          <span className={s.span}>Explore conhecimentos que estão transformando 
-              indústrias, negócios e vidas através de</span><strong className={s.strong}> trilhas
-              gratuitas em Desenvolvimento, UX/UI Design e QA!
-          </strong>
-        </div>
-       <div>
+       <div className={s.cards}>
           <TrailsCard />
         </div> 
         <div>
