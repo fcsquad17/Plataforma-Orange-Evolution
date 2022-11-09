@@ -1,20 +1,8 @@
 .cardStyle {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     display: flex;
-    flex-flow: column;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     gap: 20px;
-}
-
-@media (min-width: 900px)  {
-    
-    .cardStyle {
-        display: flex;
-        flex-flow: row wrap;
-        margin-bottom: 15px;
-        justify-content: flex-start;
-    }
-
 }
