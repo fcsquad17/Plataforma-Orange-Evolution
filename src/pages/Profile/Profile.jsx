@@ -5,9 +5,13 @@ import Footer from "../../components/Footer/Footer";
 export default function Profile() {
   return (
     <div>
-      <Header />
+      <Header
+        pages={["Inicio", "Trilhas"]}
+        settings={["Meu dados", "Sair"]}
+        userName={""}
+      />
       <ProfileScreen />
       <Footer />
     </div>
-  )
+  );
 }
