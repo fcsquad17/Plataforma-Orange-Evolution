@@ -14,16 +14,19 @@ export default function ActionAreaCard() {
   
   const cards = [
     {
+      id: 1,
       photo: "/src/assets/fullstack.jpg", 
       trailTitle: 'Desenvolvimento Full-Stack',
       trailDescription: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
     },
     {
+      id: 2,
       photo: "/src/assets/fullstack.jpg", 
       trailTitle: 'Desenvolvimento Full-Stack',
       trailDescription: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
     },
     {
+      id: 3,
       photo: "/src/assets/fullstack.jpg", 
       trailTitle: 'Desenvolvimento Full-Stack',
       trailDescription: "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
@@ -33,7 +36,7 @@ export default function ActionAreaCard() {
   return (
     <div className={s.cardStyle}>
       {cards.map((card) =>(
-        <Card sx={{ maxWidth: 345, backgroundColor: '#202C3B' }}>
+        <Card key={card.id} sx={{ maxWidth: 345, backgroundColor: '#202C3B' }}>
           <CardActionArea>
             <CardMedia
               component="img"
