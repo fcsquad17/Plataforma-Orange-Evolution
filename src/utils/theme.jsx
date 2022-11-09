@@ -10,7 +10,7 @@ export const theme = createTheme({
         main: '#00C19C'
       },
       custom: {
-        main: 'black',
+        main: '#000000',
         contrastText: '#00C19C'
       },
       background: {
