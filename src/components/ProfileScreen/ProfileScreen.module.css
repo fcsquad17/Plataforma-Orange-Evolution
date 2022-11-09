@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin: auto;
+  color: #fff;
+}
+
+.containerUserData {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 15px 0 0;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #202C3B;
+}
+
+.userData {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.userDataItems {
+  margin: 0;
+}
+
+.changeDataButton, .changeDataInput {
+  width: 150px;
+  font-size: 1.2em;
+  margin: 15px auto;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  color: #fff;
+  background-color: #00C19C;
+}
+
+.containerChangeData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 0 15px;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #202C3B;
+}
+
+.changeData {
+  display: flex;
+  flex-direction: column;
+}
+
+.h2 {
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.changeDataForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+}
+
+.inputData {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
+}
+
+@media (min-width: 500px) {
+  .container {
+    width: 500px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .container {
+    width: 1000px;
+    flex-direction: row;
+  }
+  .containerUserData, .containerChangeData {
+    justify-content: space-between;
+    height: 500px;
+    margin: 15px 0;
+  }
+}
