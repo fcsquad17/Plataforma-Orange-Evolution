@@ -6,8 +6,9 @@ export default function SignUp() {
   return (
     <div>
       <Header
-        pages={["Inicio", "Trilhas"]}
+        pages={["Inicio"]}
         settings={["Entrar", "Criar Conta"]}
+        url={['/', '/', '/login', '/signup']}
       />
       <SignUpScreen />
       <Footer />

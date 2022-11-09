@@ -8,6 +8,7 @@ export default function Login() {
       <Header
         pages={["Inicio", "Trilhas"]}
         settings={["Entrar", "Criar Conta"]}
+        url={['/', '/', '/login', '/signup']}
       />
       <h1
         style={{

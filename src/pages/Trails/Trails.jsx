@@ -7,7 +7,8 @@ export default function Trails() {
     <div>
       <Header
         pages={["Inicio", "Trilhas"]}
-        settings={["Meu dados", "Sair"]}
+        settings={["Meus dados", "Sair"]}
+        url={['/', '/trails', '/profile', '/']}
         userName={""}
       />
       <TrailsScreen />

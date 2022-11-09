@@ -6,9 +6,10 @@ function Onboarding() {
   return (
     <div>
       <Header
-        pages={["Inicio", "Trilhas"]}
-        settings={["Meu dados", "Sair"]}
+        pages={["Inicio"]}
+        settings={["Entrar", "Cadastrar"]}
         userName={""}
+        url={['/', '/', '/login', '/signup']}
       />
       <IntroOnboarding />
       <Footer />
