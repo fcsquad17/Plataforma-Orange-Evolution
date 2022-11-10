@@ -8,6 +8,7 @@ export default function Profile() {
       <Header
         pages={["Inicio", "Trilhas"]}
         settings={["Meu dados", "Sair"]}
+        url={['/', '/trails', '/profile', '/']}
         userName={""}
       />
       <ProfileScreen />

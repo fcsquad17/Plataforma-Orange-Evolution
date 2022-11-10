@@ -7,7 +7,8 @@ export default function TrailsContent() {
     <div>
       <Header
         pages={["Inicio", "Trilhas"]}
-        settings={["Entrar", "Criar Conta"]}
+        settings={["Meus dados", "Sair"]}
+        url={['/', '/trails', '/profile', '/']}
       />
       <AllModules />
       <Footer />
