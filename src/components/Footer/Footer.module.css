@@ -6,6 +6,7 @@
   align-items: center;
   background-color: #333;
   color: #fff;
+
 }
 
 .containerLogos, .containerSocialMedia {
@@ -45,4 +46,10 @@ a:hover {
 
 a:visited {
   color: none;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin-top: 36%;
+  }
 }

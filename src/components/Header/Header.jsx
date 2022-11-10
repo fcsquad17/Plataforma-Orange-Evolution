@@ -39,7 +39,7 @@ function Header({ pages, settings, userName, url }) {
   }, [userName]);
 
   return (
-    <AppBar color="custom" position="static">
+    <AppBar color="custom" position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img
