@@ -26,6 +26,7 @@ export default function Trails() {
         pages={["Inicio", "Trilhas"]}
         settings={["Meu dados", "Sair"]}
         userName={user.NOME_COMPLETO}
+        url={['/', `/trails/${localStorage.getItem('idUser')}`, '/login', '/signup']}
       />
       {hasLoaded && <TrailsScreen user={user} />}
 

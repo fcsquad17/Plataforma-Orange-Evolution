@@ -1,20 +1,18 @@
+import React from "react";
 import Header from "/src/components/Header/Header";
+import ForgotPasswordScreen from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen";
 import Footer from "/src/components/Footer/Footer";
-import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingScreen";
 
-function Onboarding() {
+export default function ForgotPassword() {
   return (
     <div>
       <Header
         pages={["Inicio"]}
-        settings={["Entrar", "Cadastrar"]}
-        userName={""}
+        settings={["Entrar", "Criar Conta"]}
         url={['/', '/', '/login', '/signup']}
       />
-      <OnboardingScreen />
+      <ForgotPasswordScreen />
       <Footer />
     </div>
   );
 }
-
-export default Onboarding;
