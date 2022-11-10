@@ -5,6 +5,7 @@
   max-width: 600px;
   margin: auto;
   padding: 15px;
+  height: 75vh;
 }
 
 .h2 {
@@ -15,4 +16,22 @@
 .h4 {
   margin: 0;
   color: #fff;
+}
+
+@media (min-width: 350px) {
+  .container {
+    height: 60vh;
+  }
+}
+
+@media (min-width: 650px) {
+  .container {
+    height: 40vh;
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    height: 70vh;
+  }
 }
