@@ -3,44 +3,87 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
+import { postUser } from "../../services/Api";
+import { useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import s from "/src/components/SignUpScreen/SignUpScreen.module.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useState } from "react";
 
 const theme = createTheme({
   palette: {
     background: {
-      default: '#001024'
+      default: "#001024",
     },
     text: {
-      primary: '#fff',
-      secondary: '#fff'
+      primary: "#fff",
+      secondary: "#fff",
     },
     primary: {
-      main: '#00C19C'
+      main: "#00C19C",
     },
     secondary: {
-      main: '#00C19C'
-    }
-  }
+      main: "#00C19C",
+    },
+  },
 });
 
 export default function SignUpScreen() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      email: data.get("email"),
-      password: data.get("password"),
-      confirmPassword: data.get("confirmPassword")
-    });
+  const [userLogin, setUserLogin] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    admin: 0,
+  });
+  const [userPassword, setUserPassword] = useState("");
+  const [ifError, setIfError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = useState(true);
+  const navigate = useNavigate();
+
+  const handleChange = (target, key) => {
+    const value = target.value;
+    setUserLogin({ ...userLogin, [key]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (userLogin.nome === "") {
+      setIfError(true);
+      setOpen(true);
+      setErrorMessage('O campo "Nome" está vazio!');
+    } else if (userLogin.email === "") {
+      setIfError(true);
+      setOpen(true);
+      setErrorMessage('O campo "Email" está vazio!');
+    } else if (userLogin.senha === "") {
+      setIfError(true);
+      setOpen(true);
+      setErrorMessage('O campo "Senha" está vazio!');
+    } else if (userPassword === "") {
+      setIfError(true);
+      setOpen(true);
+      setErrorMessage('O campo "Repita a senha" está vazio!');
+    } else if (userPassword !== userLogin.senha) {
+      setIfError(true);
+      setOpen(true);
+      setErrorMessage("As senhas são diferentes");
+    } else {
+      setIfError(false);
+      setOpen(false);
+      setErrorMessage("");
+      const res = await postUser(userLogin);
+      res.error ? null : navigate("/login");
+    }
   };
 
   return (
@@ -80,10 +123,11 @@ export default function SignUpScreen() {
               name="name"
               autoComplete="name"
               autoFocus
+              onChange={({ target }) => handleChange(target, "nome")}
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
             />
             <TextField
@@ -96,10 +140,11 @@ export default function SignUpScreen() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={({ target }) => handleChange(target, "email")}
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
             />
             <TextField
@@ -111,10 +156,11 @@ export default function SignUpScreen() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={({ target }) => handleChange(target, "senha")}
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
             />
             <TextField
@@ -126,12 +172,37 @@ export default function SignUpScreen() {
               type="password"
               id="confirmPassword"
               autoComplete="current-password"
+              onChange={(e) => setUserPassword(e.target.value)}
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
             />
+            {ifError && (
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={open}>
+                  <Alert
+                    action={
+                      <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
+                      >
+                        <CloseIcon fontSize="inherit" />
+                      </IconButton>
+                    }
+                    severity="error"
+                    sx={{ mb: 2 }}
+                  >
+                    {errorMessage}
+                  </Alert>
+                </Collapse>
+              </Box>
+            )}
             <Button
               type="submit"
               fullWidth
@@ -140,13 +211,9 @@ export default function SignUpScreen() {
             >
               Registrar
             </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Já tem uma conta?"}
-                </Link>
-              </Grid>
-            </Grid>
+            <Link to={'/login'} style={{ color: "#00C19C" }}>
+              Já tem uma conta?
+            </Link>
           </Box>
         </Box>
       </Container>
