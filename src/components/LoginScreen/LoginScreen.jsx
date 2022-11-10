@@ -11,9 +11,13 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import {postUserLogin} from '../../services/Api'
+import {useNavigate} from 'react-router-dom'
 
 import s from "/src/components/LoginScreen/LoginScreen.module.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const theme = createTheme({
   palette: {
@@ -34,14 +38,25 @@ const theme = createTheme({
 });
 
 export default function LoginScreen() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const [userLogin, setUserLogin] = useState({email: '', senha: ''})
+
+  const navigate = useNavigate()
+
+  const handleChange = (target, key) => {
+    const value = target.value;
+    setUserLogin({...userLogin, [key]: value})
   };
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    const res = await postUserLogin(userLogin)
+    localStorage.setItem('idUser', res.usuario.ID)
+    res.error ? null : navigate(`/trails/${res.usuario.ID}`)
+  }
+
+  useEffect(() => {
+    console.log(userLogin)
+  }, [userLogin])
 
   return (
     <ThemeProvider theme={theme}>
@@ -85,6 +100,7 @@ export default function LoginScreen() {
                   borderColor: '#fff'
                 }
               }}
+              onChange={({target}) => handleChange(target, 'email')}
             />
             <TextField
               margin="normal"
@@ -100,6 +116,7 @@ export default function LoginScreen() {
                   borderColor: '#fff'
                 }
               }}
+              onChange={({target}) => handleChange(target, 'senha')}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
