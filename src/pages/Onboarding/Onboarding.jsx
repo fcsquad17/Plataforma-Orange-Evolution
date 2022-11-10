@@ -1,6 +1,6 @@
 import Header from "/src/components/Header/Header";
 import Footer from "/src/components/Footer/Footer";
-import { IntroOnboarding } from "../../components/IntroOnboarding/IntroOnboarding";
+import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingScreen";
 
 function Onboarding() {
   return (
@@ -11,7 +11,7 @@ function Onboarding() {
         userName={""}
         url={['/', '/', '/login', '/signup']}
       />
-      <IntroOnboarding />
+      <OnboardingScreen />
       <Footer />
     </div>
   );
