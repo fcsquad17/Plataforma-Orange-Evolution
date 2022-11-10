@@ -10,7 +10,7 @@ export default function SignUp() {
         settings={["Entrar", "Criar Conta"]}
         url={['/', '/', '/login', '/signup']}
       />
-      <SignUpScreen />
+      <SignUpScreen/>
       <Footer />
     </div>
   );
