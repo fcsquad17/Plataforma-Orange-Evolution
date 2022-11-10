@@ -2,35 +2,25 @@ import s from "/src/components/TrailsScreen/TrailsScreen.module.css";
 import TrailsCard from "/src/components/TrailsCard/TrailsCard";
 import TrailsCardUser from "../TrailsCardUser/TrailsCardUser";
 import { useEffect, useState } from "react";
-import {
-  getContentOfUserByTrailId,
-  getUserTrailsParams,
-} from "../../services/Api";
+import { getUserTrailsParams } from "../../services/Api";
+import { progressBarTrail } from "../../utils/progressLogic";
 
 export default function TrailsScreen({ user }) {
   const [userTrails, setUserTrails] = useState([]);
 
   const handleOnReq = async (idUser) => {
     const response = await getUserTrailsParams(idUser);
-    setUserTrails(response.trilhas);
-  };
-
-  const handleOnReq2 = async (idUser, idTrail) => {
-    const response = await getContentOfUserByTrailId(idUser, idTrail);
-    const filterContentId = response.conteudos.filter((conteudo) => {
-      return conteudo.ID;
-    });
-    console.log(await filterContentId);
+    const resWithProgress = await Promise.all(
+      response.trilhas.map((trilha) => {
+        return progressBarTrail(idUser, trilha.ID);
+      })
+    );
+    setUserTrails(resWithProgress);
   };
 
   useEffect(() => {
     handleOnReq(user.ID);
   }, []);
-
-  useEffect(() => {
-    const filterTrailId = userTrails.map((object) => object.ID);
-    filterTrailId.map((trail) => handleOnReq2(user.ID, trail));
-  }, [userTrails]);
 
   return (
     <div className={s.container}>
@@ -43,7 +33,11 @@ export default function TrailsScreen({ user }) {
         <div className={s.cardStyle}>
           {userTrails.map((card) => {
             return (
-              <TrailsCardUser key={card.ID} trail={card} progressNumber={30} />
+              <TrailsCardUser
+                key={card.ID}
+                trail={card}
+                progressNumber={card}
+              />
             );
           })}
         </div>
