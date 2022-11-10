@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import s from "./Header.module.css";
 
-function Header({ pages, settings, userName }) {
+function Header({ pages, settings, userName, url }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [profileName, useProfileName] = React.useState("");
@@ -41,13 +42,11 @@ function Header({ pages, settings, userName }) {
     <AppBar color="custom" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <a href="">
-            <img
-              src="/src/assets/oeLogo.svg"
-              alt="Orange Evolution"
-              className={s.webLogo}
-            />
-          </a>
+          <img
+            src="/src/assets/oeLogo.svg"
+            alt="Orange Evolution"
+            className={s.webLogo}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -93,20 +92,20 @@ function Header({ pages, settings, userName }) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {pages.map((page, index) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to={url[index]}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <a href="">
-            <img
-              src="/src/assets/oeLogo.svg"
-              alt="Orange Evolution"
-              className={s.mobileLogo}
-            />
-          </a>
+          <img
+            src="/src/assets/oeLogo.svg"
+            alt="Orange Evolution"
+            className={s.mobileLogo}
+          />
           <Typography
             variant="h5"
             noWrap
@@ -124,14 +123,15 @@ function Header({ pages, settings, userName }) {
             }}
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+            {pages.map((page, index) => (
+              <Link to={url[index]} key={page}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 
@@ -157,9 +157,11 @@ function Header({ pages, settings, userName }) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {settings.map((setting, index) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Link to={url[index + 2]}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>

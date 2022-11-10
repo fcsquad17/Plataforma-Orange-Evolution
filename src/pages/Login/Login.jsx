@@ -7,8 +7,9 @@ export default function Login() {
   return (
     <div>
       <Header
-        pages={["Inicio", "Trilhas"]}
+        pages={["Inicio"]}
         settings={["Entrar", "Criar Conta"]}
+        url={['/', '/', '/login', '/signup']}
       />
       <LoginScreen />
       <Footer />
