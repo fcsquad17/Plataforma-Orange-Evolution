@@ -16,6 +16,11 @@ export const getUserTrailsParams = async (idUser) => {
   return response.data;
 };
 
+export const postUserLogin = async (user) => {
+  const response = await api.post(`/usuarios/login`, user);
+  return response.data;
+};
+
 //Usuario-Conteudo
 
 export const getContentOfUserByTrailId = async (idUser, idTrails) => {
