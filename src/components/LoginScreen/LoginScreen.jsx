@@ -5,19 +5,22 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 import {postUserLogin} from '../../services/Api'
 import {useNavigate} from 'react-router-dom'
 
+import { Link } from "react-router-dom";
 import s from "/src/components/LoginScreen/LoginScreen.module.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
-import { useEffect } from "react";
 
 const theme = createTheme({
   palette: {
@@ -39,7 +42,9 @@ const theme = createTheme({
 
 export default function LoginScreen() {
   const [userLogin, setUserLogin] = useState({email: '', senha: ''})
-
+  const [ifError, setIfError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [open, setOpen] = useState(true);
   const navigate = useNavigate()
 
   const handleChange = (target, key) => {
@@ -49,14 +54,21 @@ export default function LoginScreen() {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const res = await postUserLogin(userLogin)
-    localStorage.setItem('idUser', res.usuario.ID)
-    res.error ? null : navigate(`/trails/${res.usuario.ID}`)
+    const res = await postUserLogin(userLogin).then((res) => res).catch((error) => error.response.data)
+    if(userLogin.email == '' || userLogin.senha == '') {
+      setIfError(true)
+      setOpen(true);
+      setErrorMessage('Algum campo está vazio!')
+    } else if(res.error) {
+      setIfError(true)
+      setOpen(true);
+      setErrorMessage(res.msg)
+      // console.log(errorMessage)
+    } else {
+      localStorage.setItem('idUser', res.usuario.ID)
+      navigate(`/trails/${res.usuario.ID}`)
+    }
   }
-
-  useEffect(() => {
-    console.log(userLogin)
-  }, [userLogin])
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,7 +83,7 @@ export default function LoginScreen() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+            <LockOpenOutlinedIcon />
           </Avatar>
           <Typography
             component="h1"
@@ -122,6 +134,30 @@ export default function LoginScreen() {
               control={<Checkbox value="remember" color="primary" />}
               label="Lembrar senha"
             />
+            {ifError && (
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={open}>
+                  <Alert
+                    action={
+                      <IconButton
+                        aria-label="close"
+                        color="inherit"
+                        size="small"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
+                      >
+                        <CloseIcon fontSize="inherit" />
+                      </IconButton>
+                    }
+                    severity="error"
+                    sx={{ mb: 2 }}
+                  >
+                    {errorMessage}
+                  </Alert>
+                </Collapse>
+              </Box>
+            )}
             <Button
               type="submit"
               fullWidth
@@ -132,13 +168,13 @@ export default function LoginScreen() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to={'/forgotpassword'} style={{ color: "#00C19C" }}>
                   Esqueceu sua senha?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Não tem uma conta?"}
+                <Link to={'/signup'} style={{ color: "#00C19C" }}>
+                  Não tem uma conta?
                 </Link>
               </Grid>
             </Grid>
