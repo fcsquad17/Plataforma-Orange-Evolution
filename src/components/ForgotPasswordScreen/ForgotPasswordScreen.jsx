@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 import s from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen.modules.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -15,32 +15,31 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     background: {
-      default: '#001024'
+      default: "#001024",
     },
     text: {
-      primary: '#fff',
-      secondary: '#fff'
+      primary: "#fff",
+      secondary: "#fff",
     },
     primary: {
-      main: '#00C19C'
+      main: "#00C19C",
     },
     secondary: {
-      main: '#F72C89'
+      main: "#F72C89",
     },
     custom: {
-        main: '#8A1AD1',
-        contrastText: 'white'
-    }
+      main: "#8A1AD1",
+      contrastText: "white",
+    },
   },
   typography: {
-    fontSize: '12px',
+    fontSize: 12,
 
     button: {
-        fontSize: 12,
-        fontWeight: 550,
-    }
-
-  }
+      fontSize: 12,
+      fontWeight: 550,
+    },
+  },
 });
 
 export default function ForgotPasswordScreen() {
@@ -76,12 +75,12 @@ export default function ForgotPasswordScreen() {
             Encontre sua conta
           </Typography>
           <Box
-          sx={{
-            marginTop: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+            sx={{
+              marginTop: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           ></Box>
           <Typography
             component="h4"
@@ -107,34 +106,34 @@ export default function ForgotPasswordScreen() {
               autoComplete="email"
               autoFocus
               color="custom"
-              
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }, mt: 1 
+                  borderColor: "#fff",
+                },
+                mt: 1,
               }}
-            /> 
-            <Grid container > 
-                <Grid xs >
-                    <Button
-                        type="submit"
-                        variant="text"
-                        sx={{ mt: 1, mb: 1, ml: 11 }}
-                        color="custom"
-                        >
-                        Cancelar
-                    </Button>
-                </Grid>
-                <Grid item>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{ mt: 1, mb: 10 }}
-                        color="custom"
-                        >
-                        Pesquisar
-                    </Button>
-                </Grid>
+            />
+            <Grid container>
+              <Grid xs>
+                <Button
+                  type="submit"
+                  variant="text"
+                  sx={{ mt: 1, mb: 1, ml: 11 }}
+                  color="custom"
+                >
+                  Cancelar
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ mt: 1, mb: 10 }}
+                  color="custom"
+                >
+                  Pesquisar
+                </Button>
+              </Grid>
             </Grid>
           </Box>
         </Box>
