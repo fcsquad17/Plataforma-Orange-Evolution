@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 30px;
 }
 
 .divLogo {
@@ -49,6 +50,11 @@
     justify-content: center;
 }
 
+.wp {
+    background-color: #101E2F;
+    padding: 20px 0 40px 0;
+}
+
 .whatis {
     display: flex;
     flex-direction: column;
@@ -63,6 +69,7 @@
 
 .h2s {
     color: white;
+    font-size: 30px;
 
 }
 
@@ -83,10 +90,58 @@
 }
 
 li {
-    font-size: bold;
+    font-size: 17px;
     color: white;
+    margin: 24px;
 }
 
+.transition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.span2 {
+    text-align: center;
+    font-size: 32px;
+    color: white;
+    margin: 0 50px;
+}
+
+h1 {
+    text-align: center;
+    color: #871CD3;
+}
+
+.cp {
+    margin-top: 10px;
+}
+
+.h1f {
+    color: #00C19C;
+    
+}
+
+.apoiadores {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    align-items: center;
+    transition: all .4s;
+}
+
+
+
+.alura, .fcamara, .cubos, .rocket {
+    height: 60px;
+    margin: 30px;
+    transition: all .4s;
+    filter: invert(0);
+}
+
+.alura:hover, .fcamara:hover, .cubos:hover, .rocket:hover {
+    filter: invert(1)
+}
 
 @media (min-width: 666px) {
 
@@ -131,6 +186,11 @@ li {
     .whatisText {
         font-size: 25px;
 
+    }
+
+    li {
+        font-size: 25px;
+        margin: 40px
     }
     
 }
