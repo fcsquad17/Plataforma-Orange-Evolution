@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 // Import style (s = style)
-import s from "./IntroOnboarding.module.css";
+import s from "./OnboardingScreen.module.css";
 
 const theme = createTheme({
   palette: {
@@ -20,7 +20,7 @@ const theme = createTheme({
   }
 });
 
-export const IntroOnboarding = () => {
+export const OnboardingScreen = () => {
   return (
     <div className={s.container}>  
 

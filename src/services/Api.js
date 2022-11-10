@@ -30,7 +30,21 @@ export const postUser = async (user) => {
 
 export const getContentOfUserByTrailId = async (idUser, idTrails) => {
   const response = await api.get(
-    `/usuario-conteudo/conteudo-concluido/idUsuario/${idUser}/idModulo/${idTrails}`
+    `/usuario-conteudo/conteudo-concluido/idUsuario/${idUser}/idTrilha/${idTrails}`
   );
+  return response.data;
+};
+
+//Conteudos
+
+export const getAllContentByTrailId = async (idTrail) => {
+  const response = await api.get(`/conteudos/porIdTrilha/${idTrail}`);
+  return response.data;
+};
+
+//Trilhas
+
+export const getTrailParams = async (idTrail) => {
+  const response = await api.get(`/trilhas/id/${idTrail}`);
   return response.data;
 };
