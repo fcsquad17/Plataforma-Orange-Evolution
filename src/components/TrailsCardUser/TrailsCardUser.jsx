@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import s from "./TrailsCardUser.module.css";
 
-export default function TrailsCardUser({ trail, progressNumber }) {
+export default function TrailsCardUser({ trail }) {
   return (
     <div className={s.cardStyle}>
       <Card sx={{ maxWidth: 345, maxHeight: 400, backgroundColor: "#202C3B" }}>
@@ -27,7 +27,7 @@ export default function TrailsCardUser({ trail, progressNumber }) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <LinearProgressBar progressNumber={progressNumber} />
+        <LinearProgressBar progressNumber={trail.PROGRESSO} />
       </Card>
     </div>
   );
