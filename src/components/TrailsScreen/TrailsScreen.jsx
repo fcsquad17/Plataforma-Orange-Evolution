@@ -10,6 +10,8 @@ export default function TrailsScreen({ user }) {
 
   const handleOnReq = async (idUser) => {
     const response = await getUserTrailsParams(idUser);
+
+    setUserTrails(response.trilhas);
     const resWithProgress = await Promise.all(
       response.trilhas.map((trilha) => {
         return progressBarTrail(idUser, trilha.ID);

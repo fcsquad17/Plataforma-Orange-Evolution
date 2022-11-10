@@ -13,7 +13,7 @@ function LinearProgressWithLabel(props) {
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
+        <Typography variant="body2" color="#fff">{`${Math.round(
           props.value
         )}%`}</Typography>
       </Box>
@@ -33,7 +33,7 @@ export default function LinearProgressBar({ progressNumber }) {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
-    setProgress(progressNumber);
+    setProgress(typeof progressNumber == "number" ? progressNumber : 0);
   }, [progressNumber]);
 
   return (
