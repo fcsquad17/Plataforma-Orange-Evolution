@@ -52,7 +52,7 @@ export default function CirclePogressBar({ progressModule }) {
 
   React.useEffect(() => {
     setProgress(progressModule);
-  }, []);
+  }, [progressModule]);
 
   return (
     <ThemeProvider theme={theme}>
