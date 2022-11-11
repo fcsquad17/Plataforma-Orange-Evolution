@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect } from "react";
-import { postContentOfUserDone } from "../../services/Api";
+import { postContentOfUserDone, deleteContentOfUser } from "../../services/Api";
 
 const theme = createTheme({
   palette: {
@@ -34,13 +34,14 @@ export default function ModulesContents({ contents, ultimoVisto }) {
 
   const idUser = localStorage.getItem("idUser");
 
-  const handleNext = async (idContent) => {
+  const handleNext = (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     postContentOfUserDone({ idUser: idUser, idContent: idContent, done: 1 });
   };
 
-  const handleBack = () => {
+  const handleBack = (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    deleteContentOfUser(idUser, idContent);
   };
 
   const handleReset = () => {
@@ -79,7 +80,9 @@ export default function ModulesContents({ contents, ultimoVisto }) {
                     </Button>
                     <Button
                       variant="contained"
-                      onClick={handleNext}
+                      onClick={() => {
+                        handleNext(content.ID);
+                      }}
                       sx={{
                         mt: 1,
                         mr: 1,
@@ -98,7 +101,9 @@ export default function ModulesContents({ contents, ultimoVisto }) {
                     </Button>
                     <Button
                       disabled={index === 0}
-                      onClick={handleBack}
+                      onClick={() => {
+                        handleBack(content.ID);
+                      }}
                       sx={{ mt: 1, mr: 1 }}
                     >
                       Voltar
@@ -111,9 +116,12 @@ export default function ModulesContents({ contents, ultimoVisto }) {
         </Stepper>
         {activeStep === contents.length && (
           <Paper square elevation={0} sx={{ p: 3, backgroundColor: "#202C3B" }}>
-            <Typography>All steps completed - you&apos;re finished</Typography>
+            <Typography>
+              Parabéns! Você terminou esse módulo, se quiser pode clicar no
+              botão abaixo e refazer a trilha.
+            </Typography>
             <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-              Reset
+              Refazer
             </Button>
           </Paper>
         )}
