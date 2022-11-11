@@ -42,8 +42,22 @@ export const getLastContentByIdModule = async (idUser, idModule) => {
   return response.data;
 };
 
+export const getContentOfUserByModuleId = async (idUser, idModule) => {
+  const response = await api.get(
+    `/usuario-conteudo/conteudo-concluido/idUsuario/${idUser}/idModulo/${idModule}`
+  );
+  return response.data;
+};
+
 export const postContentOfUserDone = async (body) => {
   const response = await api.post(`/usuario-conteudo`, body);
+  return response.data;
+};
+
+export const deleteContentOfUser = async (idUser, idContent) => {
+  const response = await api.delete(
+    `/usuario-conteudo/idUser/${idUser}/idContent/${idContent}`
+  );
   return response.data;
 };
 
