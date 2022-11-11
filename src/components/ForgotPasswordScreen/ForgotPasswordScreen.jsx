@@ -33,7 +33,7 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontSize: '12px',
+    fontSize: 12,
 
     button: {
         fontSize: 12,
@@ -49,7 +49,6 @@ export default function ForgotPasswordScreen() {
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("e-mail"),
-      password: data.get("password"),
     });
   };
 
@@ -115,7 +114,7 @@ export default function ForgotPasswordScreen() {
               }}
             /> 
             <Grid container > 
-                <Grid xs >
+                <Grid item xs >
                     <Button
                         type="submit"
                         variant="text"
