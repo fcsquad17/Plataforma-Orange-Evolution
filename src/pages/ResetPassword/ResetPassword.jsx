@@ -6,7 +6,11 @@ import Footer from '/src/components/Footer/Footer.jsx'
 export const ResetPassword = () => {
   return (
     <div>
-        <Header />
+        <Header
+            pages={["Inicio"]}
+            settings={["Entrar", "Criar Conta"]}
+            url={['/', '/', '/login', '/signup']}
+      />
         <ResetPasswordScreen />
         <Footer />
     </div>
