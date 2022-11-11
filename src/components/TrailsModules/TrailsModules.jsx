@@ -13,6 +13,7 @@ import {
   getLastContentByIdModule,
   getFirstContentByIdModule,
 } from "../../services/Api";
+import { progressBarCircle } from "../../utils/progressLogic";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -53,25 +54,28 @@ export default function TrailsModules({
   const [lastSeen, setLastSeen] = useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
   const [contents, setContents] = useState([]);
+  const [progressModule, setProgressModule] = useState(0);
 
   const idUser = localStorage.getItem("idUser");
 
   const handleOnReq = async (idModule) => {
     const response = await getContentByIdModule(idModule);
-    const totalOfContents = response.conteudos.length;
-    setContents(response.conteudos);
     const content = await getLastContentByIdModule(idUser, idModule);
-    const firstOfModule = await getFirstContentByIdModule(idModule);
-    if (content.conteudo) {
-      if (content.conteudo.ID < 25) {
-        setLastSeen(content.conteudo.ID);
-      } else {
-        setLastSeen(1 - totalOfContents + totalOfContents);
-        console.log();
-      }
+    const firstContentOfModule = await getFirstContentByIdModule(idModule);
+    setContents(response.conteudos);
+
+    if (idModule > 1) {
+      setLastSeen(
+        content.conteudo
+          ? content.conteudo.ID - (firstContentOfModule.conteudo.ID - 1)
+          : 0
+      );
     } else {
-      setLastSeen(0);
+      setLastSeen(content.conteudo ? content.conteudo.ID : 0);
     }
+
+    const progress = await progressBarCircle(idUser, idModulo);
+    setProgressModule(progress);
   };
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -97,12 +101,16 @@ export default function TrailsModules({
             }}
           >
             {TITULO}
-            <CirclePogressBar progressModule={10} />
+            <CirclePogressBar progressModule={progressModule} />
           </Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ backgroundColor: "#202C3B" }}>
           <Typography component={"span"}>
-            <ModulesContents contents={contents} ultimoVisto={lastSeen} />
+            <ModulesContents
+              contents={contents}
+              ultimoVisto={lastSeen}
+              sx={{ mb: 30 }}
+            />
           </Typography>
         </AccordionDetails>
       </Accordion>
