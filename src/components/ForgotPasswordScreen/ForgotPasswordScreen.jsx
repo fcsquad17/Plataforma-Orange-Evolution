@@ -127,34 +127,12 @@ export default function ForgotPasswordScreen() {
                     <Button
                         type="submit"
                         variant="contained"
-                        sx={{ mt: 1, mb: 10 }}
+                        sx={{ mt: 1, mb: 20 }}
                         color="custom"
                         >
                         Pesquisar
                     </Button>
                 </Grid>
-            />
-            <Grid container>
-              <Grid xs>
-                <Button
-                  type="submit"
-                  variant="text"
-                  sx={{ mt: 1, mb: 1, ml: 11 }}
-                  color="custom"
-                >
-                  Cancelar
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{ mt: 1, mb: 10 }}
-                  color="custom"
-                >
-                  Pesquisar
-                </Button>
-              </Grid>
             </Grid>
           </Box>
         </Box>
