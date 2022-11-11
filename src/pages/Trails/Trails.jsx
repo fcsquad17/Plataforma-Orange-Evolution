@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import { getUsersParams } from "../../services/Api";
 import { useParams } from "react-router-dom";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 export default function Trails() {
   const [user, setUser] = useState({});
@@ -24,6 +25,7 @@ export default function Trails() {
   }, [user]);
   return (
     <div>
+      <ScrollUpButton showBelow={50} />
       <Header
         pages={["Inicio", "Trilhas"]}
         settings={["Meu dados", "Sair"]}
@@ -35,6 +37,7 @@ export default function Trails() {
           "/",
         ]}
       />
+
       {hasLoaded && <TrailsScreen user={user} />}
 
       <Footer />
