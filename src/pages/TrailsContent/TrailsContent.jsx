@@ -3,6 +3,7 @@ import AllModules from "../../components/AllModules/AllModules";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { getUsersParams } from "../../services/Api";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 export default function TrailsContent() {
   const [user, setUser] = useState({});
@@ -19,6 +20,7 @@ export default function TrailsContent() {
   }, []);
   return (
     <div>
+      <ScrollUpButton showBelow={50} />
       <Header
         pages={["Inicio", "Trilhas"]}
         settings={["Meu dados", "Sair"]}
@@ -31,6 +33,7 @@ export default function TrailsContent() {
         ]}
       />
       <AllModules />
+
       <Footer />
     </div>
   );
