@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function TrailsScreen({ user }) {
   const [userTrails, setUserTrails] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const handleOnReq = async (idUser) => {
     const response = await getUserTrailsParams(idUser);
@@ -21,9 +22,20 @@ export default function TrailsScreen({ user }) {
     setUserTrails(resWithProgress);
   };
 
+  const handleOnReload = () => {
+    setReload(true);
+  };
+
   useEffect(() => {
     handleOnReq(user.ID);
   }, []);
+
+  useEffect(() => {
+    if (reload) {
+      setReload(false);
+      handleOnReq(user.ID);
+    }
+  }, [reload]);
 
   return (
     <div className={s.container}>
@@ -44,7 +56,7 @@ export default function TrailsScreen({ user }) {
         </div>
         <hr className={s.hr} />
         <h2 className={s.h2}>Conheça nossas demais trilhas:</h2>
-        <TrailsCard />
+        <TrailsCard userId={user.ID} handleOnReload={handleOnReload} />
       </div>
     </div>
   );
