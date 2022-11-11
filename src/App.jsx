@@ -17,7 +17,10 @@ function App() {
           <Route path="/" element={<Onboarding />} />
           <Route path="/:id" element={<Onboarding />} />
           <Route path="/trails/:id" element={<Trails />} />
-          <Route path="/trailscontent/:id" element={<TrailsContent />} />
+          <Route
+            path="/trailscontent/:id/:idTrail"
+            element={<TrailsContent />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgotpassword/:id" element={<ForgotPassword />} />
