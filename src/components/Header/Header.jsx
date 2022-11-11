@@ -34,6 +34,11 @@ function Header({ pages, settings, userName, url }) {
     setAnchorElUser(null);
   };
 
+  const handleCloseUserMenuAndLogoff = () => {
+    setAnchorElUser(null);
+    localStorage.removeItem("idUser");
+  };
+
   useEffect(() => {
     useProfileName(userName);
   }, [userName]);
@@ -161,7 +166,13 @@ function Header({ pages, settings, userName, url }) {
                   key={setting}
                   style={{ color: "#000" }}
                 >
-                  <MenuItem onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    onClick={
+                      index === settings.length - 1
+                        ? handleCloseUserMenuAndLogoff
+                        : handleCloseUserMenu
+                    }
+                  >
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 </Link>
