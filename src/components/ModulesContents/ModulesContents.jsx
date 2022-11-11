@@ -29,7 +29,11 @@ const theme = createTheme({
   },
 });
 
-export default function ModulesContents({ contents, ultimoVisto }) {
+export default function ModulesContents({
+  contents,
+  ultimoVisto,
+  handleOnReload,
+}) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const idUser = localStorage.getItem("idUser");
@@ -37,11 +41,13 @@ export default function ModulesContents({ contents, ultimoVisto }) {
   const handleNext = (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     postContentOfUserDone({ idUser: idUser, idContent: idContent, done: 1 });
+    handleOnReload();
   };
 
   const handleBack = (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     deleteContentOfUser(idUser, idContent);
+    handleOnReload();
   };
 
   const handleReset = () => {

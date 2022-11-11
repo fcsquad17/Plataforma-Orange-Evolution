@@ -8,6 +8,16 @@ import { CardActionArea } from "@mui/material";
 import s from "./TrailsCardUser.module.css";
 
 export default function TrailsCardUser({ trail }) {
+  const selectImage = (title) => {
+    if (title === "UX/UI Design") {
+      return "/src/assets/UI-UX-Design-1024x576.jpg";
+    } else if (title === "Quality Assurance") {
+      return "/src/assets/novidades.jpg";
+    } else {
+      return "/src/assets/fullstack.jpg";
+    }
+  };
+
   return (
     <div className={s.cardStyle}>
       <Card sx={{ maxWidth: 345, maxHeight: 400, backgroundColor: "#202C3B" }}>
@@ -15,7 +25,7 @@ export default function TrailsCardUser({ trail }) {
           <CardMedia
             component="img"
             height="140"
-            image="/src/assets/fullstack.jpg"
+            image={selectImage(trail.TITULO)}
             alt="green iguana"
           />
           <CardContent>

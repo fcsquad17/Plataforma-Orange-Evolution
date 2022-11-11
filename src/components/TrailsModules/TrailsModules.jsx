@@ -45,16 +45,12 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid none",
 }));
 
-export default function TrailsModules({
-  TITULO,
-  DESCRICAO,
-  PROGRESSO,
-  idModulo,
-}) {
+export default function TrailsModules({ TITULO, idModulo }) {
   const [lastSeen, setLastSeen] = useState(0);
   const [expanded, setExpanded] = React.useState("panel1");
   const [contents, setContents] = useState([]);
   const [progressModule, setProgressModule] = useState(0);
+  const [reload, setReload] = useState(false);
 
   const idUser = localStorage.getItem("idUser");
 
@@ -82,9 +78,20 @@ export default function TrailsModules({
     setExpanded(newExpanded ? panel : false);
   };
 
+  const handleOnReload = () => {
+    setReload(true);
+  };
+
   useEffect(() => {
     handleOnReq(idModulo);
-  }, []);
+  }, [reload]);
+
+  useEffect(() => {
+    if (reload) {
+      setReload(false);
+      handleOnReq(idModulo);
+    }
+  }, [reload]);
 
   return (
     <div>
@@ -109,6 +116,7 @@ export default function TrailsModules({
             <ModulesContents
               contents={contents}
               ultimoVisto={lastSeen}
+              handleOnReload={handleOnReload}
               sx={{ mb: 30 }}
             />
           </Typography>

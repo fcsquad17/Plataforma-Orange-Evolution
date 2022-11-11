@@ -78,10 +78,20 @@ export const getFirstContentByIdModule = async (idModule) => {
   return response.data;
 };
 
+export const getFirstContentByIdTrail = async (idTrail) => {
+  const response = await api.get(`/conteudos/idTrilha/${idTrail}`);
+  return response.data;
+};
+
 //Trilhas
 
 export const getTrailParams = async (idTrail) => {
   const response = await api.get(`/trilhas/id/${idTrail}`);
+  return response.data;
+};
+
+export const getAllTrails = async () => {
+  const response = await api.get("/trilhas");
   return response.data;
 };
 
