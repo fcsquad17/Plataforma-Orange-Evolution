@@ -4,6 +4,7 @@ import TrailsCardUser from "../TrailsCardUser/TrailsCardUser";
 import { useEffect, useState } from "react";
 import { getUserTrailsParams } from "../../services/Api";
 import { progressBarTrail } from "../../utils/progressLogic";
+import { Link } from "react-router-dom";
 
 export default function TrailsScreen({ user }) {
   const [userTrails, setUserTrails] = useState([]);
@@ -35,11 +36,9 @@ export default function TrailsScreen({ user }) {
         <div className={s.cardStyle}>
           {userTrails.map((card) => {
             return (
-              <TrailsCardUser
-                key={card.ID}
-                trail={card}
-                progressNumber={card}
-              />
+              <Link to={`/trailscontent/${user.ID}/${card.ID}`} key={card.ID}>
+                <TrailsCardUser trail={card} progressNumber={card} />
+              </Link>
             );
           })}
         </div>

@@ -35,6 +35,18 @@ export const getContentOfUserByTrailId = async (idUser, idTrails) => {
   return response.data;
 };
 
+export const getLastContentByIdModule = async (idUser, idModule) => {
+  const response = await api.get(
+    `/usuario-conteudo/ultimo-concluido/idUsuario/${idUser}/idModulo/${idModule}`
+  );
+  return response.data;
+};
+
+export const postContentOfUserDone = async (body) => {
+  const response = await api.post(`/usuario-conteudo`, body);
+  return response.data;
+};
+
 //Conteudos
 
 export const getAllContentByTrailId = async (idTrail) => {
@@ -42,9 +54,26 @@ export const getAllContentByTrailId = async (idTrail) => {
   return response.data;
 };
 
+export const getContentByIdModule = async (idModule) => {
+  const response = await api.get(`/conteudos/porIdModulo/${idModule}`);
+  return response.data;
+};
+
+export const getFirstContentByIdModule = async (idModule) => {
+  const response = await api.get(`/conteudos/idModulo/${idModule}`);
+  return response.data;
+};
+
 //Trilhas
 
 export const getTrailParams = async (idTrail) => {
   const response = await api.get(`/trilhas/id/${idTrail}`);
+  return response.data;
+};
+
+//Modulos
+
+export const getModuleByIdTrail = async (idTrail) => {
+  const response = await api.get(`/modulos/porIdTrilha/${idTrail}`);
   return response.data;
 };

@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { useEffect } from "react";
+import { postContentOfUserDone } from "../../services/Api";
 
 const theme = createTheme({
   palette: {
@@ -16,43 +18,25 @@ const theme = createTheme({
       secondary: "#fff",
     },
     primary: {
-      main: '#00C19C'
+      main: "#00C19C",
     },
     secondary: {
-      main: '#00C19C'
+      main: "#00C19C",
     },
     background: {
-      default: '#001024'
-    }
+      default: "#001024",
+    },
   },
 });
 
-const steps = [
-  {
-    label: "Select campaign settings",
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Create an ad group",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Create an ad",
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
-
-export default function VerticalLinearStepper() {
+export default function ModulesContents({ contents, ultimoVisto }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
+  const idUser = localStorage.getItem("idUser");
+
+  const handleNext = async (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    postContentOfUserDone({ idUser: idUser, idContent: idContent, done: 1 });
   };
 
   const handleBack = () => {
@@ -63,45 +47,61 @@ export default function VerticalLinearStepper() {
     setActiveStep(0);
   };
 
+  useEffect(() => {
+    setActiveStep(ultimoVisto);
+  }, [ultimoVisto]);
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ maxWidth: 400, color: "#fff" }}>
         <Stepper activeStep={activeStep} orientation="vertical">
-          {steps.map((step, index) => (
-            <Step key={step.label}>
-              <StepLabel
-                optional={
-                  index === 2 ? (
-                    <Typography variant="caption">Last step</Typography>
-                  ) : null
-                }
-              >
-                {step.label}
-              </StepLabel>
+          {contents.map((content, index) => (
+            <Step key={content.ID}>
+              <StepLabel>{content.TITULO}</StepLabel>
               <StepContent>
-                <Typography>{step.description}</Typography>
+                <Typography>{content.DESCRICAO}</Typography>
                 <Box sx={{ mb: 2 }}>
                   <div>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        handleNext(content.ID);
+                      }}
+                      sx={{
+                        mt: 1,
+                        mr: 1,
+                        color: "#fff",
+                        backgroundColor: "#6B3CC7",
+                        "&:hover": { backgroundColor: "#5558BE" },
+                      }}
+                    >
+                      {index === contents.length - 1 ? "Terminar" : "Continuar"}
+                    </Button>
                     <Button
                       variant="contained"
                       onClick={handleNext}
                       sx={{
                         mt: 1,
                         mr: 1,
-                        color: '#fff',
+                        color: "#fff",
                         backgroundColor: "#6B3CC7",
-                        "&:hover": { backgroundColor: "#5558BE"
-                        },
+                        "&:hover": { backgroundColor: "#5558BE" },
                       }}
                     >
-                      {index === steps.length - 1 ? "Finish" : "Continue"}
+                      <a
+                        href={content.FONTE}
+                        target={"_blank"}
+                        style={{ color: "#fff" }}
+                      >
+                        Acessar link
+                      </a>
                     </Button>
                     <Button
                       disabled={index === 0}
                       onClick={handleBack}
-                      sx={{ mt: 1, mr: 1}}
+                      sx={{ mt: 1, mr: 1 }}
                     >
-                      Back
+                      Voltar
                     </Button>
                   </div>
                 </Box>
@@ -109,7 +109,7 @@ export default function VerticalLinearStepper() {
             </Step>
           ))}
         </Stepper>
-        {activeStep === steps.length && (
+        {activeStep === contents.length && (
           <Paper square elevation={0} sx={{ p: 3, backgroundColor: "#202C3B" }}>
             <Typography>All steps completed - you&apos;re finished</Typography>
             <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
