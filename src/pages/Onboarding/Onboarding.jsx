@@ -4,6 +4,7 @@ import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingSc
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUsersParams } from "../../services/Api";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 function Onboarding() {
   const [user, setUser] = useState({});
@@ -24,6 +25,7 @@ function Onboarding() {
 
   return (
     <div>
+      <ScrollUpButton showBelow={50} />
       {id && idUser && (
         <Header
           pages={["Inicio", "Trilhas"]}
