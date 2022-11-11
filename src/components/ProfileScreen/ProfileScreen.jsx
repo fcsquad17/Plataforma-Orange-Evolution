@@ -2,12 +2,8 @@ import { useState } from "react";
 import s from "/src/components/ProfileScreen/ProfileScreen.module.css";
 import { motion } from "framer-motion";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ user }) {
   const [clicked, setClicked] = useState(false);
-  const [userData, setUserData] = useState({
-    name: "Walter dos Santos",
-    email: "walter@123.com",
-  });
 
   const handleClick = () => {
     setClicked(true);
@@ -24,11 +20,11 @@ export default function ProfileScreen() {
         <div className="containerUserData">
           <div className={s.userData}>
             <p className={s.userDataItems}>Nome:</p>
-            <p className={s.userDataItems}>{userData.name}</p>
+            <p className={s.userDataItems}>{user.NOME_COMPLETO}</p>
           </div>
           <div className={s.userData}>
             <p className={s.userDataItems}>E-mail:</p>
-            <p className={s.userDataItems}>{userData.email}</p>
+            <p className={s.userDataItems}>{user.EMAIL}</p>
           </div>
         </div>
         <button className={s.changeDataButton} onClick={handleClick}>

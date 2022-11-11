@@ -92,11 +92,11 @@ function Header({ pages, settings, userName, url }) {
               }}
             >
               {pages.map((page, index) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to={url[index]}>
+                <Link to={url[index]} key={page}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
-                  </Link>
-                </MenuItem>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -156,11 +156,15 @@ function Header({ pages, settings, userName, url }) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link to={url[index + 2]}>
+                <Link
+                  to={url[index + 2]}
+                  key={setting}
+                  style={{ color: "#000" }}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
-                  </Link>
-                </MenuItem>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

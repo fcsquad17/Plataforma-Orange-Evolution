@@ -14,14 +14,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Onboarding />}/>
-          <Route path="/trails/:id" element={<Trails />}/>
-          <Route path="/trailscontent/:id" element={<TrailsContent />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/signup" element={<SignUp />}/>
-          <Route path="/forgotpassword/:id" element={<ForgotPassword />} />
-          <Route path="/profile/:id" element={<Profile />}/>
-          <Route path="*" element={<NotFound />}/>
+          <Route path="/" element={<Onboarding />} />
+          <Route path="/:id" element={<Onboarding />} />
+          <Route path="/trails/:id" element={<Trails />} />
+          <Route
+            path="/trailscontent/:id/:idTrail"
+            element={<TrailsContent />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
