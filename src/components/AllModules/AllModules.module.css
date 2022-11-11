@@ -5,12 +5,13 @@
   max-width: 600px;
   margin: auto;
   padding: 15px;
-  height: 75vh;
+  height: 100%;
+  min-height: 700px;
 }
 
 .h2 {
   margin: 0;
-  color: #00C19C;
+  color: #00c19c;
 }
 
 .h4 {
@@ -18,7 +19,7 @@
   color: #fff;
 }
 
-@media (min-width: 350px) {
+/* @media (min-width: 350px) {
   .container {
     height: 60vh;
   }
@@ -34,4 +35,4 @@
   .container {
     height: 70vh;
   }
-}
+} */
