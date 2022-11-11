@@ -11,6 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import s from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen.modules.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -114,24 +115,28 @@ export default function ForgotPasswordScreen() {
             /> 
             <Grid container > 
                 <Grid item xs >
-                    <Button
-                        type="submit"
-                        variant="text"
-                        sx={{ mt: 1, mb: 1, ml: 11 }}
-                        color="custom"
-                        >
-                        Cancelar
-                    </Button>
+                    <Link to="/login">
+                        <Button
+                            type="submit"
+                            variant="text"
+                            sx={{ mt: 1, mb: 1, ml: 11 }}
+                            color="custom"
+                            >
+                            Cancelar
+                        </Button>
+                    </Link>
                 </Grid>
                 <Grid item>
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{ mt: 1, mb: 20 }}
-                        color="custom"
-                        >
-                        Pesquisar
-                    </Button>
+                    <Link to="/resetpassword">
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            sx={{ mt: 1, mb: 20 }}
+                            color="custom"
+                            >
+                            Pesquisar
+                        </Button>
+                    </Link>
                 </Grid>
             </Grid>
           </Box>
