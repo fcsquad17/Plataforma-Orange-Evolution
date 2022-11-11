@@ -2,6 +2,8 @@ import {
   getAllContentByTrailId,
   getContentOfUserByTrailId,
   getTrailParams,
+  getContentOfUserByModuleId,
+  getContentByIdModule,
 } from "../services/Api";
 
 export const progressBarTrail = async (idUser, idTrail) => {
@@ -16,6 +18,16 @@ export const progressBarTrail = async (idUser, idTrail) => {
     ID: trailDetail.trilha.ID,
     TITULO: trailDetail.trilha.TITULO,
     DESCRICAO: trailDetail.trilha.DESCRICAO,
-    PROGRESSO: allDone ? Math.round((allDone.length / 100) * total.length) : 0,
+    PROGRESSO: allDone ? Math.round((allDone.length * 100) / total.length) : 0,
   };
+};
+
+export const progressBarCircle = async (idUser, idModule) => {
+  const done = await getContentOfUserByModuleId(idUser, idModule);
+  const allContent = await getContentByIdModule(idModule);
+
+  const allDone = done.conteudos.map((content) => content.ID);
+  const total = allContent.conteudos.map((content) => content.ID);
+
+  return allDone ? Math.round((allDone.length * 100) / total.length) : 0;
 };
