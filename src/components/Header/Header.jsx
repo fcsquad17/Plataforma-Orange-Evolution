@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,12 +10,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import s from "./Header.module.css";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header({ pages, settings, userName, url }) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [profileName, useProfileName] = React.useState("");
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [profileName, useProfileName] = useState("");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -47,10 +46,11 @@ function Header({ pages, settings, userName, url }) {
     <AppBar color="custom" position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
+          <Box
+            component="img"
             src="/src/assets/oeLogo.svg"
             alt="Orange Evolution"
-            className={s.webLogo}
+            sx={{ width: "45px", display: {xs: 'none', md: 'block'}}}
           />
           <Typography
             variant="h6"
@@ -97,18 +97,19 @@ function Header({ pages, settings, userName, url }) {
               }}
             >
               {pages.map((page, index) => (
-                <Link to={url[index]} key={page} style={{ color: "#000" }}>
-                  <MenuItem onClick={handleCloseNavMenu}>
+                <Link to={url[index]} key={page}>
+                  <MenuItem onClick={handleCloseNavMenu} sx={{ color: "#000" }}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 </Link>
               ))}
             </Menu>
           </Box>
-          <img
+          <Box
+            component="img"
             src="/src/assets/oeLogo.svg"
             alt="Orange Evolution"
-            className={s.mobileLogo}
+            sx={{ width: "45px", display: {md: 'none'}}}
           />
           <Typography
             variant="h5"
@@ -127,7 +128,7 @@ function Header({ pages, settings, userName, url }) {
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Link to={url[index]} key={page} style={{ color: "#000" }}>
+              <Link to={url[index]} key={page}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
@@ -161,17 +162,14 @@ function Header({ pages, settings, userName, url }) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <Link
-                  to={url[index + 2]}
-                  key={setting}
-                  style={{ color: "#000" }}
-                >
+                <Link to={url[index + 2]} key={setting}>
                   <MenuItem
                     onClick={
                       index === settings.length - 1
                         ? handleCloseUserMenuAndLogoff
                         : handleCloseUserMenu
                     }
+                    sx={{ color: "#000" }}
                   >
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
