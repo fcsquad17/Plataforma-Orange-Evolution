@@ -19,6 +19,9 @@ import TextField from "@mui/material/TextField";
 import TrailsCard from "../TrailsCard/TrailsCard";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CreateTrail from "../CreateTrail/CreateTrail";
+import CreateModule from "../CreateModule/CreateModule";
+import CreateContent from "../CreateContent/CreateContent";
 
 const theme = createTheme({
   palette: {
@@ -40,6 +43,7 @@ const theme = createTheme({
 
 export default function AdminControlScreen() {
   const [state, setState] = React.useState({ left: false });
+  const [chosenOption, setChosenOption] = React.useState("");
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -61,7 +65,7 @@ export default function AdminControlScreen() {
     >
       <List sx={{ backgroundColor: "#303A46" }}>
         <ListItem disablePadding sx={{ color: "#000" }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => setChosenOption("CreateTrail")}>
             <ListItemIcon>
               <HikingIcon />
             </ListItemIcon>
@@ -69,7 +73,7 @@ export default function AdminControlScreen() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={{ color: "#000" }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => setChosenOption("CreateModule")}>
             <ListItemIcon>
               <ViewModuleIcon />
             </ListItemIcon>
@@ -77,7 +81,7 @@ export default function AdminControlScreen() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={{ color: "#000" }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => setChosenOption("CreateContent")}>
             <ListItemIcon>
               <TocIcon />
             </ListItemIcon>
@@ -149,184 +153,9 @@ export default function AdminControlScreen() {
               color: "#00C19C",
             }}
           >
-            <Box
-              sx={{
-                display: "none",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "15px",
-                width: "90%",
-                minHeight: "50vh",
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h5"
-                sx={{ marginBottom: "30px" }}
-              >
-                Adição de trilhas
-              </Typography>
-              <TextField
-                id="outlined-basic"
-                label="Título"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-multline-flexbile"
-                label="Descrição"
-                variant="outlined"
-                multiline
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                size="large"
-                sx={{ margin: "30px 0", color: "#fff" }}
-              >
-                Criar trilha
-              </Button>
-            </Box>
-            <Box
-              sx={{
-                display: "none",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "15px",
-                width: "90%",
-                minHeight: "50vh",
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h5"
-                sx={{ marginBottom: "30px" }}
-              >
-                Adição de módulos
-              </Typography>
-              <TextField
-                id="outlined-basic"
-                label="Título do módulo"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-multline-flexbile"
-                label="Descrição do módulo"
-                variant="outlined"
-                multiline
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                size="large"
-                sx={{ margin: "30px 0", color: "#fff" }}
-              >
-                Criar módulo
-              </Button>
-            </Box>
-            <Box
-              sx={{
-                display: "none",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "15px",
-                width: "90%",
-                minHeight: "50vh",
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h5"
-                sx={{ marginBottom: "30px" }}
-              >
-                Adição de conteúdos
-              </Typography>
-              <TextField
-                id="outlined-basic"
-                label="Título"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-basic"
-                label="Tipo"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-basic"
-                label="Duração"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-basic"
-                label="Fonte"
-                variant="outlined"
-                multiline
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <TextField
-                id="outlined-multline-flexbile"
-                label="Descrição"
-                variant="outlined"
-                multiline
-                fullWidth
-                sx={{
-                  fieldSet: {
-                    borderColor: "#fff",
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                size="large"
-                sx={{ margin: "30px 0", color: "#fff" }}
-              >
-                Criar conteúdo
-              </Button>
-            </Box>
+            {chosenOption === "CreateTrail" && <CreateTrail />}
+            {chosenOption === "CreateModule" && <CreateModule />}
+            {chosenOption === "CreateContent" && <CreateContent />}
           </Box>
           <Box
             sx={{
