@@ -11,9 +11,9 @@ export const progressBarTrail = async (idUser, idTrail) => {
   const allContent = await getAllContentByTrailId(idTrail);
   const trailDetail = await getTrailParams(idTrail);
 
-  const allDone = done.conteudos.map((content) => content.ID);
+  const allDone = await done.conteudos.map((content) => content.ID);
 
-  const total = allContent.conteudos.map((content) => content.ID);
+  const total = await allContent.conteudos.map((content) => content.ID);
   return {
     ID: trailDetail.trilha.ID,
     TITULO: trailDetail.trilha.TITULO,
