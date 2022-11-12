@@ -61,12 +61,20 @@ export default function ModulesContents({
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ maxWidth: 400, color: "#fff" }}>
-        <Stepper activeStep={activeStep} orientation="vertical">
+        <Stepper activeStep={activeStep} orientation="vertical" >
           {contents.map((content, index) => (
-            <Step key={content.ID}>
-              <StepLabel>{content.TITULO}</StepLabel>
+            <Step key={content.ID} >
+              <StepLabel>
+                <Typography 
+                  sx={{
+                    textShadow: "#131313 2px 3px 2px", 
+                    fontWeight: "500px"
+                    }}
+                    >{content.TITULO}
+                </Typography>
+              </StepLabel>
               <StepContent>
-                <Typography>{content.DESCRICAO}</Typography>
+                <Typography fontSize={13}>{content.DESCRICAO}</Typography>
                 <Box sx={{ mb: 2 }}>
                   <div>
                     <Button
@@ -78,8 +86,8 @@ export default function ModulesContents({
                         mt: 1,
                         mr: 1,
                         color: "#fff",
-                        backgroundColor: "#6B3CC7",
-                        "&:hover": { backgroundColor: "#5558BE" },
+                        backgroundColor: "#2c2c2c",
+                        "&:hover": { backgroundColor: "#6B3CC7" },
                       }}
                     >
                       {index === contents.length - 1 ? "Terminar" : "Continuar"}
@@ -93,8 +101,8 @@ export default function ModulesContents({
                         mt: 1,
                         mr: 1,
                         color: "#fff",
-                        backgroundColor: "#6B3CC7",
-                        "&:hover": { backgroundColor: "#5558BE" },
+                        backgroundColor: "#2c2c2c",
+                        "&:hover": { backgroundColor: "#6B3CC7" },
                       }}
                     >
                       <a
