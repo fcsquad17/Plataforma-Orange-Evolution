@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box } from "@mui/material";
+import { Box, Chip, Stack } from "@mui/material";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -12,6 +12,10 @@ import { useEffect } from "react";
 import { postContentOfUserDone, deleteContentOfUser } from "../../services/Api";
 
 const theme = createTheme({
+  text: {
+    primary: "#fff",
+    secondary: "#fff",
+  },
   palette: {
     text: {
       primary: "#fff",
@@ -21,11 +25,20 @@ const theme = createTheme({
       main: "#00C19C",
     },
     secondary: {
-      main: "#00C19C",
+      main: "#F72C89",
     },
-    background: {
-      default: "#001024",
+    success: {
+      main: "#8A1AD1",
     },
+    error: {
+      main: "#ff5a23",
+    },
+    warning: {
+      main: "#23C8FF"
+    },
+    info: {
+      main: "#FFC823"
+    }
   },
 });
 
@@ -58,6 +71,19 @@ export default function ModulesContents({
     setActiveStep(ultimoVisto);
   }, [ultimoVisto]);
 
+  const setColor =(contentTIPO) => {
+    if(contentTIPO === "Live" || contentTIPO === "Vídeo" ) return "success"
+    if(contentTIPO === "Artigo" || contentTIPO === "Glossário") return "error"
+    if(contentTIPO === "Livro" || contentTIPO === "Apostila") return "info"
+    if(contentTIPO === "Curso") return "secondary"
+  }
+  
+  const setTime =(contentDURACAO) => {
+    if(contentDURACAO > 3600 ) return `${contentDURACAO / 3600} horas`
+    if(contentDURACAO > 60 ) return `${contentDURACAO / 60} minutos`
+    if(contentDURACAO === 0 ) return "---"
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ maxWidth: 400, color: "#fff" }}>
@@ -76,6 +102,10 @@ export default function ModulesContents({
               <StepContent>
                 <Typography fontSize={13}>{content.DESCRICAO}</Typography>
                 <Box sx={{ mb: 2 }}>
+                <Stack direction="row" spacing={1} sx={{ m: 1}}>
+                    <Chip label={setTime(content.DURACAO)} color="warning" size="small" />
+                    <Chip label={content.TIPO} color={setColor(content.TIPO)} size="small" />
+                </Stack>
                   <div>
                     <Button
                       variant="contained"
