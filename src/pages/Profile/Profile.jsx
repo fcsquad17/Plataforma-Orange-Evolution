@@ -7,6 +7,7 @@ import { getUsersParams } from "../../services/Api";
 export default function Profile() {
   const [user, setUser] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const idUser = localStorage.getItem("idUser");
 
@@ -15,9 +16,14 @@ export default function Profile() {
     setUser(response.usuario);
   };
 
+  const handleReload = async () => {
+    setReload(true);
+  };
+
   useEffect(() => {
     handleReq();
-  }, []);
+    if (reload) setReload(false);
+  }, [reload]);
 
   useEffect(() => {
     if (user.ID) setHasLoaded(true);
@@ -35,7 +41,7 @@ export default function Profile() {
           "/",
         ]}
       />
-      {hasLoaded && <ProfileScreen user={user} />}
+      {hasLoaded && <ProfileScreen user={user} handleReload={handleReload} />}
 
       <Footer />
     </div>

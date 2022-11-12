@@ -26,6 +26,11 @@ export const postUser = async (user) => {
   return response.data;
 };
 
+export const putUser = async (userId, user) => {
+  const response = await api.put(`/usuarios/id/${userId}`, user);
+  return response.data;
+};
+
 //Usuario-Conteudo
 
 export const getContentOfUserByTrailId = async (idUser, idTrails) => {
