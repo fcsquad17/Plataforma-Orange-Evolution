@@ -16,7 +16,7 @@ import {
 import { progressBarCircle } from "../../utils/progressLogic";
 
 const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
+  <MuiAccordion disableGutters elevation={0} square sx={{backgroundColor: "#001024"}}{...props} />
 ))(({ theme }) => ({
   "&:before": {
     display: "none",
@@ -29,8 +29,9 @@ const AccordionSummary = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor: "#6B3CC7",
+  backgroundColor: "#2c2c2c",
   color: "#fff",
+  borderRadius: "7px 7px 0px 0px",
   flexDirection: "row-reverse",
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
     transform: "rotate(90deg)",
@@ -111,7 +112,7 @@ export default function TrailsModules({ TITULO, idModulo }) {
             <CirclePogressBar progressModule={progressModule} />
           </Typography>
         </AccordionSummary>
-        <AccordionDetails sx={{ backgroundColor: "#202C3B" }}>
+        <AccordionDetails sx={{ backgroundColor: "#202C3B", borderRadius: "0px 0px 7px 7px" }}>
           <Typography component={"span"}>
             <ModulesContents
               contents={contents}

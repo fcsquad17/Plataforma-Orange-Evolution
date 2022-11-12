@@ -22,20 +22,22 @@ export default function AllModules() {
   }, []);
 
   return (
-    <div className={s.container}>
-      <h2 className={s.h2}>
-        Seja bem vindo (a) à trilha sobre {trail.TITULO}!
-      </h2>
-      {modules.map((module) => {
-        return (
-          <TrailsModules
-            TITULO={module.TITULO}
-            DESCRICAO={module.DESCRICAO}
-            idModulo={module.ID}
-            key={module.ID}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className={s.container}>
+        <span className={s.span}>Seja bem vindo(a) à trilha sobre <br/><strong className={s.strong}>{trail.TITULO}</strong></span>  
+        
+        
+        {modules.map((module) => {
+          return (
+            <TrailsModules
+              TITULO={module.TITULO}
+              DESCRICAO={module.DESCRICAO}
+              idModulo={module.ID}
+              key={module.ID}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
