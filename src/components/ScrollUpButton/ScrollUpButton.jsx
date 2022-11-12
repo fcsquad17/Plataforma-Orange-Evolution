@@ -35,12 +35,12 @@ export default function ScrollUpButton({ showBelow }) {
             zIndex: 2,
             position: "fixed",
             bottom: "2vh",
-            backgroundColor: "#303A46",
+            backgroundColor: "#8A1AD1",
             color: "#001024",
             "&:hover, &.Mui-focusVisible": {
               transition: "0.3s",
-              backgroundColor: "#707274",
-              color: "#001024"
+              backgroundColor: "#F72C89",
+              color: "#ffffff"
             },
             right: "5%",
           }}

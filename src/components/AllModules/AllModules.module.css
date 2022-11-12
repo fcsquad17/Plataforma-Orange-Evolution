@@ -9,9 +9,16 @@
   min-height: 700px;
 }
 
-.h2 {
-  margin: 0;
+.span {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.strong {
   color: #00c19c;
+  font-size: 32px;
+  margin-top: 0px;
 }
 
 .h4 {
