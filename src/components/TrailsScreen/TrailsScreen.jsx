@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function TrailsScreen({ user }) {
   const [userTrails, setUserTrails] = useState([]);
   const [reload, setReload] = useState(false);
-
+  const [hasReloaded, setHasReloaded] = useState(false);
   const handleOnReq = async (idUser) => {
     const response = await getUserTrailsParams(idUser);
 
@@ -28,6 +28,7 @@ export default function TrailsScreen({ user }) {
 
   useEffect(() => {
     handleOnReq(user.ID);
+    setHasReloaded(true);
   }, []);
 
   useEffect(() => {
