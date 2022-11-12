@@ -47,6 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 90%;
   margin: 0 0 15px;
   border-radius: 5px;
@@ -92,7 +93,7 @@
   }
   .containerUserData,
   .containerChangeData {
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 500px;
     margin: 15px 0;
   }
