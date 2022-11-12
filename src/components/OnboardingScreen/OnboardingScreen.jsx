@@ -1,12 +1,7 @@
 import React from 'react'
-
-// MUI Imports
-
 import TrailsCard from '/src/components/TrailsCard/TrailsCard'
 import { Button } from '@mui/material';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
-// Import style (s = style)
 import s from "./OnboardingScreen.module.css";
 
 const theme = createTheme({
