@@ -97,7 +97,7 @@ function Header({ pages, settings, userName, url }) {
               }}
             >
               {pages.map((page, index) => (
-                <Link to={url[index]} key={page}>
+                <Link to={url[index]} key={page} style={{ color: "#000" }}>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
@@ -127,7 +127,7 @@ function Header({ pages, settings, userName, url }) {
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Link to={url[index]} key={page}>
+              <Link to={url[index]} key={page} style={{ color: "#000" }}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
