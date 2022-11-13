@@ -31,20 +31,20 @@ function Onboarding() {
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
-          url={[
+          urlPage={[
             `/${localStorage.getItem("idUser")}`,
             `/trails/${localStorage.getItem("idUser")}`,
-            `/profile/${localStorage.getItem("idUser")}`,
-            "/",
+            `/eventstab/${localStorage.getItem("idUser")}`,
           ]}
+          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
         />
       )}
       {!id && (
         <Header
           pages={["Inicio", "Eventos"]}
-          settings={["Entrar", "Cadastrar"]}
-          userName={""}
-          url={["/", "/", "/login", "/signup"]}
+          settings={["Entrar", "Criar Conta"]}
+          urlPage={["/", "/eventstab"]}
+          urlSettings={["/login", "/signup"]}
         />
       )}
 

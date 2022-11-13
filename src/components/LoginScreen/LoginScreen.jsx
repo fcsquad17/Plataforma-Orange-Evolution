@@ -7,15 +7,15 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
-import {postUserLogin} from '../../services/Api'
-import {useNavigate} from 'react-router-dom'
+import { postUserLogin } from "../../services/Api";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
@@ -23,54 +23,59 @@ import { useState } from "react";
 const theme = createTheme({
   palette: {
     background: {
-      default: '#001024'
+      default: "#001024",
     },
     text: {
-      primary: '#fff',
-      secondary: '#fff'
+      primary: "#fff",
+      secondary: "#fff",
     },
     primary: {
-      main: '#00C19C'
+      main: "#00C19C",
     },
     secondary: {
-      main: '#00C19C'
-    }
-  }
+      main: "#00C19C",
+    },
+  },
 });
 
 export default function LoginScreen() {
-  const [userLogin, setUserLogin] = useState({email: '', senha: ''})
+  const [userLogin, setUserLogin] = useState({ email: "", senha: "" });
   const [ifError, setIfError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (target, key) => {
     const value = target.value;
-    setUserLogin({...userLogin, [key]: value})
+    setUserLogin({ ...userLogin, [key]: value });
   };
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const res = await postUserLogin(userLogin).then((res) => res).catch((error) => error.response.data)
-    if(userLogin.email == '' || userLogin.senha == '') {
-      setIfError(true)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await postUserLogin(userLogin)
+      .then((res) => res)
+      .catch((error) => error.response.data);
+    if (userLogin.email == "" || userLogin.senha == "") {
+      setIfError(true);
       setOpen(true);
-      setErrorMessage('Algum campo está vazio!')
-    } else if(res.error) {
-      setIfError(true)
+      setErrorMessage("Algum campo está vazio!");
+    } else if (res.error) {
+      setIfError(true);
       setOpen(true);
-      setErrorMessage(res.msg)
-      // console.log(errorMessage)
-    } else {
-      localStorage.setItem('idUser', res.usuario.ID)
-      navigate(`/trails/${res.usuario.ID}`)
+      setErrorMessage(res.msg);
+    } else if (res.usuario.ADMIN === 0) {
+      localStorage.setItem("idUser", res.usuario.ID);
+      navigate(`/trails/${res.usuario.ID}`);
     }
-  }
+  };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{margin: '50px auto', minHeight: '80vh'}}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{ margin: "50px auto", minHeight: "80vh" }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -107,10 +112,10 @@ export default function LoginScreen() {
               autoFocus
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
-              onChange={({target}) => handleChange(target, 'email')}
+              onChange={({ target }) => handleChange(target, "email")}
             />
             <TextField
               margin="normal"
@@ -123,10 +128,10 @@ export default function LoginScreen() {
               autoComplete="current-password"
               sx={{
                 fieldSet: {
-                  borderColor: '#fff'
-                }
+                  borderColor: "#fff",
+                },
               }}
-              onChange={({target}) => handleChange(target, 'senha')}
+              onChange={({ target }) => handleChange(target, "senha")}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -166,12 +171,12 @@ export default function LoginScreen() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to={'/forgotpassword'} style={{ color: "#00C19C" }}>
+                <Link to={"/forgotpassword"} style={{ color: "#00C19C" }}>
                   Esqueceu sua senha?
                 </Link>
               </Grid>
               <Grid item>
-                <Link to={'/signup'} style={{ color: "#00C19C" }}>
+                <Link to={"/signup"} style={{ color: "#00C19C" }}>
                   Não tem uma conta?
                 </Link>
               </Grid>
