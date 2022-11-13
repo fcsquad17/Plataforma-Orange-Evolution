@@ -16,7 +16,13 @@ import {
 import { progressBarCircle } from "../../utils/progressLogic";
 
 const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={0} square sx={{backgroundColor: "#001024"}}{...props} />
+  <MuiAccordion
+    disableGutters
+    elevation={0}
+    square
+    sx={{ backgroundColor: "#001024" }}
+    {...props}
+  />
 ))(({ theme }) => ({
   "&:before": {
     display: "none",
@@ -95,34 +101,35 @@ export default function TrailsModules({ TITULO, idModulo }) {
   }, [reload]);
 
   return (
-    <div>
-      <Accordion onChange={handleChange("panel1")}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography
-            component={"span"}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "row",
-              gap: 1,
-              justifyContent: "space-between",
-            }}
-          >
-            {TITULO}
-            <CirclePogressBar progressModule={progressModule} />
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ backgroundColor: "#202C3B", borderRadius: "0px 0px 7px 7px" }}>
-          <Typography component={"span"}>
-            <ModulesContents
-              contents={contents}
-              ultimoVisto={lastSeen}
-              handleOnReload={handleOnReload}
-              sx={{ mb: 30 }}
-            />
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <Accordion onChange={handleChange("panel1")}>
+      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+        <Typography
+          component={"span"}
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 1,
+            justifyContent: "space-between",
+          }}
+        >
+          {TITULO}
+          <CirclePogressBar progressModule={progressModule} />
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails
+        sx={{ backgroundColor: "#202C3B", borderRadius: "0px 0px 7px 7px" }}
+      >
+        <Typography component={"span"}>
+          <ModulesContents
+            contents={contents}
+            ultimoVisto={lastSeen}
+            handleOnReload={handleOnReload}
+            sx={{ mb: 30 }}
+          />
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
   );
 }
