@@ -8,8 +8,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import SearchIcon from "@mui/icons-material/Search";
-
-import s from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen.modules.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 
@@ -54,7 +52,7 @@ export default function ForgotPasswordScreen() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" className={s.container}>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -112,32 +110,32 @@ export default function ForgotPasswordScreen() {
                 },
                 mt: 1,
               }}
-            /> 
-            <Grid container > 
-                <Grid item xs >
-                    <Link to="/login">
-                        <Button
-                            type="submit"
-                            variant="text"
-                            sx={{ mt: 1, mb: 1, ml: 11 }}
-                            color="custom"
-                            >
-                            Cancelar
-                        </Button>
-                    </Link>
-                </Grid>
-                <Grid item>
-                    <Link to="/resetpassword">
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            sx={{ mt: 1, mb: 20 }}
-                            color="custom"
-                            >
-                            Pesquisar
-                        </Button>
-                    </Link>
-                </Grid>
+            />
+            <Grid container>
+              <Grid item xs>
+                <Link to="/login">
+                  <Button
+                    type="submit"
+                    variant="text"
+                    sx={{ mt: 1, mb: 1, ml: 11 }}
+                    color="custom"
+                  >
+                    Cancelar
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to="/resetpassword">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ mt: 1, mb: 20 }}
+                    color="custom"
+                  >
+                    Pesquisar
+                  </Button>
+                </Link>
+              </Grid>
             </Grid>
           </Box>
         </Box>
