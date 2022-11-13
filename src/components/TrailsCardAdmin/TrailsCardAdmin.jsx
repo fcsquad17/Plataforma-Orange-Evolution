@@ -9,23 +9,52 @@ import ModalAdmin from "../ModalAdmin/ModalAdmin";
 import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllTrails } from "../../services/Api";
+import AlertDialog from "../AlertDialog/AlertDialog";
+import ModalForm from "../ModalForm/ModalForm";
 
-export default function TrailsCardAdmin() {
-  const [selectedTrail, setSelectedTrail] = useState(0)
+export default function TrailsCardAdmin({ reloadAgain }) {
+  const [selectedTrailDelete, setSelectedTrailDelete] = useState(0);
+  const [selectedTrailEdit, setSelectedTrailEdit] = useState(0);
+  const [selectedTrail, setSelectedTrail] = useState(0);
   const [reload, setReload] = useState(false);
   const [trails, setTrails] = useState([]);
-  const [open, setOpen] = useState({open: false, numberOfTrail: null});
 
   const handleOpen = (trail) => {
-    setSelectedTrail(selectedTrail => selectedTrail.ID === trail.ID ? null : trail)
+    setSelectedTrail((selectedTrail) =>
+      selectedTrail.ID === trail.ID ? 0 : trail
+    );
   };
   const handleClose = () => {
-    setSelectedTrail(0)
+    setSelectedTrail(0);
+  };
+
+  const handleOpenDelete = (trail) => {
+    setSelectedTrailDelete((selectedTrail) =>
+      selectedTrail.ID === trail.ID ? null : trail
+    );
+  };
+
+  const handleOpenEdit = (trail) => {
+    setSelectedTrailEdit((selectedTrail) =>
+      selectedTrail.ID === trail.ID ? null : trail
+    );
+  };
+
+  const handleCloseDelete = () => {
+    setSelectedTrailDelete(0);
+  };
+
+  const handleCloseEdit = () => {
+    setSelectedTrailEdit(0);
   };
 
   const handleOnReq = async () => {
     const response = await getAllTrails();
     setTrails(response.trilhas);
+  };
+
+  const handleReload = () => {
+    setReload(true);
   };
 
   const selectImage = (title) => {
@@ -38,17 +67,12 @@ export default function TrailsCardAdmin() {
     }
   };
 
-  const handleReload = () => {
-    setReload(true);
-  };
-
   useEffect(() => {
+    if (reload || reloadAgain) {
+      setReload(false);
+    }
     handleOnReq();
-  }, []);
-
-  useEffect(() => {
-    if(reload) setReload(false)
-  }, [reload])
+  }, [reload, reloadAgain]);
 
   return (
     <Container
@@ -63,9 +87,24 @@ export default function TrailsCardAdmin() {
     >
       {trails.map((trail) => (
         <Card key={trail.ID} sx={{ maxWidth: 375, backgroundColor: "#202C3B" }}>
+          <AlertDialog
+            open={selectedTrailDelete.ID === trail.ID}
+            handleClose={handleCloseDelete}
+            title={trail.TITULO}
+            sx={{ backgroundColor: "#202C3B" }}
+            handleReload={handleReload}
+            id={trail.ID}
+            trail={true}
+          />
+          <ModalForm
+            put={true}
+            trail={trail}
+            handleClose={handleCloseEdit}
+            open={selectedTrailEdit.ID === trail.ID}
+            handleReload={handleReload}
+          />
           <ModalAdmin
             title={trail.TITULO}
-            setOpen={setOpen}
             open={selectedTrail.ID === trail.ID}
             handleClose={handleClose}
             trailId={trail.ID}
@@ -80,7 +119,13 @@ export default function TrailsCardAdmin() {
             <Typography gutterBottom variant="h5" component="div" color="white">
               {trail.TITULO}
             </Typography>
-            <Button variant="contained" sx={{ margin: "5px" }}>
+            <Button
+              variant="contained"
+              sx={{ margin: "5px" }}
+              onClick={() => {
+                handleOpenEdit(trail);
+              }}
+            >
               Editar
             </Button>
             <Button
@@ -101,6 +146,9 @@ export default function TrailsCardAdmin() {
                   backgroundColor: "#420d09",
                 },
                 margin: "5px",
+              }}
+              onClick={() => {
+                handleOpenDelete(trail);
               }}
             >
               Deletar
