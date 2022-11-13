@@ -28,7 +28,7 @@ function Onboarding() {
       <ScrollUpButton showBelow={50} />
       {id && idUser && (
         <Header
-          pages={["Inicio", "Trilhas"]}
+          pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
           url={[
@@ -41,7 +41,7 @@ function Onboarding() {
       )}
       {!id && (
         <Header
-          pages={["Inicio"]}
+          pages={["Inicio", "Eventos"]}
           settings={["Entrar", "Cadastrar"]}
           userName={""}
           url={["/", "/", "/login", "/signup"]}
