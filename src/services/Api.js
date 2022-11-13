@@ -68,6 +68,11 @@ export const deleteContentOfUser = async (idUser, idContent) => {
 
 //Conteudos
 
+export const getContentParams = async (idContent) => {
+  const response = await api.get(`/conteudos/id/${idContent}`);
+  return response.data;
+};
+
 export const getAllContentByTrailId = async (idTrail) => {
   const response = await api.get(`/conteudos/porIdTrilha/${idTrail}`);
   return response.data;
@@ -88,6 +93,21 @@ export const getFirstContentByIdTrail = async (idTrail) => {
   return response.data;
 };
 
+export const postContentParams = async (content) => {
+  const response = await api.post(`/conteudos/`, content);
+  return response.data;
+};
+
+export const putContentParams = async (idContent, content) => {
+  const response = await api.put(`/conteudos/id/${idContent}`, content);
+  return response.data;
+};
+
+export const deleteContentParams = async (idContent) => {
+  const response = await api.delete(`/conteudos/id/${idContent}`);
+  return response.data;
+};
+
 //Trilhas
 
 export const getTrailParams = async (idTrail) => {
@@ -100,9 +120,39 @@ export const getAllTrails = async () => {
   return response.data;
 };
 
+export const postTrailParams = async (trail) => {
+  const response = await api.post(`/trilhas/`, trail);
+  return response.data;
+};
+
+export const putTrailParams = async (idTrail, trail) => {
+  const response = await api.put(`/trilhas/id/${idTrail}`, trail);
+  return response.data;
+};
+
+export const deleteTrailParams = async (idTrail) => {
+  const response = await api.delete(`/trilhas/id/${idTrail}`);
+  return response.data;
+};
+
 //Modulos
 
 export const getModuleByIdTrail = async (idTrail) => {
   const response = await api.get(`/modulos/porIdTrilha/${idTrail}`);
+  return response.data;
+};
+
+export const postModuleParams = async (module) => {
+  const response = await api.post(`/modulos/`, module);
+  return response.data;
+};
+
+export const putModuleParams = async (idModule, module) => {
+  const response = await api.put(`/modulos/id/${idModule}`, module);
+  return response.data;
+};
+
+export const deleteModuleParams = async (idModule) => {
+  const response = await api.delete(`/modulos/id/${idModule}`);
   return response.data;
 };

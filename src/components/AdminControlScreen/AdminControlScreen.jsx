@@ -4,9 +4,8 @@ import { Container } from "@mui/system";
 import TrailsCardAdmin from "../TrailsCardAdmin/TrailsCardAdmin";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CreateTrail from "../CreateTrail/CreateTrail";
-import CreateModule from "../CreateModule/CreateModule";
-import CreateContent from "../CreateContent/CreateContent";
+import { Button } from "@mui/material";
+import ModalForm from "../ModalForm/ModalForm";
 
 const theme = createTheme({
   palette: {
@@ -27,7 +26,24 @@ const theme = createTheme({
 });
 
 export default function AdminControlScreen() {
-  const [chosenOption, setChosenOption] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const [reload, setReload] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleReload = () => {
+    setReload(true);
+  };
+
+  React.useEffect(() => {
+    if (reload) setReload(false);
+  }, [reload]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,9 +70,20 @@ export default function AdminControlScreen() {
             color: "#00C19C",
           }}
         >
-          {chosenOption === "CreateTrail" && <CreateTrail />}
-          {chosenOption === "CreateModule" && <CreateModule />}
-          {chosenOption === "CreateContent" && <CreateContent />}
+          <Button
+            variant="contained"
+            sx={{ margin: "5px" }}
+            onClick={handleOpen}
+          >
+            Criar trilha
+          </Button>
+          <ModalForm
+            open={open}
+            put={false}
+            handleClose={handleClose}
+            handleReload={handleReload}
+            trail={true}
+          />
         </Box>
         <Box
           sx={{
@@ -69,7 +96,7 @@ export default function AdminControlScreen() {
           <Typography variant="h4" component="h2" sx={{ marginBottom: "30px" }}>
             Trilhas existentes
           </Typography>
-          <TrailsCardAdmin />
+          <TrailsCardAdmin reloadAgain={reload} />
         </Box>
       </Container>
     </ThemeProvider>
