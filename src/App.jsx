@@ -10,6 +10,7 @@ import AdminControl from "./pages/AdminControl/AdminControl";
 import NotFound from "./pages/NotFound/NotFound";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import { ResetPassword } from "./pages/ResetPassword/ResetPassword";
+import { EventsTab } from "./pages/EventsTab/EventsTab";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             path="/trailscontent/:id/:idTrail"
             element={<TrailsContent />}
           />
+          <Route path="/eventstab" element={<EventsTab />} />
+          <Route path="/eventstab/:id" element={<EventsTab />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
