@@ -55,6 +55,9 @@ export default function SignUpScreen() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const resposta = await postUser(userLogin)
+      .then((res) => res.response)
+      .catch((err) => err.response);
     if (userLogin.nome === "") {
       setIfError(true);
       setOpen(true);
@@ -75,18 +78,24 @@ export default function SignUpScreen() {
       setIfError(true);
       setOpen(true);
       setErrorMessage("As senhas são diferentes");
+    } else if (resposta) {
+      if (resposta.data.error) {
+        setIfError(true);
+        setOpen(true);
+        setErrorMessage(resposta.data.msg);
+      }
     } else {
-      setIfError(false);
-      setOpen(false);
-      setErrorMessage("");
-      const res = await postUser(userLogin);
-      res.error ? null : navigate("/login");
+      navigate("/login");
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{margin: '50px auto', minHeight: '80vh'}}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{ margin: "50px auto", minHeight: "80vh" }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -209,7 +218,7 @@ export default function SignUpScreen() {
             >
               Registrar
             </Button>
-            <Link to={'/login'} style={{ color: "#00C19C" }}>
+            <Link to={"/login"} style={{ color: "#00C19C" }}>
               Já tem uma conta?
             </Link>
           </Box>
