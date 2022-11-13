@@ -1,5 +1,6 @@
 import * as React from "react";
 import { getContentByIdModule } from "../../services/Api";
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -11,41 +12,51 @@ import {
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
-const columns = [
-  { field: "ID", headerName: "ID", width: 70 },
-  { field: "TITULO", headerName: "Título", width: 130 },
-  { field: "DESCRICAO", headerName: "Descrição", width: 130 },
-  { field: "TIPO", headerName: "Tipo", width: 130 },
-  { field: "DURACAO", headerName: "Duração", width: 130 },
-  { field: "FONTE", headerName: "Fonte", width: 130 },
-  { field: "TAG", headerName: "Tag", width: 130 },
-  { field: "MODULO_ID", headerName: "Modulo id", width: 130 },
-];
+import AlertDialog from "../AlertDialog/AlertDialog";
+import ModalForm from "../ModalForm/ModalForm";
 
 export default function DataTableAdmin({ idModule }) {
-  const [contents, setContents] = React.useState([]);
+  const [contents, setContents] = useState([]);
+  const [selectedContentDelete, setSelectedContentDelete] = useState(0);
+  const [selectedContentEdit, setSelectedContentEdit] = useState(0);
+  const [reload, setReload] = useState(false);
 
   const handleReq = async (idModule) => {
     const response = await getContentByIdModule(idModule);
     setContents(response.conteudos);
   };
 
-  const deleteIcon = (
-    <IconButton onClick={console.log("delete")}>
-      <DeleteIcon color="secondary" />
-    </IconButton>
-  );
+  const handleOpenDelete = (content) => {
+    setSelectedContentDelete((selectedContent) =>
+      selectedContent.ID === content.ID ? null : content
+    );
+  };
 
-  const editIcon = (
-    <IconButton onClick={console.log("edited")}>
-      <EditIcon color="primary" />
-    </IconButton>
-  );
+  const handleCloseDelete = () => {
+    setSelectedContentDelete(0);
+  };
+
+  const handleOpenEdit = (content) => {
+    setSelectedContentEdit((selectedContent) =>
+      selectedContent.ID === content.ID ? 0 : content
+    );
+  };
+
+  const handleCloseEdit = () => {
+    setSelectedContentEdit(0);
+  };
+
+  const handleReload = () => {
+    setReload(true);
+  };
 
   React.useEffect(() => {
+    console.log(reload);
+    if (reload) {
+      setReload(false);
+    }
     handleReq(idModule);
-  }, []);
+  }, [reload]);
 
   return (
     <>
@@ -58,7 +69,7 @@ export default function DataTableAdmin({ idModule }) {
               <TableCell>Título</TableCell>
               <TableCell>Tipo</TableCell>
               <TableCell>Descrição</TableCell>
-              <TableCell>Duração</TableCell>
+              <TableCell align="center">Duração</TableCell>
               <TableCell>Fonte</TableCell>
               <TableCell>Tag</TableCell>
               <TableCell>Modulo ID</TableCell>
@@ -69,10 +80,34 @@ export default function DataTableAdmin({ idModule }) {
               return (
                 <TableRow key={content.ID}>
                   <TableCell component="th" scope="row">
-                    <IconButton onClick={() => {console.log("delete")}}>
+                    <IconButton
+                      onClick={() => {
+                        handleOpenDelete(content);
+                      }}
+                    >
                       <DeleteIcon color="secondary" />
                     </IconButton>
-                    <IconButton onClick={() => {console.log("edited")}}>
+                    <AlertDialog
+                      open={selectedContentDelete.ID === content.ID}
+                      handleClose={handleCloseDelete}
+                      title={content.TITULO}
+                      sx={{ backgroundColor: "#202C3B" }}
+                      handleReload={handleReload}
+                      id={content.ID}
+                      content={true}
+                    />
+                    <ModalForm
+                      open={selectedContentEdit.ID === content.ID}
+                      content={content}
+                      handleClose={handleCloseEdit}
+                      handleReload={handleReload}
+                      put={true}
+                    />
+                    <IconButton
+                      onClick={() => {
+                        handleOpenEdit(content);
+                      }}
+                    >
                       <EditIcon color="primary" />
                     </IconButton>
                   </TableCell>
@@ -80,7 +115,7 @@ export default function DataTableAdmin({ idModule }) {
                   <TableCell>{content.TITULO}</TableCell>
                   <TableCell>{content.TIPO}</TableCell>
                   <TableCell>{content.DESCRICAO}</TableCell>
-                  <TableCell>{content.DURACAO}</TableCell>
+                  <TableCell align="center">{content.DURACAO}</TableCell>
                   <TableCell>{content.FONTE}</TableCell>
                   <TableCell>{content.TAG}</TableCell>
                   <TableCell>{content.MODULO_ID}</TableCell>
