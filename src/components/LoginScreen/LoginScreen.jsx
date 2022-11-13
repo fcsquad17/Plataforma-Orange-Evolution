@@ -16,9 +16,7 @@ import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import {postUserLogin} from '../../services/Api'
 import {useNavigate} from 'react-router-dom'
-
 import { Link } from "react-router-dom";
-import s from "/src/components/LoginScreen/LoginScreen.module.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
 
@@ -72,11 +70,11 @@ export default function LoginScreen() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" className={s.container}>
+      <Container component="main" maxWidth="xs" sx={{margin: '50px auto', minHeight: '80vh'}}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 15,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
