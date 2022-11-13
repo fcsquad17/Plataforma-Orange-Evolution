@@ -3,6 +3,17 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { getUsersParams } from "../../services/Api";
+import Lottie from "react-lottie";
+import * as loadingAnim from "../../assets/loading-animation.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: loadingAnim.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 export default function Profile() {
   const [user, setUser] = useState({});
@@ -31,16 +42,21 @@ export default function Profile() {
   return (
     <div>
       <Header
-        pages={["Inicio", "Trilhas"]}
+        pages={["Inicio", "Trilhas", "Eventos"]}
         settings={["Meu dados", "Sair"]}
         userName={user.NOME_COMPLETO}
-        url={[
+        urlPage={[
           `/${localStorage.getItem("idUser")}`,
           `/trails/${localStorage.getItem("idUser")}`,
-          `/profile/${localStorage.getItem("idUser")}`,
-          "/",
+          `/eventstab/${localStorage.getItem("idUser")}`,
         ]}
+        urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
       />
+
+      {!hasLoaded && (
+        <Lottie options={defaultOptions} height={600} width={600} />
+      )}
+
       {hasLoaded && <ProfileScreen user={user} handleReload={handleReload} />}
 
       <Footer />
