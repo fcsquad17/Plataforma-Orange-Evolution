@@ -1,8 +1,9 @@
 import TrailsModules from "../TrailsModules/TrailsModules";
-import s from "/src/components/AllModules/AllModules.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getModuleByIdTrail, getTrailParams } from "../../services/Api";
+import { Container } from "@mui/system";
+import { Typography } from "@mui/material";
 
 export default function AllModules() {
   const [trail, setTrail] = useState({});
@@ -22,11 +23,22 @@ export default function AllModules() {
   }, []);
 
   return (
-    <>
-      <div className={s.container}>
-        <span className={s.span}>Seja bem vindo(a) à trilha sobre <br/><strong className={s.strong}>{trail.TITULO}</strong></span>  
-        
-        
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          maxWidth: "600px",
+          margin: "30px auto",
+          padding: "15px",
+          minHeight: "80vh",
+          color: "#fff",
+        }}
+      >
+        <Typography variant="h5">Seja bem vindo(a) à trilha sobre</Typography>
+        <Typography color="#00c19c" variant="h4">
+          {trail.TITULO}
+        </Typography>
         {modules.map((module) => {
           return (
             <TrailsModules
@@ -37,7 +49,6 @@ export default function AllModules() {
             />
           );
         })}
-      </div>
-    </>
+      </Container>
   );
 }

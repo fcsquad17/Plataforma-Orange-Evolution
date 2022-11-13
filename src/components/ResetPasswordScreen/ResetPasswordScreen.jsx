@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import s from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen.modules.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link } from "react-router-dom";
@@ -55,7 +54,7 @@ export default function ForgotPasswordScreen() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" className={s.container}>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{

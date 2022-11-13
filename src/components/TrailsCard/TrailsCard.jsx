@@ -1,4 +1,3 @@
-import s from "./TrailsCard.module.css";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,6 +10,7 @@ import {
   getFirstContentByIdTrail,
   postContentOfUserDone,
 } from "../../services/Api";
+import { Container } from "@mui/system";
 
 export default function TrailsCard({ userId, handleOnReload }) {
   const [trails, setTrails] = useState([]);
@@ -47,7 +47,16 @@ export default function TrailsCard({ userId, handleOnReload }) {
   }, []);
 
   return (
-    <div className={s.cardStyle}>
+    <Container
+      sx={{
+        display: "flex",
+        flexFlow: "row wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "20px",
+        margin: "20px 0",
+      }}
+    >
       {trails.map((trail) => (
         <Card key={trail.ID} sx={{ maxWidth: 345, backgroundColor: "#202C3B" }}>
           <CardActionArea
@@ -77,6 +86,6 @@ export default function TrailsCard({ userId, handleOnReload }) {
           </CardActionArea>
         </Card>
       ))}
-    </div>
+    </Container>
   );
 }

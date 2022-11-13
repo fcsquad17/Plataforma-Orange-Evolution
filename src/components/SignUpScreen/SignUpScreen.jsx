@@ -13,9 +13,7 @@ import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import { postUser } from "../../services/Api";
 import { useNavigate } from "react-router-dom";
-
 import { Link } from "react-router-dom";
-import s from "/src/components/SignUpScreen/SignUpScreen.module.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState } from "react";
 
@@ -88,11 +86,11 @@ export default function SignUpScreen() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" className={s.container}>
+      <Container component="main" maxWidth="xs" sx={{margin: '50px auto', minHeight: '80vh'}}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 12,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

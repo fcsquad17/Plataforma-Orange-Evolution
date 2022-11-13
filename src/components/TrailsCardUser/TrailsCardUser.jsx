@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import s from "./TrailsCardUser.module.css";
+import {Container} from "@mui/material";
 
 export default function TrailsCardUser({ trail }) {
   const selectImage = (title) => {
@@ -19,26 +19,42 @@ export default function TrailsCardUser({ trail }) {
   };
 
   return (
-    <div className={s.cardStyle}>
-      <Card sx={{ maxWidth: 345, maxHeight: 400, backgroundColor: "#202C3B" }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image={selectImage(trail.TITULO)}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div" color="white">
-              {trail.TITULO}
-            </Typography>
-            <Typography variant="body2" color="white">
-              {trail.DESCRICAO}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <LinearProgressBar progressNumber={trail.PROGRESSO} />
-      </Card>
-    </div>
+    <Container
+      sx={{
+        display: "flex",
+        flexFlow: "row wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "20px",
+        margin: "20px 0",
+      }}
+    >
+        <Card
+          sx={{ maxWidth: 345, maxHeight: 400, backgroundColor: "#202C3B" }}
+        >
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image={selectImage(trail.TITULO)}
+              alt="green iguana"
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                color="white"
+              >
+                {trail.TITULO}
+              </Typography>
+              <Typography variant="body2" color="white">
+                {trail.DESCRICAO}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <LinearProgressBar progressNumber={trail.PROGRESSO} />
+        </Card>
+    </Container>
   );
 }
