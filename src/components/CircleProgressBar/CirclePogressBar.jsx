@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { createTheme } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
 
 function CircularProgressWithLabel(props) {
   return (
@@ -42,21 +40,9 @@ CircularProgressWithLabel.propTypes = {
 export default function CirclePogressBar({ progressModule }) {
   const [progress, setProgress] = React.useState(0);
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#fff",
-      },
-    },
-  });
-
   React.useEffect(() => {
     setProgress(progressModule);
   }, [progressModule]);
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CircularProgressWithLabel value={progress} />
-    </ThemeProvider>
-  );
+  return <CircularProgressWithLabel value={progress} sx={{ color: "#fff" }} />;
 }
