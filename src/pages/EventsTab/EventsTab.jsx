@@ -1,15 +1,17 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
-import React from 'react'
-import EventCard from '../../components/EventCard/EventCard'
-import Footer from '../../components/Footer/Footer'
-import Header from '../../components/Header/Header'
-import eventbg from '/src/assets/eventbg.png'
-
+import { Box, Container, Grid, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import EventCard from "../../components/EventCard/EventCard";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import eventbg from "/src/assets/eventbg.png";
+import { useParams } from "react-router-dom";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import { getUsersParams } from "../../services/Api";
 
 const styles = {
-    paperContainer: {
-        backgroundImage: `url(${eventbg})`
-    }
+  paperContainer: {
+    backgroundImage: `url(${eventbg})`,
+  },
 };
 
 export const EventsTab = () => {
@@ -29,38 +31,48 @@ export const EventsTab = () => {
     handleReq();
   }, []);
 
-return (
+  return (
     <>
-        <ScrollUpButton showBelow={50} />
-        {id && idUser && (
-            <Header
-            pages={["Inicio", "Trilhas", "Eventos"]}
-            settings={["Meu dados", "Sair"]}
-            userName={user.NOME_COMPLETO}
-            url={[
-                `/${localStorage.getItem("idUser")}`,
-                `/trails/${localStorage.getItem("idUser")}`,
-                `/profile/${localStorage.getItem("idUser")}`,
-                "/",
-            ]}
-            />
-        )}
-        {!id && (
-            <Header
-            pages={["Inicio", "Eventos"]}
-            settings={["Entrar", "Cadastrar"]}
-            userName={""}
-            url={["/", "/", "/login", "/signup"]}
-            />
-        )}
-        <Box style={styles.paperContainer} sx={{ backgroundColor: "black" }}>
-            <Grid sx={{ display: "flex", flexDirection: "row", justifyContent: "center"}}>
-                <Typography variant='h1' sx={{color: "#FF5A23", fontSize: "70px"}}>Event</Typography>
-                <Typography variant='h1' sx={{color: "#ffffff", fontSize: "70px"}}>Hunter</Typography>
-            </Grid>
-            <EventCard />
-            <Footer />
-        </Box>
+      <ScrollUpButton showBelow={50} />
+      {id && idUser && (
+        <Header
+          pages={["Inicio", "Trilhas", "Eventos"]}
+          settings={["Meu dados", "Sair"]}
+          userName={user.NOME_COMPLETO}
+          urlPage={[
+            `/${localStorage.getItem("idUser")}`,
+            `/trails/${localStorage.getItem("idUser")}`,
+            `/eventstab/${localStorage.getItem("idUser")}`,
+          ]}
+          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+        />
+      )}
+      {!id && (
+        <Header
+          pages={["Inicio", "Eventos"]}
+          settings={["Entrar", "Criar Conta"]}
+          urlPage={["/", "/eventstab"]}
+          urlSettings={["/login", "/signup"]}
+        />
+      )}
+      <Box style={styles.paperContainer} sx={{ backgroundColor: "black" }}>
+        <Grid
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h1" sx={{ color: "#FF5A23", fontSize: "70px" }}>
+            Event
+          </Typography>
+          <Typography variant="h1" sx={{ color: "#ffffff", fontSize: "70px" }}>
+            Hunter
+          </Typography>
+        </Grid>
+        <EventCard />
+        <Footer />
+      </Box>
     </>
-  )
-}
+  );
+};

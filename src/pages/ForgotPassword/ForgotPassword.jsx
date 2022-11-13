@@ -7,9 +7,10 @@ export default function ForgotPassword() {
   return (
     <div>
       <Header
-        pages={["Inicio"]}
+        pages={["Inicio", "Eventos"]}
         settings={["Entrar", "Criar Conta"]}
-        url={['/', '/', '/login', '/signup']}
+        urlPage={["/", "/eventstab"]}
+        urlSettings={["/login", "/signup"]}
       />
       <ForgotPasswordScreen />
       <Footer />
