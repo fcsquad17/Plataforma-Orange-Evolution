@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import DataTableAdmin from "../DataTableAdmin/DataTableAdmin";
+import ModalForm from "../ModalForm/ModalForm";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,25 @@ export default function ChildModalAdmin({
   title,
   idModule,
 }) {
+  const [openCreate, setOpenCreate] = React.useState(false);
+  const [reload, setReload] = React.useState(false);
+
+  const handleOpenCreate = () => {
+    setOpenCreate(true);
+  };
+
+  const handleCloseCreate = () => {
+    setOpenCreate(false);
+  };
+
+  const handleReload = () => {
+    setReload(true);
+  };
+
+  React.useEffect(() => {
+    if (reload) setReload(false);
+  }, [reload]);
+
   return (
     <React.Fragment>
       <Modal
@@ -37,15 +57,24 @@ export default function ChildModalAdmin({
           sx={{
             ...style,
             width: "100vw",
-            height: '100vh',
+            height: "100vh",
             color: "#fff",
             backgroundColor: "#202C3B",
             overflow: "scroll",
           }}
         >
           <h2 id="child-modal-title">Estes são os conteúdos de: {title}</h2>
+          <ModalForm
+            open={openCreate}
+            content={true}
+            handleClose={handleCloseCreate}
+            handleReload={handleReload}
+            put={false}
+            id={idModule}
+          />
+          <Button onClick={handleClose}>Voltar</Button>
+          <Button onClick={handleOpenCreate}>Criar conteudo</Button>
           <DataTableAdmin idModule={idModule} />
-          <Button onClick={handleClose}>Close Child Modal</Button>
         </Box>
       </Modal>
     </React.Fragment>
