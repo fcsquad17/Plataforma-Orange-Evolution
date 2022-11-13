@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Chip, Stack } from "@mui/material";
+import { Box, Chip, Link, Stack } from "@mui/material";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -34,11 +34,11 @@ const theme = createTheme({
       main: "#ff5a23",
     },
     warning: {
-      main: "#23C8FF"
+      main: "#23C8FF",
     },
     info: {
-      main: "#FFC823"
-    }
+      main: "#FFC823",
+    },
   },
 });
 
@@ -71,88 +71,96 @@ export default function ModulesContents({
     setActiveStep(ultimoVisto);
   }, [ultimoVisto]);
 
-  const setColor =(contentTIPO) => {
-    if(contentTIPO === "Live" || contentTIPO === "Vídeo" ) return "success"
-    if(contentTIPO === "Artigo" || contentTIPO === "Glossário") return "error"
-    if(contentTIPO === "Livro" || contentTIPO === "Apostila") return "info"
-    if(contentTIPO === "Curso") return "secondary"
-  }
-  
-  const setTime =(contentDURACAO) => {
-    if(contentDURACAO > 3600 ) return `${contentDURACAO / 3600} horas`
-    if(contentDURACAO > 60 ) return `${contentDURACAO / 60} minutos`
-    if(contentDURACAO === 0 ) return "---"
-  }
+  const setColor = (contentTIPO) => {
+    if (contentTIPO === "Live" || contentTIPO === "Vídeo") return "success";
+    if (contentTIPO === "Artigo" || contentTIPO === "Glossário") return "error";
+    if (contentTIPO === "Livro" || contentTIPO === "Apostila") return "info";
+    if (contentTIPO === "Curso") return "secondary";
+  };
+
+  const setTime = (contentDURACAO) => {
+    if (contentDURACAO > 3600) return `${contentDURACAO / 3600} horas`;
+    if (contentDURACAO > 60) return `${contentDURACAO / 60} minutos`;
+    if (contentDURACAO === 0) return "---";
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ maxWidth: 400, color: "#fff" }}>
-        <Stepper activeStep={activeStep} orientation="vertical" >
+        <Stepper activeStep={activeStep} orientation="vertical">
           {contents.map((content, index) => (
-            <Step key={content.ID} >
+            <Step key={content.ID}>
               <StepLabel>
-                <Typography 
+                <Typography
                   sx={{
-                    textShadow: "#131313 2px 3px 2px", 
-                    fontWeight: "500px"
-                    }}
-                    >{content.TITULO}
+                    textShadow: "#131313 2px 3px 2px",
+                    fontWeight: "500px",
+                  }}
+                >
+                  {content.TITULO}
                 </Typography>
               </StepLabel>
               <StepContent>
                 <Typography fontSize={13}>{content.DESCRICAO}</Typography>
                 <Box sx={{ mb: 2 }}>
-                <Stack direction="row" spacing={1} sx={{ m: 1}}>
-                    <Chip label={setTime(content.DURACAO)} color="warning" size="small" />
-                    <Chip label={content.TIPO} color={setColor(content.TIPO)} size="small" />
-                </Stack>
-                  <div>
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        handleNext(content.ID);
-                      }}
-                      sx={{
-                        mt: 1,
-                        mr: 1,
-                        color: "#fff",
-                        backgroundColor: "#2c2c2c",
-                        "&:hover": { backgroundColor: "#6B3CC7" },
-                      }}
+                  <Stack direction="row" spacing={1} sx={{ m: 1 }}>
+                    <Chip
+                      label={setTime(content.DURACAO)}
+                      color="warning"
+                      size="small"
+                    />
+                    <Chip
+                      label={content.TIPO}
+                      color={setColor(content.TIPO)}
+                      size="small"
+                    />
+                  </Stack>
+
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      handleNext(content.ID);
+                    }}
+                    sx={{
+                      mt: 1,
+                      mr: 1,
+                      color: "#fff",
+                      backgroundColor: "#2c2c2c",
+                      "&:hover": { backgroundColor: "#6B3CC7" },
+                    }}
+                  >
+                    {index === contents.length - 1 ? "Terminar" : "Continuar"}
+                  </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      handleNext(content.ID);
+                    }}
+                    sx={{
+                      mt: 1,
+                      mr: 1,
+                      color: "#fff",
+                      backgroundColor: "#2c2c2c",
+                      "&:hover": { backgroundColor: "#6B3CC7" },
+                    }}
+                  >
+                    <Link
+                      href={content.FONTE}
+                      target={"_blank"}
+                      style={{ color: "#fff" }}
                     >
-                      {index === contents.length - 1 ? "Terminar" : "Continuar"}
-                    </Button>
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        handleNext(content.ID);
-                      }}
-                      sx={{
-                        mt: 1,
-                        mr: 1,
-                        color: "#fff",
-                        backgroundColor: "#2c2c2c",
-                        "&:hover": { backgroundColor: "#6B3CC7" },
-                      }}
-                    >
-                      <a
-                        href={content.FONTE}
-                        target={"_blank"}
-                        style={{ color: "#fff" }}
-                      >
-                        Acessar link
-                      </a>
-                    </Button>
-                    <Button
-                      disabled={index === 0}
-                      onClick={() => {
-                        handleBack(content.ID);
-                      }}
-                      sx={{ mt: 1, mr: 1 }}
-                    >
-                      Voltar
-                    </Button>
-                  </div>
+                      Acessar link
+                    </Link>
+                  </Button>
+                  <Button
+                    disabled={index === 0}
+                    onClick={() => {
+                      handleBack(content.ID);
+                    }}
+                    sx={{ mt: 1, mr: 1 }}
+                  >
+                    Voltar
+                  </Button>
                 </Box>
               </StepContent>
             </Step>
