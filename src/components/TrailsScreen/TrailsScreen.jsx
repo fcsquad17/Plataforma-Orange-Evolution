@@ -1,10 +1,11 @@
-import s from "/src/components/TrailsScreen/TrailsScreen.module.css";
 import TrailsCard from "/src/components/TrailsCard/TrailsCard";
 import TrailsCardUser from "../TrailsCardUser/TrailsCardUser";
 import { useEffect, useState } from "react";
 import { getUserTrailsParams } from "../../services/Api";
 import { progressBarTrail } from "../../utils/progressLogic";
 import { Link } from "react-router-dom";
+import { Container } from "@mui/system";
+import { Box, Typography } from "@mui/material";
 
 export default function TrailsScreen({ user }) {
   const [userTrails, setUserTrails] = useState([]);
@@ -38,14 +39,35 @@ export default function TrailsScreen({ user }) {
   }, [reload]);
 
   return (
-    <div className={s.container}>
-      <div className={s.wrapper}>
-        <h2 className={s.h2}>
+    <Container
+      maxWidth="xl"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: "30px auto",
+        color: "#fff",
+      }}
+    >
+      <Box>
+        <Typography color="#00c19c" variant="h5" sx={{ fontWeight: "bold" }}>
           Que bom te ver de novo,{" "}
           {user.NOME_COMPLETO ? user.NOME_COMPLETO.split(" ")[0] : null}!
-        </h2>
-        <h4 className={s.h4}>Continue de onde parou:</h4>
-        <div className={s.cardStyle}>
+        </Typography>
+        <Typography sx={{ fontWeight: "bold" }}>
+          Continue de onde parou:
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            margin: "20px 0",
+          }}
+        >
           {userTrails.map((card) => {
             return (
               <Link to={`/trailscontent/${user.ID}/${card.ID}`} key={card.ID}>
@@ -53,11 +75,13 @@ export default function TrailsScreen({ user }) {
               </Link>
             );
           })}
-        </div>
-        <hr className={s.hr} />
-        <h2 className={s.h2}>Conheça nossas demais trilhas:</h2>
+        </Box>
+        <hr style={{ width: "90%" }} />
+        <Typography color="#00c19c" variant="h5" sx={{ fontWeight: "bold" }}>
+          Conheça nossas demais trilhas:
+        </Typography>
         <TrailsCard userId={user.ID} handleOnReload={handleOnReload} />
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
