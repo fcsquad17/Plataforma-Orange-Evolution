@@ -80,14 +80,6 @@ export default function ForgotPasswordScreen() {
               alignItems: "center",
             }}
           ></Box>
-          <Typography
-            component="h4"
-            variant="subtitle1"
-            sx={{ color: "text.primary" }}
-            align="left"
-          >
-            Insira seu email para procurar a sua conta.
-          </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
