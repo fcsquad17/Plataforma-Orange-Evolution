@@ -1,10 +1,12 @@
 import {
-  getAllContentByTrailId,
   getContentOfUserByTrailId,
-  getTrailParams,
   getContentOfUserByModuleId,
+} from "../services/UserContentApi";
+import {
+  getAllContentByTrailId,
   getContentByIdModule,
-} from "../services/Api";
+} from "../services/ContentsApi";
+import { getTrailParams } from "../services/TrailsApi";
 
 export const progressBarTrail = async (idUser, idTrail) => {
   const done = await getContentOfUserByTrailId(idUser, idTrail);
