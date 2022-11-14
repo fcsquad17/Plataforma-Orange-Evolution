@@ -37,8 +37,8 @@ const theme = createTheme({
     button: {
       fontSize: 12,
       fontWeight: 550,
-    },
-  },
+    }
+  }
 });
 
 export default function ForgotPasswordScreen() {
@@ -52,84 +52,64 @@ export default function ForgotPasswordScreen() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "80vh",
+        }}
+      >
         <CssBaseline />
+        <Avatar sx={{ m: 1, bgcolor: "custom.main" }}>
+          <SearchIcon sx={{ fontSize: 30 }} />
+        </Avatar>
+        <Typography component="h1" variant="h5" sx={{ color: "text.primary" }}>
+          Encontre sua conta
+        </Typography>
         <Box
-          sx={{
-            marginTop: 25,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ width: "100%", mt: 1 }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "custom.main" }}>
-            <SearchIcon sx={{ fontSize: 30 }} />
-          </Avatar>
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ color: "text.primary" }}
-          >
-            Encontre sua conta
-          </Typography>
-          <Box
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            color="custom"
             sx={{
-              marginTop: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fieldSet: {
+                borderColor: "#fff",
+              },
+              mt: 1,
             }}
-          ></Box>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              color="custom"
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-                mt: 1,
-              }}
-            />
-            <Grid container>
-              <Grid item xs>
-                <Link to="/login">
-                  <Button
-                    type="submit"
-                    variant="text"
-                    sx={{ mt: 1, mb: 1, ml: 11 }}
-                    color="custom"
-                  >
-                    Cancelar
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link to="/resetpassword">
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    sx={{ mt: 1, mb: 20 }}
-                    color="custom"
-                  >
-                    Pesquisar
-                  </Button>
-                </Link>
-              </Grid>
+          />
+          <Grid container>
+            <Grid item xs>
+              <Link to="/login">
+                <Button type="submit" variant="text" color="custom">
+                  Cancelar
+                </Button>
+              </Link>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link to="/resetpassword">
+                <Button type="submit" variant="contained" color="custom">
+                  Pesquisar
+                </Button>
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>
