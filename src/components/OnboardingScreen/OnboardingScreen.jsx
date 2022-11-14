@@ -8,11 +8,15 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { Link } from "@mui/material";
+import { useParams, Link } from "react-router-dom";
+import { Link as LinkMUI } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { Box, Container } from "@mui/system";
 
 export const OnboardingScreen = () => {
+  const { id } = useParams();
+  const idUser = localStorage.getItem("idUser");
+
   return (
     <Container
       maxWidth="xl"
@@ -59,15 +63,16 @@ export const OnboardingScreen = () => {
             vidas através de trilhas gratuitas em Desenvolvimento, UX/UI Design
             e QA!
           </Typography>
-          <Link></Link>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="large"
-            sx={{ color: "#fff" }}
-          >
-            QUERO COMEÇAR!
-          </Button>
+          <Link to={id === idUser ? `/trails/${id}` : '/login'}>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              sx={{ color: "#fff" }}
+            >
+              QUERO COMEÇAR!
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Typography
@@ -164,7 +169,7 @@ export const OnboardingScreen = () => {
           margin: "30px 0",
         }}
       >
-        <Link
+        <LinkMUI
           href="https://www.fcamara.com.br/"
           target="_blank"
           sx={{
@@ -185,8 +190,8 @@ export const OnboardingScreen = () => {
               width: "100%",
             }}
           />
-        </Link>
-        <Link
+        </LinkMUI>
+        <LinkMUI
           href="https://www.alura.com.br/"
           target="_blank"
           sx={{
@@ -207,8 +212,8 @@ export const OnboardingScreen = () => {
               width: "80%",
             }}
           />
-        </Link>
-        <Link
+        </LinkMUI>
+        <LinkMUI
           href="https://www.rocketseat.com.br/"
           target="_blank"
           sx={{
@@ -229,8 +234,8 @@ export const OnboardingScreen = () => {
               width: "100%",
             }}
           />
-        </Link>
-        <Link
+        </LinkMUI>
+        <LinkMUI
           href="https://cubos.academy/"
           target="_blank"
           sx={{
@@ -251,7 +256,7 @@ export const OnboardingScreen = () => {
               width: "80%",
             }}
           />
-        </Link>
+        </LinkMUI>
       </Box>
     </Container>
   );
