@@ -31,7 +31,7 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/admin" element={<AdminControl />} />
+          <Route path="/admin/:id" element={<AdminControl />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
