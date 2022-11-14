@@ -4,9 +4,21 @@ import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { getUsersParams } from "../../services/UsersApi";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import Lottie from "react-lottie";
+import * as loadingAnim from "../../assets/loading-animation.json";
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: loadingAnim.default,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
 
 export default function TrailsContent() {
   const [user, setUser] = useState({});
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const idUser = localStorage.getItem("idUser");
 
@@ -18,6 +30,11 @@ export default function TrailsContent() {
   useEffect(() => {
     handleReq();
   }, []);
+
+  useEffect(() => {
+    if (user.ID) setHasLoaded(true);
+  }, [user]);
+
   return (
     <div>
       <ScrollUpButton showBelow={50} />
@@ -32,7 +49,10 @@ export default function TrailsContent() {
         ]}
         urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
       />
-      <AllModules />
+      {!hasLoaded && (
+        <Lottie options={defaultOptions} height={600} width={600} />
+      )}
+      {hasLoaded && <AllModules />}
 
       <Footer />
     </div>
