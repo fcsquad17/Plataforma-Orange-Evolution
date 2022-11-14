@@ -53,9 +53,9 @@ export default function Profile() {
         settings={["Meu dados", "Sair"]}
         userName={user.NOME_COMPLETO}
         urlPage={[
-          `/${localStorage.getItem("idUser")}`,
+          `/`,
           `/trails/${localStorage.getItem("idUser")}`,
-          `/eventstab/${localStorage.getItem("idUser")}`,
+          `/eventstab/`,
         ]}
         urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
       />

@@ -49,9 +49,9 @@ export default function Trails() {
           settings={["Painel de Controle", "Sair"]}
           userName={user.NOME_COMPLETO}
           urlPage={[
-            `/${localStorage.getItem("idUser")}`,
+            `/`,
             `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/${localStorage.getItem("idUser")}`,
+            `/eventstab/`,
           ]}
           urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
         />
@@ -64,7 +64,7 @@ export default function Trails() {
           urlPage={[
             `/${localStorage.getItem("idUser")}`,
             `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/${localStorage.getItem("idUser")}`,
+            `/eventstab/`,
           ]}
           urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
         />
