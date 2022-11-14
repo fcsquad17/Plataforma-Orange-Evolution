@@ -6,9 +6,10 @@ export default function AdminControl() {
   return (
     <>
       <Header
-        pages={["Inicio"]}
+        pages={["Inicio", "Eventos"]}
         settings={["Entrar", "Criar Conta"]}
-        url={["/", "/", "/login", "/signup"]}
+        urlPage={["/", "/eventstab"]}
+        urlSettings={["/login", "/signup"]}
       />
       <AdminControlScreen />
       <Footer />
