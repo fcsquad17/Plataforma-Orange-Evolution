@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
@@ -74,114 +72,98 @@ export default function LoginScreen() {
       <Container
         component="main"
         maxWidth="xs"
-        sx={{ margin: "50px auto", minHeight: "80vh" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "80vh",
+        }}
       >
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 15,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOpenOutlinedIcon />
-          </Avatar>
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ color: "text.primary" }}
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOpenOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5" sx={{ color: "text.primary" }}>
+          Login
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+            onChange={({ target }) => handleChange(target, "email")}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Senha"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+            onChange={({ target }) => handleChange(target, "senha")}
+          />
+          {ifError && (
+            <Box sx={{ width: "100%" }}>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  severity="error"
+                  sx={{ mb: 2 }}
+                >
+                  {errorMessage}
+                </Alert>
+              </Collapse>
+            </Box>
+          )}
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
           >
-            Login
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-              onChange={({ target }) => handleChange(target, "email")}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Senha"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-              onChange={({ target }) => handleChange(target, "senha")}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Lembrar senha"
-            />
-            {ifError && (
-              <Box sx={{ width: "100%" }}>
-                <Collapse in={open}>
-                  <Alert
-                    action={
-                      <IconButton
-                        aria-label="close"
-                        color="inherit"
-                        size="small"
-                        onClick={() => {
-                          setOpen(false);
-                        }}
-                      >
-                        <CloseIcon fontSize="inherit" />
-                      </IconButton>
-                    }
-                    severity="error"
-                    sx={{ mb: 2 }}
-                  >
-                    {errorMessage}
-                  </Alert>
-                </Collapse>
-              </Box>
-            )}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Entrar
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link to={"/forgotpassword"} style={{ color: "#00C19C" }}>
-                  Esqueceu sua senha?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link to={"/signup"} style={{ color: "#00C19C" }}>
-                  Não tem uma conta?
-                </Link>
-              </Grid>
+            Entrar
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link to={"/forgotpassword"} style={{ color: "#00C19C" }}>
+                Esqueceu sua senha?
+              </Link>
             </Grid>
-          </Box>
+            <Grid item>
+              <Link to={"/signup"} style={{ color: "#00C19C" }}>
+                Não tem uma conta?
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>
