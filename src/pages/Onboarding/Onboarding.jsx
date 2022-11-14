@@ -26,7 +26,7 @@ function Onboarding() {
   return (
     <div>
       <ScrollUpButton showBelow={50} />
-      {id && idUser && (
+      {id && idUser && user.ADMIN === 0 && (
         <Header
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
@@ -37,6 +37,19 @@ function Onboarding() {
             `/eventstab/${localStorage.getItem("idUser")}`,
           ]}
           urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+        />
+      )}
+      {id && idUser && user.ADMIN > 0 && (
+        <Header
+          pages={["Inicio", "Trilhas", "Eventos"]}
+          settings={["Painel de Controle", "Sair"]}
+          userName={user.NOME_COMPLETO}
+          urlPage={[
+            `/${localStorage.getItem("idUser")}`,
+            `/trails/${localStorage.getItem("idUser")}`,
+            `/eventstab/${localStorage.getItem("idUser")}`,
+          ]}
+          urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
         />
       )}
       {!id && (
