@@ -5,11 +5,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import {
-  deleteContentParams,
-  deleteModuleParams,
-  deleteTrailParams,
-} from "../../services/Api";
+import { deleteContentParams } from "../../services/ContentsApi";
+import { deleteModuleParams } from "../../services/ModulesApi";
+import { deleteTrailParams } from "../../services/TrailsApi";
 
 export default function AlertDialog({
   open,

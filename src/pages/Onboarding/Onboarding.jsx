@@ -3,7 +3,7 @@ import Footer from "/src/components/Footer/Footer";
 import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingScreen";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 function Onboarding() {

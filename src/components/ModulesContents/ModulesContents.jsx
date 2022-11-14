@@ -9,7 +9,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect } from "react";
-import { postContentOfUserDone, deleteContentOfUser } from "../../services/Api";
+import {
+  postContentOfUserDone,
+  deleteContentOfUser,
+} from "../../services/UserContentApi";
 
 const theme = createTheme({
   text: {

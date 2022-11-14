@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { putTrailParams, postTrailParams } from "../../services/Api";
+import { putTrailParams, postTrailParams } from "../../services/TrailsApi";
 
 export default function CreateTrail({ trail, handleReload, handleClose }) {
   const [trailInfo, setTrailInfo] = React.useState({

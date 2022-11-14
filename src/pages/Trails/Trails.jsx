@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header";
 import TrailsScreen from "../../components/TrailsScreen/TrailsScreen";
 import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 import { useParams } from "react-router-dom";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import Lottie from "react-lottie";

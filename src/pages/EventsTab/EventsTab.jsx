@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import eventbg from "/src/assets/eventbg.png";
 import { useParams } from "react-router-dom";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 
 const styles = {
   paperContainer: {
