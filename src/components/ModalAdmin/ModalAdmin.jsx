@@ -5,20 +5,7 @@ import TrailsModuleAdmin from "../TrailsModuleAdmin/TrailsModuleAdmin";
 import { getModuleByIdTrail } from "../../services/Api";
 import { useEffect, useState } from "react";
 import ModalForm from "../ModalForm/ModalForm";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
+import { Typography } from "@mui/material";
 
 export default function ModalAdmin({ handleClose, open, title, trailId }) {
   const [modules, setModules] = useState([]);
@@ -54,42 +41,66 @@ export default function ModalAdmin({ handleClose, open, title, trailId }) {
       onClose={handleClose}
       aria-labelledby="parent-modal-title"
       aria-describedby="parent-modal-description"
-      // sx={{backdropFilter: 'blur(5px)'}}
     >
       <Box
         sx={{
-          ...style,
-          width: "100vw",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: '100vw',
           height: "100vh",
           color: "#fff",
           backgroundColor: "#202C3B",
           overflow: "scroll",
         }}
       >
-        <h2 id="parent-modal-title">Estes são os módulos da trilha: {title}</h2>
-        <Button onClick={handleClose}>Voltar</Button>
-        <Button onClick={handleOpenCreate}>Criar Módulo</Button>
-        <ModalForm
-          module={true}
-          put={false}
-          handleReload={handleReload}
-          id={trailId}
-          handleClose={handleCloseCreate}
-          open={openCreate}
-        />
-        {modules.map((module) => {
-          return (
-            <TrailsModuleAdmin
-              key={module.ID}
-              title={module.TITULO}
-              desc={module.DESCRICAO}
-              module={module}
-              selectedModule={selectedModule}
-              setSelectedModule={setSelectedModule}
-              handleReload={handleReload}
-            />
-          );
-        })}
+        <Box
+          maxWidth="xl"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          <Typography id="parent-modal-title" variant="h5" p="6px 8px">
+            Estes são os módulos da trilha: {title}
+          </Typography>
+          <Box>
+            <Button onClick={handleClose}>Voltar</Button>
+            <Button onClick={handleOpenCreate}>Criar Módulo</Button>
+          </Box>
+        </Box>
+        <Box
+          maxWidth="xl"
+          sx={{
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "center"
+          }}
+        >
+          <ModalForm
+            module={true}
+            put={false}
+            handleReload={handleReload}
+            id={trailId}
+            handleClose={handleCloseCreate}
+            open={openCreate}
+          />
+          {modules.map((module) => {
+            return (
+              <TrailsModuleAdmin
+                key={module.ID}
+                title={module.TITULO}
+                desc={module.DESCRICAO}
+                module={module}
+                selectedModule={selectedModule}
+                setSelectedModule={setSelectedModule}
+                handleReload={handleReload}
+              />
+            );
+          })}
+        </Box>
       </Box>
     </Modal>
   );
