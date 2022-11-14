@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button, TextField, Typography } from "@mui/material";
-import { putUser } from "../../services/Api";
+import { putUser } from "../../services/UsersApi";
 import { Container, Box } from "@mui/system";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 

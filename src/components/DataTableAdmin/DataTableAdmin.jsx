@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getContentByIdModule } from "../../services/Api";
+import { getContentByIdModule } from "../../services/ContentsApi";
 import { useState } from "react";
 import {
   Table,
