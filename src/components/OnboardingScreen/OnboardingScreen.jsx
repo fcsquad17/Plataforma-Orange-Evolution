@@ -15,12 +15,11 @@ import { Box, Container } from "@mui/system";
 export const OnboardingScreen = () => {
   return (
     <Container
+      maxWidth="xl"
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        maxWidth: "xl",
-        backgroundColor: "#001024",
         color: "#fff",
       }}
     >
@@ -28,7 +27,7 @@ export const OnboardingScreen = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          flexDirection: {xs: 'column', md: 'row'},
+          flexDirection: { xs: "column", md: "row" },
           gap: "20px",
           margin: "30px 0",
         }}
@@ -49,28 +48,51 @@ export const OnboardingScreen = () => {
             gap: "20px",
           }}
         >
-          <Typography variant="h2" sx={{color: '#00C19C'}}>
+          <Typography
+            variant="h2"
+            sx={{ color: "#00C19C", fontSize: "2.5rem" }}
+          >
             Evolua a sua carreira na tecnologia
           </Typography>
-          <Typography sx={{fontSize: '1.2rem'}}>
+          <Typography sx={{ fontSize: "1.2rem" }}>
             Explore conhecimentos que estão transformando indústrias, negócios e
             vidas através de trilhas gratuitas em Desenvolvimento, UX/UI Design
             e QA!
           </Typography>
-          <Button variant="contained" color="secondary" size="large" sx={{color: '#fff'}}>
+          <Link></Link>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            sx={{ color: "#fff" }}
+          >
             QUERO COMEÇAR!
           </Button>
         </Box>
       </Box>
-      <Typography variant="h4" component="h4" sx={{color: '#F72C89', margin: '30px'}}>
+      <Typography
+        variant="h4"
+        component="h4"
+        sx={{ color: "#F72C89", margin: "30px 0" }}
+      >
         O QUE É O ORANGE EVOLUTION?
       </Typography>
-      <Box sx={{ display: "flex", alignItems: 'center', flexDirection: {xs: 'column', md: 'row'},}}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: { xs: "column", md: "row" },
+          width: "100%",
+          borderRadius: "15px",
+          p: "15px",
+          backgroundColor: "#202C3B",
+        }}
+      >
         <Box
           component="img"
           src="/src/assets/whatis.png"
           alt="O que é o Orange Evolution"
-          sx={{ width: "50%" }}
+          sx={{ width: "90%", maxWidth: "600px" }}
         />
         <Box>
           <List>
@@ -79,7 +101,7 @@ export const OnboardingScreen = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CheckIcon sx={{color: '#00C19C'}} />
+                <CheckIcon sx={{ color: "#00C19C" }} />
               </ListItemIcon>
               <ListItemText>
                 Procura conteúdo tech de qualidade e gratuito
@@ -87,15 +109,15 @@ export const OnboardingScreen = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CheckIcon sx={{color: '#00C19C'}} />
+                <CheckIcon sx={{ color: "#00C19C" }} />
               </ListItemIcon>
               <ListItemText>
-                Está migrando de carreir para a área tech
+                Está migrando de carreira para a área tech
               </ListItemText>
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CheckIcon sx={{color: '#00C19C'}} />
+                <CheckIcon sx={{ color: "#00C19C" }} />
               </ListItemIcon>
               <ListItemText>
                 Sente que com o apoio de uma comunidade vitaminada irá se
@@ -104,7 +126,7 @@ export const OnboardingScreen = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CheckIcon sx={{color: '#00C19C'}} />
+                <CheckIcon sx={{ color: "#00C19C" }} />
               </ListItemIcon>
               <ListItemText>
                 Quer se preparar de forma mais assertiva para processos
@@ -113,7 +135,7 @@ export const OnboardingScreen = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <CheckIcon sx={{color: '#00C19C'}} />
+                <CheckIcon sx={{ color: "#00C19C" }} />
               </ListItemIcon>
               <ListItemText>
                 É protagonista da sua história e formação
@@ -121,24 +143,37 @@ export const OnboardingScreen = () => {
             </ListItem>
           </List>
         </Box>
-      </Box> 
-      <Typography sx={{fontSize: '1.9rem', color: '#F72C89', margin: '30px'}}>O Orange Evolution é para você!</Typography>
-      <Typography variant="h3" sx={{color: '#00C19C', margin: '90px 0 30px'}}>Quais trilhas poderei fazer?</Typography>
+      </Box>
+      <Typography sx={{ fontSize: "1.9rem", color: "#F72C89", margin: "30px" }}>
+        O Orange Evolution é para você!
+      </Typography>
+      <Typography variant="h4" sx={{ color: "#00C19C", margin: "90px 0 30px" }}>
+        Quais trilhas poderei fazer?
+      </Typography>
       <TrailsCard />
-      <Typography variant="h3" sx={{color: '#00C19C', margin: '30px'}}>Quem nos apoia?</Typography>
+      <Typography variant="h4" sx={{ color: "#00C19C", margin: "30px" }}>
+        Quem nos apoia?
+      </Typography>
       <Box
         sx={{
           display: "flex",
-          width: "100%",
-          flexFlow: {xs: 'column', md: 'row wrap'},
+          flexFlow: "row wrap",
           justifyContent: "center",
-          alignItems: 'center',
-          alignContent: 'center',
-          gap: "30px",
-          margin: '30px 0'
+          alignItems: "center",
+          gap: "20px",
+          margin: "30px 0",
         }}
       >
-        <Link href="https://www.fcamara.com.br/" target="_blank" sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Link
+          href="https://www.fcamara.com.br/"
+          target="_blank"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: 200,
+          }}
+        >
           <Box
             component="img"
             src="/src/assets/fcamara.png"
@@ -147,11 +182,20 @@ export const OnboardingScreen = () => {
               filter: "invert(0)",
               transition: ".4s",
               "&:hover": { filter: "invert(1)" },
-              width: "80%",
+              width: "100%",
             }}
           />
         </Link>
-        <Link href="https://www.alura.com.br/" target="_blank" sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Link
+          href="https://www.alura.com.br/"
+          target="_blank"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: 200,
+          }}
+        >
           <Box
             component="img"
             src="src/assets/alura.png"
@@ -164,7 +208,16 @@ export const OnboardingScreen = () => {
             }}
           />
         </Link>
-        <Link href="https://www.rocketseat.com.br/" target="_blank" sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Link
+          href="https://www.rocketseat.com.br/"
+          target="_blank"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: 200,
+          }}
+        >
           <Box
             component="img"
             src="src/assets/rocketseat.png"
@@ -173,11 +226,20 @@ export const OnboardingScreen = () => {
               filter: "invert(0)",
               transition: ".4s",
               "&:hover": { filter: "invert(1)" },
-              width: "80%",
+              width: "100%",
             }}
           />
         </Link>
-        <Link href="https://cubos.academy/" target="_blank" sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Link
+          href="https://cubos.academy/"
+          target="_blank"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            maxWidth: 200,
+          }}
+        >
           <Box
             component="img"
             src="src/assets/cubosacademy.png"
