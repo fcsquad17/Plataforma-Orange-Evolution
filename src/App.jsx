@@ -18,14 +18,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Onboarding />} />
-          <Route path="/:id" element={<Onboarding />} />
           <Route path="/trails/:id" element={<Trails />} />
           <Route
             path="/trailscontent/:id/:idTrail"
             element={<TrailsContent />}
           />
           <Route path="/eventstab" element={<EventsTab />} />
-          <Route path="/eventstab/:id" element={<EventsTab />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
