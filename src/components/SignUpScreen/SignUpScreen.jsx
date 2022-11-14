@@ -94,134 +94,123 @@ export default function SignUpScreen() {
       <Container
         component="main"
         maxWidth="xs"
-        sx={{ margin: "50px auto", minHeight: "80vh" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "80vh",
+          margin: '30px auto'
+        }}
       >
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 12,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ color: "text.primary" }}
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5" sx={{ color: "text.primary" }}>
+          Sign up
+        </Typography>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Nome completo"
+            name="name"
+            autoComplete="name"
+            autoFocus
+            onChange={({ target }) => handleChange(target, "nome")}
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email"
+            type="email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={({ target }) => handleChange(target, "email")}
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Senha"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={({ target }) => handleChange(target, "senha")}
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="confirmPassword"
+            label="Repita a senha"
+            type="password"
+            id="confirmPassword"
+            autoComplete="current-password"
+            onChange={(e) => setUserPassword(e.target.value)}
+            sx={{
+              fieldSet: {
+                borderColor: "#fff",
+              },
+            }}
+          />
+          {ifError && (
+            <Box sx={{ width: "100%" }}>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                  severity="error"
+                  sx={{ mb: 2 }}
+                >
+                  {errorMessage}
+                </Alert>
+              </Collapse>
+            </Box>
+          )}
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
           >
-            Sign up
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Nome completo"
-              name="name"
-              autoComplete="name"
-              autoFocus
-              onChange={({ target }) => handleChange(target, "nome")}
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email"
-              type="email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              onChange={({ target }) => handleChange(target, "email")}
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Senha"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={({ target }) => handleChange(target, "senha")}
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="confirmPassword"
-              label="Repita a senha"
-              type="password"
-              id="confirmPassword"
-              autoComplete="current-password"
-              onChange={(e) => setUserPassword(e.target.value)}
-              sx={{
-                fieldSet: {
-                  borderColor: "#fff",
-                },
-              }}
-            />
-            {ifError && (
-              <Box sx={{ width: "100%" }}>
-                <Collapse in={open}>
-                  <Alert
-                    action={
-                      <IconButton
-                        aria-label="close"
-                        color="inherit"
-                        size="small"
-                        onClick={() => {
-                          setOpen(false);
-                        }}
-                      >
-                        <CloseIcon fontSize="inherit" />
-                      </IconButton>
-                    }
-                    severity="error"
-                    sx={{ mb: 2 }}
-                  >
-                    {errorMessage}
-                  </Alert>
-                </Collapse>
-              </Box>
-            )}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Registrar
-            </Button>
-            <Link to={"/login"} style={{ color: "#00C19C" }}>
-              Já tem uma conta?
-            </Link>
-          </Box>
+            Registrar
+          </Button>
+          <Link to={"/login"} style={{ color: "#00C19C" }}>
+            Já tem uma conta?
+          </Link>
         </Box>
       </Container>
     </ThemeProvider>
