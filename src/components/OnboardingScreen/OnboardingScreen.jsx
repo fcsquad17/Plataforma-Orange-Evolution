@@ -8,13 +8,12 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Link as LinkMUI } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { Box, Container } from "@mui/system";
 
 export const OnboardingScreen = () => {
-  const { id } = useParams();
   const idUser = localStorage.getItem("idUser");
 
   return (
@@ -63,7 +62,7 @@ export const OnboardingScreen = () => {
             vidas através de trilhas gratuitas em Desenvolvimento, UX/UI Design
             e QA!
           </Typography>
-          <Link to={id === idUser ? `/trails/${id}` : '/login'}>
+          <Link to={idUser ? `/trails/${idUser}` : "/login"}>
             <Button
               variant="contained"
               color="secondary"
