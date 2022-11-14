@@ -42,7 +42,7 @@ export default function CreateModule({
           alignItems: "center",
           gap: "15px",
           width: "90%",
-          minHeight: "50vh",
+          minHeight: "50vh"
         }}
       >
         <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
@@ -113,6 +113,7 @@ export default function CreateModule({
           >
             {module ? "Editar módulo" : "Criar módulo"}
           </Button>
+          <Button onClick={handleClose} sx={{ margin: "30px 0" }}>Voltar</Button>
         </form>
       </Box>
     </>

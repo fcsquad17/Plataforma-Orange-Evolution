@@ -76,13 +76,13 @@ export default function TrailsCardAdmin({ reloadAgain }) {
 
   return (
     <Container
+      maxWidth='xl'
       sx={{
         display: "flex",
         flexFlow: "row wrap",
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
-        margin: "20px 0",
       }}
     >
       {trails.map((trail) => (
@@ -121,7 +121,7 @@ export default function TrailsCardAdmin({ reloadAgain }) {
             </Typography>
             <Button
               variant="contained"
-              sx={{ margin: "5px" }}
+              sx={{ margin: "5px", color: '#fff' }}
               onClick={() => {
                 handleOpenEdit(trail);
               }}
@@ -130,7 +130,7 @@ export default function TrailsCardAdmin({ reloadAgain }) {
             </Button>
             <Button
               variant="contained"
-              sx={{ margin: "5px" }}
+              sx={{ margin: "5px", color: '#fff' }}
               onClick={() => handleOpen(trail)}
             >
               Módulos

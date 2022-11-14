@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ChildModalAdmin from "../ChildModalAdmin/ChildModalAdmin.";
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
 import ModalForm from "../ModalForm/ModalForm";
 import AlertDialog from "../AlertDialog/AlertDialog";
@@ -51,14 +51,12 @@ export default function TrailsModuleAdmin({
   };
 
   return (
-    <Container
+    <Card
       sx={{
-        display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "20px",
-        margin: "20px 0",
+        maxWidth: 400,
+        backgroundColor: "#202C3B",
+        margin: "15px",
+        border: "1px solid",
       }}
     >
       <ChildModalAdmin
@@ -83,25 +81,33 @@ export default function TrailsModuleAdmin({
         open={selectedModuleEdit.ID === module.ID}
         handleReload={handleReload}
       />
-      <Card sx={{ maxWidth: 375, backgroundColor: "#202C3B" }}>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div" color="white">
-            Título: {title}
-          </Typography>
-          <Typography>Descrição: {desc}</Typography>
+      <CardContent
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: "5px",
+          height: '100%'
+        }}
+      >
+        <Typography variant="h5" component="div" color="white">
+          Título: {title}
+        </Typography>
+        <Typography>Descrição: {desc}</Typography>
+        <Box sx={{ display: "flex", flexFlow: "row wrap", gap: "5px" }}>
           <Button
             variant="contained"
-            sx={{ margin: "5px" }}
             onClick={() => {
               handleOpenEdit(module);
             }}
+            sx={{ color: "#fff" }}
           >
             Editar
           </Button>
           <Button
             variant="contained"
-            sx={{ margin: "5px" }}
             onClick={() => handleOpen(module)}
+            sx={{ color: "#fff" }}
           >
             Conteúdos
           </Button>
@@ -115,7 +121,6 @@ export default function TrailsModuleAdmin({
                 border: "1px solid #ca3433",
                 backgroundColor: "#420d09",
               },
-              margin: "5px",
             }}
             onClick={() => {
               handleOpenDelete(module);
@@ -123,8 +128,8 @@ export default function TrailsModuleAdmin({
           >
             Deletar
           </Button>
-        </CardContent>
-      </Card>
-    </Container>
+        </Box>
+      </CardContent>
+    </Card>
   );
 }

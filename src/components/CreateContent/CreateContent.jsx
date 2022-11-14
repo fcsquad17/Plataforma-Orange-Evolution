@@ -41,9 +41,21 @@ export default function CreateContent({
   };
 
   return (
-    <>
-      <Box
-        sx={{
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "15px",
+        width: "90%",
+        minHeight: "50vh"
+      }}
+    >
+      <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
+        {content ? "Edição de conteúdos" : "Adição de conteúdos"}
+      </Typography>
+      <form
+        style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -51,144 +63,131 @@ export default function CreateContent({
           width: "90%",
           minHeight: "50vh",
         }}
+        onSubmit={handleSubmit}
       >
-        <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
-          {content ? "Edição de conteúdos" : "Adição de conteúdos"}
-        </Typography>
-        <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "15px",
-            width: "90%",
-            minHeight: "50vh",
+        <TextField
+          id="outlined-basic"
+          label="Título"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
           }}
-          onSubmit={handleSubmit}
+          type={"text"}
+          required
+          defaultValue={content ? content.TITULO : ""}
+          onChange={({ target }) => handleChange(target, "TITULO")}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Tipo"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"text"}
+          required
+          defaultValue={content ? content.TIPO : ""}
+          onChange={({ target }) => handleChange(target, "TIPO")}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Duração"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"number"}
+          defaultValue={content ? content.DURACAO : ""}
+          onChange={({ target }) => handleChange(target, "DURACAO")}
+          required
+        />
+        <TextField
+          id="outlined-basic"
+          label="Fonte"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"text"}
+          required
+          defaultValue={content ? content.FONTE : ""}
+          onChange={({ target }) => handleChange(target, "FONTE")}
+        />
+        <TextField
+          id="outlined-multline-flexbile"
+          label="Descrição"
+          variant="outlined"
+          defaultValue={content ? content.DESCRICAO : ""}
+          onChange={({ target }) => handleChange(target, "DESCRICAO")}
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"text"}
+          required
+        />
+        <TextField
+          id="outlined-multline-flexbile"
+          label="Tag"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"text"}
+          required
+          defaultValue={content ? content.TAG : ""}
+          onChange={({ target }) => handleChange(target, "TAG")}
+        />
+        <TextField
+          id="outlined-multline-flexbile"
+          label="ID do Módulo"
+          variant="outlined"
+          multiline
+          fullWidth
+          sx={{
+            fieldSet: {
+              borderColor: "#fff",
+            },
+          }}
+          type={"number"}
+          required
+          disabled={content ? false : true}
+          defaultValue={content ? content.MODULO_ID : ""}
+          onChange={({ target }) => handleChange(target, "MODULO_ID")}
+        />
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ margin: "30px 0", color: "#fff" }}
+          type="submit"
         >
-          <TextField
-            id="outlined-basic"
-            label="Título"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"text"}
-            required
-            defaultValue={content ? content.TITULO : ""}
-            onChange={({ target }) => handleChange(target, "TITULO")}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Tipo"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"text"}
-            required
-            defaultValue={content ? content.TIPO : ""}
-            onChange={({ target }) => handleChange(target, "TIPO")}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Duração"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"number"}
-            defaultValue={content ? content.DURACAO : ""}
-            onChange={({ target }) => handleChange(target, "DURACAO")}
-            required
-          />
-          <TextField
-            id="outlined-basic"
-            label="Fonte"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"text"}
-            required
-            defaultValue={content ? content.FONTE : ""}
-            onChange={({ target }) => handleChange(target, "FONTE")}
-          />
-          <TextField
-            id="outlined-multline-flexbile"
-            label="Descrição"
-            variant="outlined"
-            defaultValue={content ? content.DESCRICAO : ""}
-            onChange={({ target }) => handleChange(target, "DESCRICAO")}
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"text"}
-            required
-          />
-          <TextField
-            id="outlined-multline-flexbile"
-            label="Tag"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"text"}
-            required
-            defaultValue={content ? content.TAG : ""}
-            onChange={({ target }) => handleChange(target, "TAG")}
-          />
-          <TextField
-            id="outlined-multline-flexbile"
-            label="ID do Módulo"
-            variant="outlined"
-            multiline
-            fullWidth
-            sx={{
-              fieldSet: {
-                borderColor: "#fff",
-              },
-            }}
-            type={"number"}
-            required
-            disabled={content ? false : true}
-            defaultValue={content ? content.MODULO_ID : ""}
-            onChange={({ target }) => handleChange(target, "MODULO_ID")}
-          />
-          <Button
-            variant="contained"
-            size="large"
-            sx={{ margin: "30px 0", color: "#fff" }}
-            type="submit"
-          >
-            {content ? "Editar conteúdo" : "Criar Conteúdo"}
-          </Button>
-        </form>
-      </Box>
-    </>
+          {content ? "Editar conteúdo" : "Criar Conteúdo"}
+        </Button>
+        <Button onClick={handleClose} sx={{ margin: "30px 0" }}>Voltar</Button>
+      </form>
+    </Box>
   );
 }

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { Container } from "@mui/system";
 import TrailsCardAdmin from "../TrailsCardAdmin/TrailsCardAdmin";
 import Typography from "@mui/material/Typography";
@@ -48,56 +47,30 @@ export default function AdminControlScreen() {
   return (
     <ThemeProvider theme={theme}>
       <Container
+        maxWidth="xl"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "90%",
-          margin: " 30px auto",
-          borderRadius: "15px",
-          backgroundColor: "#202C3B",
+          gap: '30px',
+          minHeight: '80vh',
+          margin: " 30px auto"
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "15px",
-            width: "90%",
-            minHeight: "50vh",
-            margin: "30px 0",
-            color: "#00C19C",
-          }}
-        >
-          <Button
-            variant="contained"
-            sx={{ margin: "5px" }}
-            onClick={handleOpen}
-          >
-            Criar trilha
-          </Button>
-          <ModalForm
-            open={open}
-            put={false}
-            handleClose={handleClose}
-            handleReload={handleReload}
-            trail={true}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "#00C19C",
-          }}
-        >
-          <Typography variant="h4" component="h2" sx={{ marginBottom: "30px" }}>
-            Trilhas existentes
-          </Typography>
-          <TrailsCardAdmin reloadAgain={reload} />
-        </Box>
+        <ModalForm
+          open={open}
+          put={false}
+          handleClose={handleClose}
+          handleReload={handleReload}
+          trail={true}
+        />
+        <Typography variant="h4" component="h4" sx={{color: '#00C19C' }}>
+          Trilhas existentes
+        </Typography>
+        <Button variant="contained" sx={{color: '#fff', fontWeight: 'bold'}} onClick={handleOpen}>
+          Criar trilha
+        </Button>
+        <TrailsCardAdmin reloadAgain={reload} />
       </Container>
     </ThemeProvider>
   );

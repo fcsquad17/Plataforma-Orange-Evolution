@@ -88,7 +88,7 @@ export default function ForgotPasswordScreen() {
             sx={{ color: "text.primary" }}
             align="left"
           >
-            Digite aqui a senha-código enviada por email
+            Informe seu código encaminhado por e-mail
           </Typography>
           <Box
             onSubmit={handleSubmit}
@@ -100,7 +100,7 @@ export default function ForgotPasswordScreen() {
               required
               fullWidth
               id="password"
-              label="Senha-código"
+              label="Código"
               name="password"
               autoComplete="password"
               autoFocus
