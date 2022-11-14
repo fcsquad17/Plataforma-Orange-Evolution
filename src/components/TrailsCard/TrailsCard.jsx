@@ -51,7 +51,7 @@ export default function TrailsCard({ userId, handleOnReload }) {
       sx={{
         display: "flex",
         flexFlow: "row wrap",
-        justifyContent: "center",
+        justifyContent: {xs: "center", lg: 'space-between'},
         alignItems: "center",
         gap: "20px",
         margin: "20px 0",
