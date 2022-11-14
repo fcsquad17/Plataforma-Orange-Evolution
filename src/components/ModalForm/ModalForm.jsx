@@ -1,24 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
 import CreateTrail from "../CreateTrail/CreateTrail";
 import CreateModule from "../CreateModule/CreateModule";
 import CreateContent from "../CreateContent/CreateContent";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  pt: 2,
-  px: 4,
-  pb: 3,
-};
 
 export default function ModalForm({
   put,
@@ -41,7 +26,6 @@ export default function ModalForm({
       >
         <Box
           sx={{
-            ...style,
             width: "100vw",
             height: "100vh",
             color: "#fff",
@@ -56,28 +40,27 @@ export default function ModalForm({
         >
           {content && (
             <CreateContent
-              content={put ? content : null}
-              handleReload={handleReload}
-              handleClose={handleClose}
+            content={put ? content : null}
+            handleReload={handleReload}
+            handleClose={handleClose}
               id={id}
-            />
-          )}
+              />
+              )}
           {module && (
             <CreateModule
               module={put ? module : null}
               handleReload={handleReload}
               handleClose={handleClose}
               id={id}
-            />
-          )}
+              />
+              )}
           {trail && (
             <CreateTrail
               trail={put ? trail : null}
               handleReload={handleReload}
               handleClose={handleClose}
             />
-          )}
-          <Button onClick={handleClose}>Voltar</Button>
+            )}
         </Box>
       </Modal>
     </React.Fragment>
