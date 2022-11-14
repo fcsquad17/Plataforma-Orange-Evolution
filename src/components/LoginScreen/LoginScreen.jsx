@@ -66,6 +66,9 @@ export default function LoginScreen() {
     } else if (res.usuario.ADMIN === 0) {
       localStorage.setItem("idUser", res.usuario.ID);
       navigate(`/trails/${res.usuario.ID}`);
+    } else {
+      localStorage.setItem("idUser", res.usuario.ID);
+      navigate(`/admin/${res.usuario.ID}`);
     }
   };
 
