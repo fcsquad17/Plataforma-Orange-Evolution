@@ -35,7 +35,7 @@ function Header({ pages, settings, userName, urlPage, urlSettings }) {
 
   const handleCloseUserMenuAndLogoff = () => {
     setAnchorElUser(null);
-    localStorage.removeItem("idUser");
+    localStorage.clear();
   };
 
   return (
