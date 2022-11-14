@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Header({ pages, settings, userName, url }) {
+function Header({ pages, settings, userName, urlPage, urlSettings }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [profileName, useProfileName] = useState("");
@@ -38,10 +38,6 @@ function Header({ pages, settings, userName, url }) {
     localStorage.removeItem("idUser");
   };
 
-  useEffect(() => {
-    useProfileName(userName);
-  }, [userName]);
-
   return (
     <AppBar color="custom" position="sticky">
       <Container maxWidth="xl">
@@ -50,7 +46,7 @@ function Header({ pages, settings, userName, url }) {
             component="img"
             src="/src/assets/oeLogo.svg"
             alt="Orange Evolution"
-            sx={{ width: "45px", display: {xs: 'none', md: 'block'}}}
+            sx={{ width: "45px", display: { xs: "none", md: "block" } }}
           />
           <Typography
             variant="h6"
@@ -97,7 +93,7 @@ function Header({ pages, settings, userName, url }) {
               }}
             >
               {pages.map((page, index) => (
-                <Link to={url[index]} key={page}>
+                <Link to={urlPage[index]} key={page}>
                   <MenuItem onClick={handleCloseNavMenu} sx={{ color: "#000" }}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
@@ -109,7 +105,7 @@ function Header({ pages, settings, userName, url }) {
             component="img"
             src="/src/assets/oeLogo.svg"
             alt="Orange Evolution"
-            sx={{ width: "45px", display: {md: 'none'}}}
+            sx={{ width: "45px", display: { md: "none" } }}
           />
           <Typography
             variant="h5"
@@ -128,7 +124,7 @@ function Header({ pages, settings, userName, url }) {
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
-              <Link to={url[index]} key={page}>
+              <Link to={urlPage[index]} key={page}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
@@ -142,7 +138,7 @@ function Header({ pages, settings, userName, url }) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip color="secondary" title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={profileName} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={userName} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -162,7 +158,7 @@ function Header({ pages, settings, userName, url }) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting, index) => (
-                <Link to={url[index + 2]} key={setting}>
+                <Link to={urlSettings[index]} key={setting}>
                   <MenuItem
                     onClick={
                       index === settings.length - 1

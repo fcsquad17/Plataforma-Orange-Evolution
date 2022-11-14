@@ -6,11 +6,12 @@ export default function SignUp() {
   return (
     <div>
       <Header
-        pages={["Inicio"]}
+        pages={["Inicio", "Eventos"]}
         settings={["Entrar", "Criar Conta"]}
-        url={['/', '/', '/login', '/signup']}
+        urlPage={["/", "/eventstab"]}
+        urlSettings={["/login", "/signup"]}
       />
-      <SignUpScreen/>
+      <SignUpScreen />
       <Footer />
     </div>
   );
