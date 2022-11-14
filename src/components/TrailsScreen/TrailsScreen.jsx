@@ -1,7 +1,7 @@
 import TrailsCard from "/src/components/TrailsCard/TrailsCard";
 import TrailsCardUser from "../TrailsCardUser/TrailsCardUser";
 import { useEffect, useState } from "react";
-import { getUserTrailsParams } from "../../services/Api";
+import { getUserTrailsParams } from "../../services/UsersApi";
 import { progressBarTrail } from "../../utils/progressLogic";
 import { Link } from "react-router-dom";
 import { Container } from "@mui/system";

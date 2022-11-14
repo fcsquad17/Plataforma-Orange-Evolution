@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header";
 import AllModules from "../../components/AllModules/AllModules";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 export default function TrailsContent() {

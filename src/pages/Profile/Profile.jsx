@@ -2,7 +2,7 @@ import ProfileScreen from "../../components/ProfileScreen/ProfileScreen";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 import Lottie from "react-lottie";
 import * as loadingAnim from "../../assets/loading-animation.json";
 

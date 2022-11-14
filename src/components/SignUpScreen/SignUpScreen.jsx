@@ -11,7 +11,7 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
-import { postUser } from "../../services/Api";
+import { postUser } from "../../services/UsersApi";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";

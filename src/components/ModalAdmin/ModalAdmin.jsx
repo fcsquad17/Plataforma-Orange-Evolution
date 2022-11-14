@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import TrailsModuleAdmin from "../TrailsModuleAdmin/TrailsModuleAdmin";
-import { getModuleByIdTrail } from "../../services/Api";
+import { getModuleByIdTrail } from "../../services/ModulesApi";
 import { useEffect, useState } from "react";
 import ModalForm from "../ModalForm/ModalForm";
 
