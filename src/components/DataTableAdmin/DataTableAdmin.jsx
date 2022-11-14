@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getContentByIdModule } from "../../services/Api";
+import { getContentByIdModule } from "../../services/ContentsApi";
 import { useState } from "react";
 import {
   Table,
@@ -15,7 +15,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import AlertDialog from "../AlertDialog/AlertDialog";
 import ModalForm from "../ModalForm/ModalForm";
 
-export default function DataTableAdmin({ idModule }) {
+export default function DataTableAdmin({ idModule, reloadAd }) {
   const [contents, setContents] = useState([]);
   const [selectedContentDelete, setSelectedContentDelete] = useState(0);
   const [selectedContentEdit, setSelectedContentEdit] = useState(0);
@@ -56,7 +56,7 @@ export default function DataTableAdmin({ idModule }) {
       setReload(false);
     }
     handleReq(idModule);
-  }, [reload]);
+  }, [reload, reloadAd]);
 
   return (
     <TableContainer>

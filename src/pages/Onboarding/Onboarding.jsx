@@ -3,13 +3,12 @@ import Footer from "/src/components/Footer/Footer";
 import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingScreen";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 
 function Onboarding() {
   const [user, setUser] = useState({});
 
-  const { id } = useParams();
   const idUser = localStorage.getItem("idUser");
 
   const handleReq = async () => {
@@ -26,20 +25,33 @@ function Onboarding() {
   return (
     <div>
       <ScrollUpButton showBelow={50} />
-      {id && idUser && (
+      {idUser && user.ADMIN === 0 && (
         <Header
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
           urlPage={[
-            `/${localStorage.getItem("idUser")}`,
+            `/`,
             `/trails/${localStorage.getItem("idUser")}`,
             `/eventstab/${localStorage.getItem("idUser")}`,
           ]}
-          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/login"]}
         />
       )}
-      {!id && (
+      {idUser && user.ADMIN > 0 && (
+        <Header
+          pages={["Inicio", "Trilhas", "Eventos"]}
+          settings={["Painel de Controle", "Sair"]}
+          userName={user.NOME_COMPLETO}
+          urlPage={[
+            `/`,
+            `/trails/${localStorage.getItem("idUser")}`,
+            `/eventstab/`,
+          ]}
+          urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/login"]}
+        />
+      )}
+      {!idUser && (
         <Header
           pages={["Inicio", "Eventos"]}
           settings={["Entrar", "Criar Conta"]}

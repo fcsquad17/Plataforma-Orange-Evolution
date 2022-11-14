@@ -12,7 +12,7 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
-import { postUserLogin } from "../../services/Api";
+import { postUserLogin } from "../../services/UsersApi";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -64,6 +64,9 @@ export default function LoginScreen() {
     } else if (res.usuario.ADMIN === 0) {
       localStorage.setItem("idUser", res.usuario.ID);
       navigate(`/trails/${res.usuario.ID}`);
+    } else {
+      localStorage.setItem("idUser", res.usuario.ID);
+      navigate(`/admin/${res.usuario.ID}`);
     }
   };
 

@@ -5,11 +5,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useState, useEffect } from "react";
-import {
-  getAllTrails,
-  getFirstContentByIdTrail,
-  postContentOfUserDone,
-} from "../../services/Api";
+import { getAllTrails } from "../../services/TrailsApi";
+import { getFirstContentByIdTrail } from "../../services/ContentsApi";
+import { postContentOfUserDone } from "../../services/UserContentApi";
+
 import { Container } from "@mui/system";
 
 export default function TrailsCard({ userId, handleOnReload }) {

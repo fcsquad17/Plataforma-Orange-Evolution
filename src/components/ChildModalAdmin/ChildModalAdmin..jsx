@@ -13,7 +13,7 @@ export default function ChildModalAdmin({
   idModule,
 }) {
   const [openCreate, setOpenCreate] = React.useState(false);
-  const [reload, setReload] = React.useState(false);
+  const [reloadAd, setReloadAd] = React.useState(false);
 
   const handleOpenCreate = () => {
     setOpenCreate(true);
@@ -24,12 +24,12 @@ export default function ChildModalAdmin({
   };
 
   const handleReload = () => {
-    setReload(true);
+    setReloadAd(true);
   };
 
   React.useEffect(() => {
-    if (reload) setReload(false);
-  }, [reload]);
+    if (reloadAd) setReloadAd(false);
+  }, [reloadAd]);
 
   return (
     <Modal
@@ -62,7 +62,7 @@ export default function ChildModalAdmin({
         />
         <Button onClick={handleClose}>Voltar</Button>
         <Button onClick={handleOpenCreate}>Criar conteudo</Button>
-        <DataTableAdmin idModule={idModule} />
+        <DataTableAdmin idModule={idModule} reloadAd={reloadAd} />
       </Box>
     </Modal>
   );

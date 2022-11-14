@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import eventbg from "/src/assets/eventbg.png";
 import { useParams } from "react-router-dom";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
-import { getUsersParams } from "../../services/Api";
+import { getUsersParams } from "../../services/UsersApi";
 
 const styles = {
   paperContainer: {
@@ -17,7 +17,6 @@ const styles = {
 export const EventsTab = () => {
   const [user, setUser] = useState({});
 
-  const { id } = useParams();
   const idUser = localStorage.getItem("idUser");
 
   const handleReq = async () => {
@@ -34,25 +33,38 @@ export const EventsTab = () => {
   return (
     <>
       <ScrollUpButton showBelow={50} />
-      {id && idUser && (
+      {idUser && user.ADMIN == 0 && (
         <Header
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
           urlPage={[
-            `/${localStorage.getItem("idUser")}`,
+            `/`,
             `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/${localStorage.getItem("idUser")}`,
+            `/eventstab/`,
           ]}
           urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
         />
       )}
-      {!id && (
+      {!idUser && (
         <Header
           pages={["Inicio", "Eventos"]}
           settings={["Entrar", "Criar Conta"]}
           urlPage={["/", "/eventstab"]}
           urlSettings={["/login", "/signup"]}
+        />
+      )}
+      {idUser && user.ADMIN > 0 && (
+        <Header
+          pages={["Inicio", "Trilhas", "Eventos"]}
+          settings={["Painel de Controle", "Sair"]}
+          userName={user.NOME_COMPLETO}
+          urlPage={[
+            `/`,
+            `/trails/${localStorage.getItem("idUser")}`,
+            `/eventstab/`,
+          ]}
+          urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
         />
       )}
       <Box style={styles.paperContainer} sx={{ backgroundColor: "black" }}>

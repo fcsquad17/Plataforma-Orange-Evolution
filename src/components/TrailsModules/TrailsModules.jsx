@@ -10,9 +10,10 @@ import CirclePogressBar from "../CircleProgressBar/CirclePogressBar";
 import { useState, useEffect } from "react";
 import {
   getContentByIdModule,
-  getLastContentByIdModule,
   getFirstContentByIdModule,
-} from "../../services/Api";
+} from "../../services/ContentsApi";
+import { getLastContentByIdModule } from "../../services/UserContentApi";
+
 import { progressBarCircle } from "../../utils/progressLogic";
 
 const Accordion = styled((props) => (

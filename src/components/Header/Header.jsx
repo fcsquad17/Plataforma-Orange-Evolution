@@ -11,7 +11,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Header({ pages, settings, userName, urlPage, urlSettings }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -35,7 +35,7 @@ function Header({ pages, settings, userName, urlPage, urlSettings }) {
 
   const handleCloseUserMenuAndLogoff = () => {
     setAnchorElUser(null);
-    localStorage.removeItem("idUser");
+    localStorage.clear();
   };
 
   return (

@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { putModuleParams, postModuleParams } from "../../services/Api";
+import { putModuleParams, postModuleParams } from "../../services/ModulesApi";
 
 export default function CreateModule({
   module,

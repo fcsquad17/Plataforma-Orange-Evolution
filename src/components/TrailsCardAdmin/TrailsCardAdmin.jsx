@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ModalAdmin from "../ModalAdmin/ModalAdmin";
 import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
-import { getAllTrails } from "../../services/Api";
+import { getAllTrails } from "../../services/TrailsApi";
 import AlertDialog from "../AlertDialog/AlertDialog";
 import ModalForm from "../ModalForm/ModalForm";
 

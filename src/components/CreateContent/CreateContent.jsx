@@ -3,7 +3,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { putContentParams, postContentParams } from "../../services/Api";
+import {
+  putContentParams,
+  postContentParams,
+} from "../../services/ContentsApi";
 
 export default function CreateContent({
   content,
