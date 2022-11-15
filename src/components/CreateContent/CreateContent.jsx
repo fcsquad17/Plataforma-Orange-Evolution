@@ -48,11 +48,11 @@ export default function CreateContent({
         alignItems: "center",
         gap: "15px",
         width: "90%",
-        minHeight: "50vh"
+        minHeight: "50vh",
       }}
     >
       <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
-        {content ? "Edição de conteúdos" : "Adição de conteúdos"}
+        {content ? "Editação conteúdo" : "Criação conteúdo"}
       </Typography>
       <form
         style={{
@@ -186,7 +186,9 @@ export default function CreateContent({
         >
           {content ? "Editar conteúdo" : "Criar Conteúdo"}
         </Button>
-        <Button onClick={handleClose} sx={{ margin: "30px 0" }}>Voltar</Button>
+        <Button onClick={handleClose} sx={{ margin: "30px 0" }}>
+          Voltar
+        </Button>
       </form>
     </Box>
   );

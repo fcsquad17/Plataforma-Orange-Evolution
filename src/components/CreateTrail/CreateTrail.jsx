@@ -40,7 +40,7 @@ export default function CreateTrail({ trail, handleReload, handleClose }) {
       }}
     >
       <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
-        {trail ? "Edição de trilhas" : "Adição de trilhas"}
+        {trail ? "Edição de trilhas" : "Criação de trilhas"}
       </Typography>
       <form
         style={{
@@ -48,7 +48,7 @@ export default function CreateTrail({ trail, handleReload, handleClose }) {
           flexDirection: "column",
           alignItems: "center",
           gap: "15px",
-          width: "90%"
+          width: "90%",
         }}
         onSubmit={handleSubmit}
       >
@@ -90,7 +90,9 @@ export default function CreateTrail({ trail, handleReload, handleClose }) {
         >
           {trail ? "Editar trilha" : "Criar trilha"}
         </Button>
-        <Button onClick={handleClose} sx={{ margin: "30px 0" }}>Voltar</Button>
+        <Button onClick={handleClose} sx={{ margin: "30px 0" }}>
+          Voltar
+        </Button>
       </form>
     </Box>
   );
