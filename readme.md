@@ -65,15 +65,15 @@ Local: http://127.0.0.1:5173/
 
 ## ✔️ Features
 
-- Usuários:
-  - [x] Cadastro de usuário
-  - [x] Meu perfil
-  - [x] Trilhas com progressão
-  - [x] Aba de eventos
-<br />
-- Administradores:
-  - [x] Visualização das trilhas
-  - [x] Painel de controle sobre todos os conteúdos
+Usuários:
+- [x] Cadastro de usuário
+- [x] Meu perfil
+- [x] Trilhas com progressão
+- [x] Aba de eventos
+
+Administradores:
+- [x] Visualização das trilhas
+- [x] Painel de controle sobre todos os conteúdos
 
 ---
 
@@ -82,7 +82,10 @@ Local: http://127.0.0.1:5173/
 ### 📄 Onboarding
 
 <p>O primeiro contato que usuários/administradores terão será com a página Onboarding, nela será demonstrado as informações do Orange Evolution e Trilhas:</p>
-<img alt="Onboarding" src="./readme - images/1 - Onboarding.PNG" />
+
+<h1 align="center">
+  <img alt="Onboarding" src="./readme - images/1 - Onboarding.PNG" />
+</h1>
 
 ### 📄 Login e Cadastro
 
@@ -92,20 +95,27 @@ Local: http://127.0.0.1:5173/
   <li>Email: admin@admin.com</li>
   <li>Senha: admin</li>
 </ul>
-<img alt="Login" src="./readme - images/2 - Login.PNG" />
-<img alt="Cadastro" src="./readme - images/3 - Cadastro.PNG" />
-<br />
+<h1 align="center">
+  <img alt="Login" src="./readme - images/2 - Login.PNG" />
+</h1>
+<h1 align="center">
+  <img alt="Cadastro" src="./readme - images/3 - Cadastro.PNG" />
+</h1>
 
 ### 📄 Trilhas
 
 <p>Após o usuário realizar o login, o mesmo será redirecionado para a aba de trilhas, onde será disposto todas as trilhas diponíveis. As trilhas de sua escolha serão adicionadas no quadrante "Continue de onde parou:", há também uma barra de porcentagem logo abaixo de cada card das trilhas que a ele pertencem, dando assim uma orientação sobre o seu progresso.</p>
 <p>Os administradores também terão acesso a aba de trilhas.</p>
-<img alt="Trilhas" src="./readme - images/4 - Trilhas.PNG">
+<h1 align="center">
+  <img alt="Trilhas" src="./readme - images/4 - Trilhas.PNG">
+</h1>
 
 ### 📄 Módulos
 
 <p>Após o usuário ter feito a escolha da(s) trilha(s), ele poderá clicar nela(s) e ser redirecionado para a página dos módulos pertencentes as mesmas.</p>
-<img alt="Módulos" src="./readme - images/5 - Módulos.PNG">
+<h1 align="center">
+  <img alt="Módulos" src="./readme - images/5 - Módulos.PNG">
+</h1>
 <p>Ao clicar em algum módulo, o mesmo será expandido mostrando todos os seus conteúdos. Para cada conteúdo há os seguintes botões:</p>
 
 <ul>
@@ -115,43 +125,63 @@ Local: http://127.0.0.1:5173/
 </ul>
 
 <P>Há também barras de porcentagem dispostas ao lado direito de cada módulo indicando o progresso do usuário em cada um dos mesmos</p>
-<img alt="Módulos" src="./readme - images/5.1 - Módulos Abertos.PNG">
+<h1 align="center">
+  <img alt="Módulos" src="./readme - images/5.1 - Módulos Abertos.PNG">
+</h1>
 
 ### 📄 Perfil
 
 <p>Os usuários também contam com a página de perfil, nela é possível alterar os dados informados no ato do registro:</p>
-<img alt="Perfil" src="./readme - images/11 - Perfil.PNG">
+<h1 align="center">
+  <img alt="Perfil" src="./readme - images/11 - Perfil.PNG">
+</h1>
 
 ### 📄 Painel de Controle
 
 <p>Já para os administradores, após a realização de login os mesmos serão direcionados para o painel de controle. Esta página tem o intuito de controlar todos so conteúdos da plataforma:</p>
 
-<img alt="Painel de controle" src="./readme - images/6 - Painel de controle.PNG">
+<h1 align="center">
+  <img alt="Painel de controle" src="./readme - images/6 - Painel de controle.PNG">
+</h1>
 
 <p>As imagens a seguir representam cada função dentro do painel de controle:
 
 ### 📄 Criação/Edição de trilhas
 
-<img alt="Criação de trilhas" src="./readme - images/7 - Criação de trilhas.PNG">
-<img alt="Edição de trilhas" src="./readme - images/8 - Edição de trilhas.PNG">
+<h1 align="center">
+  <img alt="Criação de trilhas" src="./readme - images/7 - Criação de trilhas.PNG">
+</h1>
+<h1 align="center">
+  <img alt="Edição de trilhas" src="./readme - images/8 - Edição de trilhas.PNG">
+</h1>
 
 ### 📄 Criação/Edição de módulos
 
-<img alt="Criação e edição de módulos" src="./readme - images/9 - Criação e edição de módulos.PNG">
+<h1 align="center">
+  <img alt="Criação e edição de módulos" src="./readme - images/9 - Criação e edição de módulos.PNG">
+</h1>
 
 ### 📄 Criação/Edição de conteúdos
 
-<img alt="Criação e edição de conteúdos" src="./readme - images/10 - Criação e edição de conteúdos.PNG">
+<h1 align="center">
+  <img alt="Criação e edição de conteúdos" src="./readme - images/10 - Criação e edição de conteúdos.PNG">
+</h1>
 
 ### 📄 Eventos
 
 <p>Há também a presença de uma aba Eventos na barra de navegação, o intuito desse aba é quê, futuramente, os anúncios da Orange Juice/Orange Evolution também possam ser feitos diretamente na plataforma:</p>
-<img alt="Eventos" src="./readme - images/12 - Eventos.PNG">
+
+<h1 align="center">
+  <img alt="Eventos" src="./readme - images/12 - Eventos.PNG">
+</h1>
 
 ### 📄 Responsividade
 
 <p>Lembrando que toda a plataforma conta com elementos responsivos, se adequando a inúmeros formatos e tamanhos de tela como demonstrado abaixo:</p>
-<img alt="Responsividade" src="./readme - images/13 - Responsividade.PNG">
+
+<h1 align="center">
+  <img alt="Responsividade" src="./readme - images/13 - Responsividade.PNG">
+</h1>
 
 ---
 
