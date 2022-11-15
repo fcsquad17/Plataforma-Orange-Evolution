@@ -180,7 +180,7 @@ Administradores:
 <p>Lembrando que toda a plataforma conta com elementos responsivos, se adequando a inúmeros formatos e tamanhos de tela como demonstrado abaixo:</p>
 
 <h1 align="center">
-  <img alt="Responsividade" src="./readme_Images/responsividade.PNG">
+  <img alt="Responsividade" src="./readme_Images/responsividade.png">
 </h1>
 
 ---
