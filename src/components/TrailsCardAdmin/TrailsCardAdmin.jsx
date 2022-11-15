@@ -59,11 +59,11 @@ export default function TrailsCardAdmin({ reloadAgain }) {
 
   const selectImage = (title) => {
     if (title === "UX/UI Design") {
-      return "/src/assets/UI-UX-Design-1024x576.jpg";
+      return "./src/assets/UI-UX-Design-1024x576.jpg";
     } else if (title === "Quality Assurance") {
-      return "/src/assets/novidades.jpg";
+      return "./src/assets/novidades.jpg";
     } else {
-      return "/src/assets/fullstack.jpg";
+      return "./src/assets/fullstack.jpg";
     }
   };
 
@@ -76,7 +76,7 @@ export default function TrailsCardAdmin({ reloadAgain }) {
 
   return (
     <Container
-      maxWidth='xl'
+      maxWidth="xl"
       sx={{
         display: "flex",
         flexFlow: "row wrap",
@@ -121,7 +121,7 @@ export default function TrailsCardAdmin({ reloadAgain }) {
             </Typography>
             <Button
               variant="contained"
-              sx={{ margin: "5px", color: '#fff' }}
+              sx={{ margin: "5px", color: "#fff" }}
               onClick={() => {
                 handleOpenEdit(trail);
               }}
@@ -130,7 +130,7 @@ export default function TrailsCardAdmin({ reloadAgain }) {
             </Button>
             <Button
               variant="contained"
-              sx={{ margin: "5px", color: '#fff' }}
+              sx={{ margin: "5px", color: "#fff" }}
               onClick={() => handleOpen(trail)}
             >
               Módulos
