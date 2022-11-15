@@ -31,7 +31,7 @@ export default function Footer() {
       >
         <Box
           component="img"
-          src="./src/assets/ojLogo.png"
+          src="/ojLogo.png"
           alt="Orange Evolution"
           sx={{
             width: "25%",
@@ -42,7 +42,7 @@ export default function Footer() {
         />
         <Box
           component="img"
-          src="./src/assets/oeLogo.svg"
+          src="/oeLogo.svg"
           alt="Orange Evolution"
           sx={{
             width: "25%",
