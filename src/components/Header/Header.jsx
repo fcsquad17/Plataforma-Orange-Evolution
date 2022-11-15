@@ -44,7 +44,7 @@ function Header({ pages, settings, userName, urlPage, urlSettings }) {
         <Toolbar disableGutters>
           <Box
             component="img"
-            src="/src/assets/oeLogo.svg"
+            src="/oeLogo.svg"
             alt="Orange Evolution"
             sx={{ width: "45px", display: { xs: "none", md: "block" } }}
           />
@@ -103,7 +103,7 @@ function Header({ pages, settings, userName, urlPage, urlSettings }) {
           </Box>
           <Box
             component="img"
-            src="/src/assets/oeLogo.svg"
+            src="/oeLogo.svg"
             alt="Orange Evolution"
             sx={{ width: "45px", display: { md: "none" } }}
           />

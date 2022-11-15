@@ -37,7 +37,7 @@ export const OnboardingScreen = () => {
       >
         <Box
           component="img"
-          src="/src/assets/oeLogo.svg"
+          src="/oeLogo.svg"
           alt="Orange Evolution"
           sx={{
             width: "32%",
@@ -94,7 +94,7 @@ export const OnboardingScreen = () => {
       >
         <Box
           component="img"
-          src="/src/assets/whatis.png"
+          src="/whatis.png"
           alt="O que é o Orange Evolution"
           sx={{ width: "90%", maxWidth: "600px" }}
         />
@@ -180,7 +180,7 @@ export const OnboardingScreen = () => {
         >
           <Box
             component="img"
-            src="/src/assets/fcamara.png"
+            src="/fcamara.png"
             alt="fcamara"
             sx={{
               filter: "invert(0)",
@@ -202,7 +202,7 @@ export const OnboardingScreen = () => {
         >
           <Box
             component="img"
-            src="src/assets/alura.png"
+            src="/alura.png"
             alt="alura"
             sx={{
               filter: "invert(0)",
@@ -224,7 +224,7 @@ export const OnboardingScreen = () => {
         >
           <Box
             component="img"
-            src="src/assets/rocketseat.png"
+            src="/rocketseat.png"
             alt="rocketseat"
             sx={{
               filter: "invert(0)",
@@ -246,7 +246,7 @@ export const OnboardingScreen = () => {
         >
           <Box
             component="img"
-            src="src/assets/cubosacademy.png"
+            src="/cubosacademy.png"
             alt="cubosacademy"
             sx={{
               filter: "invert(0)",
