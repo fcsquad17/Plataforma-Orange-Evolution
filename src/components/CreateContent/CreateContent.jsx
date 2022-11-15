@@ -52,7 +52,7 @@ export default function CreateContent({
       }}
     >
       <Typography variant="h5" component="h5" sx={{ marginBottom: "30px" }}>
-        {content ? "Editação conteúdo" : "Criação conteúdo"}
+        {content ? "Edição conteúdo" : "Criação conteúdo"}
       </Typography>
       <form
         style={{
