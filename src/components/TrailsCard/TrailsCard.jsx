@@ -21,11 +21,11 @@ export default function TrailsCard({ userId, handleOnReload }) {
 
   const selectImage = (title) => {
     if (title === "UX/UI Design") {
-      return "./src/assets/UI-UX-Design-1024x576.jpg";
+      return "/UI-UX-Design-1024x576.jpg";
     } else if (title === "Quality Assurance") {
-      return "./src/assets/novidades.jpg";
+      return "/novidades.jpg";
     } else {
-      return "./src/assets/fullstack.jpg";
+      return "/fullstack.jpg";
     }
   };
 

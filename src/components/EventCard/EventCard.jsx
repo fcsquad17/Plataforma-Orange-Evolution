@@ -38,7 +38,7 @@ export default function EventCard() {
       id: 1,
       title: "Orange Meet Up | Elastic + FCamara",
       date: "10 nov - 2022 • 19:00 > 21:45",
-      image: "./src/assets/evento1.jpg",
+      image: "/evento1.jpg",
       local: "Evento presencial em FCamara Santos, Santos - SP",
       description:
         "Primeiro meet up da Orange Juice, junto com a Elastic e o Grupo FCamara, trazendo o tema sobre observabilidade dentro no mundo tech. O evento é totalmente gratuito e recomendamos ficar até o final, pois vai rolar um coffee break com muito networking! Transmissão online vai rolar na Twitch da Orange Juice! https://www.twitch.tv/orangejuice_tech ",
@@ -47,7 +47,7 @@ export default function EventCard() {
       id: 2,
       title: "Orange Meet Up | Elastic + FCamara",
       date: "10 nov - 2022 • 19:00 > 21:45",
-      image: "./src/assets/evento1.jpg",
+      image: "/evento1.jpg",
       local: "Evento presencial em FCamara Santos, Santos - SP",
       description:
         "Primeiro meet up da Orange Juice, junto com a Elastic e o Grupo FCamara, trazendo o tema sobre observabilidade dentro no mundo tech. O evento é totalmente gratuito e recomendamos ficar até o final, pois vai rolar um coffee break com muito networking! Transmissão online vai rolar na Twitch da Orange Juice! https://www.twitch.tv/orangejuice_tech ",
@@ -56,7 +56,7 @@ export default function EventCard() {
       id: 3,
       title: "Orange Meet Up | Elastic + FCamara",
       date: "10 nov - 2022 • 19:00 > 21:45",
-      image: "./src/assets/evento1.jpg",
+      image: "/evento1.jpg",
       local: "Evento presencial em FCamara Santos, Santos - SP",
       description:
         "Primeiro meet up da Orange Juice, junto com a Elastic e o Grupo FCamara, trazendo o tema sobre observabilidade dentro no mundo tech. O evento é totalmente gratuito e recomendamos ficar até o final, pois vai rolar um coffee break com muito networking! Transmissão online vai rolar na Twitch da Orange Juice! https://www.twitch.tv/orangejuice_tech ",
