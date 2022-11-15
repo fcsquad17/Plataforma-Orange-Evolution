@@ -62,7 +62,7 @@ export default function Trails() {
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
           urlPage={[
-            `/${localStorage.getItem("idUser")}`,
+            `/`,
             `/trails/${localStorage.getItem("idUser")}`,
             `/eventstab/`,
           ]}
