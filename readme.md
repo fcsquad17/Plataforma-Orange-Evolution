@@ -102,6 +102,17 @@ Administradores:
   <img alt="Cadastro" src="./readme_Images/cadastro.PNG" />
 </h1>
 
+### 📄 Esqueci minha senha e Redefinição
+
+<p>Páginas para redefinição de senha em caso de esquecimento. A idéia
+é que seja enviado uma senha-código para o email do usuário e o mesmo
+possa redefini-la na segunda tela usando o código recebido por email.
+A funcionalidade não foi implementada porém está desenhada para futuras
+atualizações.</p>
+
+<img alt="esqueci" src="readme_Images/esqueci.jpeg">
+<img alt="redefinir" src="readme_Images/redefinir.jpeg">
+
 ### 📄 Trilhas
 
 <p>Após o usuário realizar o login, o mesmo será redirecionado para a aba de trilhas, onde será disposto todas as trilhas diponíveis. As trilhas de sua escolha serão adicionadas no quadrante "Continue de onde parou:", há também uma barra de porcentagem logo abaixo de cada card das trilhas que a ele pertencem, dando assim uma orientação sobre o seu progresso.</p>
