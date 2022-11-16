@@ -1,11 +1,7 @@
 import axios from "axios";
 
-// export const Api = axios.create({
-//   baseURL: "https://Api-orange-evolution-production.up.railway.app",
-// });
-
 export const Api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://api-orange-evolution-production-a479.up.railway.app",
 });
 
 export const globalApiVariables = () => {
