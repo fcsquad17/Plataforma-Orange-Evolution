@@ -198,7 +198,7 @@ atualizações.</p>
 
 ## 🏁 Conclusão
 
-<p>A plataforma roda com acertividade, sabemos dos problemas internos que o projeto Front e Back-end sofrem porém a ideia dessa construção é que fosse um MVP (Minimum Viable Project). Com isso, optamos por usar as tecnologias e ferramentas que mais fossem cabiveis de acordo com a ideia do projeto como um todo.</p>
+<p>A plataforma roda com acertividade e é robusta, com várias funcionalidades completas, além de um design responsivo e intuitivo, tornando-a acessível e agradável de se usar. Sabemos dos problemas internos que o projeto Front e Back-end sofrem porém a ideia dessa construção é que fosse um MVP (Minimum Viable Project). Com isso, optamos por usar as tecnologias e ferramentas que mais fossem cabiveis de acordo com a ideia do projeto como um todo.</p>
 
 ---
 
