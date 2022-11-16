@@ -10,16 +10,23 @@ export default function AdminControl() {
 
   const navigate = useNavigate();
 
-  const idUser = localStorage.getItem("idUser");
+  const idUser = localStorage.getItem("userId");
 
   const handleReq = async () => {
-    if (idUser && typeof idUser === "number") {
-      const response = await getUsersParams(idUser);
-      setUser(response.usuario);
+    if (!idUser) {
+      return navigate("/login");
+    }
+
+    if (idUser) {
+      const response = await getUsersParams(idUser).catch((err) => {
+        if (err.response.data.error) {
+          localStorage.clear();
+          return navigate("/login");
+        }
+      });
+      setUser(response ? response.usuario : navigate("/login"));
     } else if (response.usuario.ADMIN < 1) {
       localStorage.clear();
-      navigate("/login");
-    } else {
       navigate("/login");
     }
   };
@@ -34,12 +41,8 @@ export default function AdminControl() {
         pages={["Inicio", "Trilhas", "Eventos"]}
         settings={["Painel de Controle", "Sair"]}
         userName={user.NOME_COMPLETO}
-        urlPage={[
-          "/",
-          `/trails/${localStorage.getItem("idUser")}`,
-          `/eventstab/`,
-        ]}
-        urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
+        urlPage={["/", `/trails/`, `/eventstab/`]}
+        urlSettings={[`/admin/`, "/"]}
       />
       <AdminControlScreen />
       <Footer />
