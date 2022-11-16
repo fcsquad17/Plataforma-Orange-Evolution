@@ -4,13 +4,7 @@ import LoginScreen from "/src/components/LoginScreen/LoginScreen";
 import Footer from "/src/components/Footer/Footer";
 
 export default function Login() {
-  const id = localStorage.getItem("userId");
-
-  useEffect(() => {
-    if (id) {
-      localStorage.clear();
-    }
-  });
+  useEffect(() => {});
   return (
     <div>
       <Header
