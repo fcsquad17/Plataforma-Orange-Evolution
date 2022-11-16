@@ -25,7 +25,7 @@ export default function Trails() {
   const navigate = useNavigate();
 
   const handleReq = async () => {
-    if (id) {
+    if (id && typeof id === "number") {
       const response = await getUsersParams(id);
       setUser(response.usuario);
     } else {

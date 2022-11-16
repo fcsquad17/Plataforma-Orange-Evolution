@@ -25,7 +25,7 @@ export default function TrailsContent() {
   const idUser = localStorage.getItem("idUser");
 
   const handleReq = async () => {
-    if (idUser) {
+    if (idUser && typeof idUser === "number") {
       const response = await getUsersParams(idUser);
       setUser(response.usuario);
     } else {

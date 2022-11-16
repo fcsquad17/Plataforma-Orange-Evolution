@@ -1,7 +1,6 @@
 import Header from "/src/components/Header/Header";
 import Footer from "/src/components/Footer/Footer";
 import { OnboardingScreen } from "../../components/OnboardingScreen/OnboardingScreen";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUsersParams } from "../../services/UsersApi";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
@@ -12,7 +11,7 @@ function Onboarding() {
   const idUser = localStorage.getItem("idUser");
 
   const handleReq = async () => {
-    if (idUser) {
+    if (idUser && typeof idUser === "number") {
       const response = await getUsersParams(idUser);
       setUser(response.usuario);
     }

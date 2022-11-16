@@ -13,9 +13,12 @@ export default function AdminControl() {
   const idUser = localStorage.getItem("idUser");
 
   const handleReq = async () => {
-    if (idUser) {
+    if (idUser && typeof idUser === "number") {
       const response = await getUsersParams(idUser);
       setUser(response.usuario);
+    } else if (response.usuario.ADMIN < 1) {
+      localStorage.clear();
+      navigate("/login");
     } else {
       navigate("/login");
     }
