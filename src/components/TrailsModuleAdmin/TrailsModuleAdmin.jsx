@@ -72,7 +72,7 @@ export default function TrailsModuleAdmin({
         sx={{ backgroundColor: "#202C3B" }}
         handleReload={handleReload}
         id={module.ID}
-        trail={true}
+        module={true}
       />
       <ModalForm
         put={true}
@@ -87,7 +87,7 @@ export default function TrailsModuleAdmin({
           flexDirection: "column",
           justifyContent: "space-between",
           gap: "5px",
-          height: '100%'
+          height: "100%",
         }}
       >
         <Typography variant="h5" component="div" color="white">

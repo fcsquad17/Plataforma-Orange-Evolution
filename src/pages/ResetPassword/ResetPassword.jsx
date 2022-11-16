@@ -4,6 +4,13 @@ import ResetPasswordScreen from "/src/components/ResetPasswordScreen/ResetPasswo
 import Footer from "/src/components/Footer/Footer.jsx";
 
 export const ResetPassword = () => {
+  const id = localStorage.getItem("userId");
+
+  useEffect(() => {
+    if (id) {
+      localStorage.clear();
+    }
+  });
   return (
     <div>
       <Header

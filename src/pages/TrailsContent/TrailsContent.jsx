@@ -20,15 +20,22 @@ const defaultOptions = {
 export default function TrailsContent() {
   const [user, setUser] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
+
   const navigate = useNavigate();
 
-  const idUser = localStorage.getItem("idUser");
+  const id = localStorage.getItem("userId");
 
   const handleReq = async () => {
-    if (idUser && typeof idUser === "number") {
-      const response = await getUsersParams(idUser);
+    if (id) {
+      const response = await getUsersParams(id).catch((err) => {
+        if (err.response.data.error) {
+          navigate("/401");
+          localStorage.clear();
+        }
+      });
       setUser(response.usuario);
     } else {
+      localStorage.clear();
       navigate("/login");
     }
   };
@@ -49,12 +56,8 @@ export default function TrailsContent() {
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Painel de Controle", "Sair"]}
           userName={user.NOME_COMPLETO}
-          urlPage={[
-            `/`,
-            `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/${localStorage.getItem("idUser")}`,
-          ]}
-          urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
+          urlPage={[`/`, `/trails/`, `/eventstab/`]}
+          urlSettings={[`/admin/`, "/"]}
         />
       )}
       {user.ADMIN === 0 && (
@@ -62,12 +65,8 @@ export default function TrailsContent() {
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
-          urlPage={[
-            `/`,
-            `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/`,
-          ]}
-          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+          urlPage={[`/`, `/trails/`, `/eventstab/`]}
+          urlSettings={[`/profile/`, "/"]}
         />
       )}
       {!hasLoaded && (

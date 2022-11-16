@@ -23,13 +23,19 @@ export default function Profile() {
 
   const navigate = useNavigate();
 
-  const idUser = localStorage.getItem("idUser");
+  const idUser = localStorage.getItem("userId");
 
   const handleReq = async () => {
-    if (idUser && typeof idUser === "number") {
-      const response = await getUsersParams(idUser);
+    if (idUser) {
+      const response = await getUsersParams(idUser).catch((err) => {
+        if (err.response.data.error) {
+          navigate("/401");
+          localStorage.clear();
+        }
+      });
       setUser(response.usuario);
     } else {
+      localStorage.clear();
       navigate("/login");
     }
   };
@@ -52,12 +58,8 @@ export default function Profile() {
         pages={["Inicio", "Trilhas", "Eventos"]}
         settings={["Meu dados", "Sair"]}
         userName={user.NOME_COMPLETO}
-        urlPage={[
-          `/`,
-          `/trails/${localStorage.getItem("idUser")}`,
-          `/eventstab/`,
-        ]}
-        urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+        urlPage={[`/`, `/trails/`, `/eventstab/`]}
+        urlSettings={[`/profile/`, "/"]}
       />
 
       {!hasLoaded && (

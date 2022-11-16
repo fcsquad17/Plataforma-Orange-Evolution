@@ -4,7 +4,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import eventbg from "/src/assets/eventbg.png";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { getUsersParams } from "../../services/UsersApi";
 
@@ -17,11 +17,26 @@ const styles = {
 export const EventsTab = () => {
   const [user, setUser] = useState({});
 
-  const idUser = localStorage.getItem("idUser");
+  const idUser = localStorage.getItem("userId");
+  const token = localStorage.getItem("userToken");
+  const navigate = useNavigate();
 
   const handleReq = async () => {
-    if (idUser && typeof idUser === "number") {
-      const response = await getUsersParams(idUser);
+    if (idUser && !token) {
+      navigate("/401");
+      localStorage.clear();
+    } else if (!idUser && token) {
+      navigate("/401");
+      localStorage.clear();
+    }
+
+    if (idUser && token) {
+      const response = await getUsersParams(idUser).catch((err) => {
+        if (err.response.data.error) {
+          navigate("/401");
+          localStorage.clear();
+        }
+      });
       setUser(response.usuario);
     }
   };
@@ -38,12 +53,8 @@ export const EventsTab = () => {
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Meu dados", "Sair"]}
           userName={user.NOME_COMPLETO}
-          urlPage={[
-            `/`,
-            `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/`,
-          ]}
-          urlSettings={[`/profile/${localStorage.getItem("idUser")}`, "/"]}
+          urlPage={[`/`, `/trails/`, `/eventstab/`]}
+          urlSettings={[`/profile/`, "/"]}
         />
       )}
       {!idUser && (
@@ -59,12 +70,8 @@ export const EventsTab = () => {
           pages={["Inicio", "Trilhas", "Eventos"]}
           settings={["Painel de Controle", "Sair"]}
           userName={user.NOME_COMPLETO}
-          urlPage={[
-            `/`,
-            `/trails/${localStorage.getItem("idUser")}`,
-            `/eventstab/`,
-          ]}
-          urlSettings={[`/admin/${localStorage.getItem("idUser")}`, "/"]}
+          urlPage={[`/`, `/trails/`, `/eventstab/`]}
+          urlSettings={[`/admin/`, "/"]}
         />
       )}
       <Box style={styles.paperContainer} sx={{ backgroundColor: "black" }}>
