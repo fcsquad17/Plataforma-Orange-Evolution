@@ -2,6 +2,7 @@ import React from "react";
 import Header from "/src/components/Header/Header";
 import ForgotPasswordScreen from "/src/components/ForgotPasswordScreen/ForgotPasswordScreen";
 import Footer from "/src/components/Footer/Footer";
+import { useEffect } from "react";
 
 export default function ForgotPassword() {
   const id = localStorage.getItem("userId");
