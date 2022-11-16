@@ -62,11 +62,13 @@ export default function LoginScreen() {
       setOpen(true);
       setErrorMessage(res.msg);
     } else if (res.usuario.ADMIN === 0) {
-      localStorage.setItem("idUser", res.usuario.ID);
-      navigate(`/trails/${res.usuario.ID}`);
+      localStorage.setItem("userToken", res.token);
+      localStorage.setItem("userId", res.usuario.ID);
+      navigate(`/trails`);
     } else {
-      localStorage.setItem("idUser", res.usuario.ID);
-      navigate(`/admin/${res.usuario.ID}`);
+      localStorage.setItem("userToken", res.token);
+      localStorage.setItem("userId", res.usuario.ID);
+      navigate(`/admin`);
     }
   };
 
