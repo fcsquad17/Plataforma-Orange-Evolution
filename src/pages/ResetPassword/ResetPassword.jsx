@@ -2,6 +2,7 @@ import React from "react";
 import Header from "/src/components/Header/Header.jsx";
 import ResetPasswordScreen from "/src/components/ResetPasswordScreen/ResetPasswordScreen.jsx";
 import Footer from "/src/components/Footer/Footer.jsx";
+import { useEffect } from "react";
 
 export const ResetPassword = () => {
   const id = localStorage.getItem("userId");
