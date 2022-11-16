@@ -60,7 +60,7 @@ export default function TrailsModules({ TITULO, idModulo }) {
   const [progressModule, setProgressModule] = useState(0);
   const [reload, setReload] = useState(false);
 
-  const idUser = localStorage.getItem("idUser");
+  const idUser = localStorage.getItem("userId");
 
   const handleOnReq = async (idModule) => {
     const response = await getContentByIdModule(idModule);

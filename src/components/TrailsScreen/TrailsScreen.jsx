@@ -65,7 +65,7 @@ export default function TrailsScreen({ user }) {
         >
           {userTrails.map((card) => {
             return (
-              <Link to={`/trailscontent/${user.ID}/${card.ID}`} key={card.ID}>
+              <Link to={`/trailscontent/${card.ID}`} key={card.ID}>
                 <TrailsCardUser trail={card} progressNumber={card} />
               </Link>
             );

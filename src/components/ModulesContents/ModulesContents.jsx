@@ -52,7 +52,7 @@ export default function ModulesContents({
 }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const idUser = localStorage.getItem("idUser");
+  const idUser = localStorage.getItem("userId");
 
   const handleNext = (idContent) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
