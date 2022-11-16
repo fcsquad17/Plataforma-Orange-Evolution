@@ -4,6 +4,13 @@ import ForgotPasswordScreen from "/src/components/ForgotPasswordScreen/ForgotPas
 import Footer from "/src/components/Footer/Footer";
 
 export default function ForgotPassword() {
+  const id = localStorage.getItem("userId");
+
+  useEffect(() => {
+    if (id) {
+      localStorage.clear();
+    }
+  });
   return (
     <div>
       <Header
